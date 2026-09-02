@@ -860,7 +860,9 @@ p:last-child { margin-bottom: 0; }
 .linea small { grid-column: 1; font-size: .78rem; color: var(--tinta-suave); }
 .linea__precio { font-weight: 600; font-variant-numeric: tabular-nums; align-self: start; }
 .linea__ctrl { grid-column: 1 / -1; display: flex; align-items: center; gap: .5rem; margin-top: .5rem; }
-.linea__ctrl button {
+/* Solo los de cantidad (− y +) son círculos de 28px. Se excluye "Quitar",
+   que es texto y necesita ancho propio: si no, se le sale la palabra. */
+.linea__ctrl button:not(.linea__quitar) {
   width: 28px; height: 28px;
   border: 1px solid var(--linea);
   background: none;
@@ -872,7 +874,7 @@ p:last-child { margin-bottom: 0; }
   display: grid; place-items: center;
   transition: background .18s var(--ease), border-color .18s var(--ease);
 }
-.linea__ctrl button:hover { background: var(--noche); border-color: var(--noche); color: var(--crema); }
+.linea__ctrl button:not(.linea__quitar):hover { background: var(--noche); border-color: var(--noche); color: var(--crema); }
 .linea__ctrl span { min-width: 22px; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
 .linea__quitar {
   margin-left: auto;
