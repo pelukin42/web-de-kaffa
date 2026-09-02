@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Bolsa de café Kaffa en grano">
+  <rect width="800" height="600" fill="#E6D9C2"/>
+  <circle cx="400" cy="300" r="250" fill="#F3EADB"/>
+  <ellipse cx="400" cy="512" rx="196" ry="26" fill="#12203A" opacity=".14"/>
+  <g transform="translate(256 104)">
+    <path d="M0 60h288v382c0 24-18 42-42 42H42c-24 0-42-18-42-42z" fill="#12203A"/>
+    <path d="M0 60h288v382c0 24-18 42-42 42h-96V60z" fill="#0C1729" opacity=".45"/>
+    <path d="M0 60 L46 14h196l46 46z" fill="#1A2C4C"/>
+    <rect x="52" y="0" width="184" height="22" rx="8" fill="#8E98A6"/>
+    <rect x="34" y="126" width="220" height="118" fill="#A81C22"/>
+    <rect x="34" y="252" width="220" height="44" fill="#2E7A3E"/>
+    <rect x="30" y="122" width="228" height="178" fill="none" stroke="#C9A24A" stroke-width="4"/>
+    <g fill="#F3EADB" opacity=".92">
+      <rect x="60" y="268" width="26" height="4"/><rect x="98" y="268" width="26" height="4"/>
+      <rect x="136" y="268" width="26" height="4"/><rect x="174" y="268" width="26" height="4"/>
+    </g>
+    <ellipse cx="144" cy="182" rx="48" ry="34" fill="#F3EADB" opacity=".9"/>
+    <path d="M144 152c18 0 30 14 30 30s-12 30-30 30-30-14-30-30 12-30 30-30z" fill="#A81C22"/>
+    <path d="M144 152c-8 10-8 50 0 60" stroke="#F3EADB" stroke-width="4" fill="none"/>
+    <rect x="34" y="330" width="140" height="8" fill="#C9A24A"/>
+    <rect x="34" y="352" width="96" height="8" fill="#C9A24A" opacity=".55"/>
+  </g>
+  <g fill="#5E3520">
+    <g transform="translate(150 470)"><ellipse rx="26" ry="18" transform="rotate(-20)"/><path d="M-22 6c8-10 8-14 0-24" stroke="#3D2317" stroke-width="4" fill="none" transform="rotate(-20)"/></g>
+    <g transform="translate(214 512)"><ellipse rx="24" ry="16" transform="rotate(14)"/></g>
+    <g transform="translate(628 486)"><ellipse rx="26" ry="18" transform="rotate(24)"/></g>
+    <g transform="translate(572 522)"><ellipse rx="22" ry="15" transform="rotate(-12)"/></g>
+  </g>
+</svg>

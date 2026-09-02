@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Repostería de la casa acompañada de café">
+  <rect width="800" height="600" fill="#6E4526"/>
+  <rect width="800" height="600" fill="#12203A" opacity=".12"/>
+  <circle cx="300" cy="330" r="190" fill="#F3EADB"/>
+  <circle cx="300" cy="330" r="164" fill="#EFE3CD"/>
+  <g transform="translate(198 214)">
+    <path d="M0 60 L102 0 L204 60 L204 176 L0 176Z" fill="#6E4526"/>
+    <path d="M0 60 L102 0 L204 60 L204 92 L0 92Z" fill="#A0623A"/>
+    <path d="M0 92h204v26H0z" fill="#F3EADB"/>
+    <path d="M0 118h204v26H0z" fill="#3D2317"/>
+    <path d="M0 144h204v32H0z" fill="#A0623A"/>
+    <path d="M102 0 L204 60 L102 46 L0 60Z" fill="#A81C22"/>
+    <circle cx="102" cy="28" r="12" fill="#C4302B"/>
+  </g>
+  <g transform="translate(560 300)">
+    <ellipse cy="128" rx="130" ry="26" fill="#F3EADB"/>
+    <path d="M-72 0h144l-16 108H-56z" fill="#F3EADB"/>
+    <path d="M-64 12h128l-13 84H-51z" fill="#3D1D12"/>
+    <path d="M72 16c34 0 56 20 56 44s-22 44-56 44v-20c18 0 32-10 32-24s-14-24-32-24z" fill="#F3EADB"/>
+  </g>
+  <g stroke="#F3EADB" stroke-width="4" fill="none" opacity=".4" stroke-linecap="round">
+    <path d="M534 262c-12-16 6-26-6-42M576 254c-12-16 6-26-6-42M618 262c-12-16 6-26-6-42"/>
+  </g>
+  <g fill="#3D1D12" opacity=".7"><circle cx="112" cy="530" r="10"/><circle cx="146" cy="552" r="8"/><circle cx="686" cy="512" r="10"/><circle cx="716" cy="540" r="8"/></g>
+</svg>

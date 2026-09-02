@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Vandola de barro hecha a mano">
+  <rect width="800" height="600" fill="#EFE3CD"/>
+  <circle cx="400" cy="286" r="238" fill="#E2D2B4"/>
+  <ellipse cx="400" cy="530" rx="180" ry="24" fill="#12203A" opacity=".16"/>
+  <path d="M268 128h264l-84 152v30h-96v-30z" fill="#B05B36"/>
+  <path d="M268 128h264l-84 152v30h-48V128z" fill="#8E4227"/>
+  <path d="M290 144h220l-72 130h-76z" fill="#3D2317"/>
+  <path d="M296 152h208l-16 30H312z" fill="#C4714A"/>
+  <path d="M352 310h96v18h-96z" fill="#7A3820"/>
+  <path d="M326 328h148c32 0 56 28 56 66v46c0 42-34 76-76 76h-108c-42 0-76-34-76-76v-46c0-38 24-66 56-66z" fill="#B05B36"/>
+  <path d="M400 328h74c32 0 56 28 56 66v46c0 42-34 76-76 76h-54z" fill="#8E4227"/>
+  <path d="M530 380c36 0 60 24 60 54s-24 54-60 54v-26c20 0 34-12 34-28s-14-28-34-28z" fill="#7A3820"/>
+  <g stroke="#7A3820" stroke-width="5" fill="none" opacity=".75">
+    <path d="M282 400h236M290 432h220"/>
+  </g>
+  <g stroke="#F3EADB" stroke-width="4" fill="none" opacity=".5" stroke-linecap="round">
+    <path d="M362 86c-12-16 6-26-6-42M400 78c-12-16 6-26-6-42M438 86c-12-16 6-26-6-42"/>
+  </g>
+  <g fill="#2E7A3E" opacity=".5"><circle cx="146" cy="470" r="9"/><circle cx="664" cy="452" r="9"/></g>
+</svg>

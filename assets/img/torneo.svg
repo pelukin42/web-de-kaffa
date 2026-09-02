@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Competencia nacional de Vandola">
+  <rect width="800" height="600" fill="#12203A"/>
+  <g stroke="#C9A24A" stroke-width="1.5" opacity=".28" fill="none">
+    <circle cx="400" cy="290" r="210"/><circle cx="400" cy="290" r="164"/>
+  </g>
+  <path d="M400 60 L424 132 L500 132 L440 176 L462 248 L400 204 L338 248 L360 176 L300 132 L376 132Z" fill="#C9A24A" opacity=".18"/>
+  <g transform="translate(400 296)">
+    <path d="M-96 -86h192l-60 108v22h-72v-22z" fill="#B05B36"/>
+    <path d="M-78 -72h156l-52 92h-52z" fill="#2A1A14"/>
+    <path d="M-72 -64h144l-12 22h-120z" fill="#C4714A"/>
+    <path d="M-36 44h72v14h-72z" fill="#7A3820"/>
+    <path d="M-56 58h112c24 0 42 20 42 48v32c0 30-24 54-56 54h-84c-32 0-56-24-56-54V106c0-28 18-48 42-48z" fill="#B05B36"/>
+    <path d="M98 92c26 0 44 18 44 40s-18 40-44 40v-20c14 0 24-8 24-20s-10-20-24-20z" fill="#7A3820"/>
+    <path d="M-40 132h80c0 34-16 50-40 50s-40-16-40-50z" fill="#3D1D12"/>
+  </g>
+  <rect x="300" y="500" width="200" height="20" rx="4" fill="#C9A24A"/>
+  <rect x="326" y="470" width="148" height="30" fill="#A81C22"/>
+  <g fill="#2E7A3E">
+    <path d="M212 372c-40-18-58-58-52-104 42 8 70 40 74 84z"/>
+    <path d="M588 372c40-18 58-58 52-104-42 8-70 40-74 84z"/>
+  </g>
+  <g fill="#C9A24A">
+    <path d="M212 372c-40-18-58-58-52-104 42 8 70 40 74 84z" opacity=".25"/>
+    <path d="M588 372c40-18 58-58 52-104-42 8-70 40-74 84z" opacity=".25"/>
+  </g>
+  <g fill="#F3EADB" opacity=".9">
+    <circle cx="128" cy="120" r="4"/><circle cx="668" cy="150" r="4"/><circle cx="220" cy="88" r="3"/><circle cx="596" cy="96" r="3"/>
+  </g>
+</svg>

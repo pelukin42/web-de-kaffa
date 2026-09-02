@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Fachada de Kaffa Café en el centro de Coronado">
+  <rect width="800" height="600" fill="#9FB4C9"/>
+  <circle cx="120" cy="110" r="60" fill="#F3EADB" opacity=".35"/>
+  <g fill="#12203A" opacity=".26">
+    <path d="M628 190 L662 96 L696 190Z"/><rect x="648" y="186" width="28" height="120"/>
+  </g>
+  <rect y="330" width="800" height="270" fill="#E6D9C2"/>
+  <rect y="330" width="800" height="14" fill="#C9A24A"/>
+  <path d="M60 330 L400 150 L740 330Z" fill="#A81C22"/>
+  <path d="M400 150 L740 330 L400 330Z" fill="#12203A" opacity=".14"/>
+  <rect x="384" y="182" width="32" height="60" fill="#C9A24A"/>
+  <g fill="#12203A">
+    <path d="M120 400h90v150h-90z"/><path d="M120 400a45 45 0 0 1 90 0Z"/><path d="M590 400h90v150h-90z"/><path d="M590 400a45 45 0 0 1 90 0Z"/>
+  </g>
+  <g fill="#7FA8C4">
+    <path d="M132 408h66v130h-66z"/><path d="M602 408h66v130h-66z"/>
+  </g>
+  <g stroke="#12203A" stroke-width="4"><path d="M165 408v130M132 462h66M635 408v130M602 462h66"/></g>
+  <rect x="330" y="392" width="140" height="208" fill="#2E7A3E"/>
+  <rect x="342" y="404" width="116" height="118" fill="#B7D0DD"/>
+  <circle cx="446" cy="546" r="7" fill="#C9A24A"/>
+  <rect x="290" y="336" width="220" height="46" rx="6" fill="#A81C22"/>
+  <rect x="291.5" y="337.5" width="217" height="43" rx="5" fill="none" stroke="#C9A24A" stroke-width="3"/>
+  <g fill="#12203A"><rect x="248" y="530" width="52" height="6" rx="3"/><rect x="252" y="536" width="8" height="42"/><rect x="288" y="536" width="8" height="42"/>
+  <rect x="500" y="530" width="52" height="6" rx="3"/><rect x="504" y="536" width="8" height="42"/><rect x="540" y="536" width="8" height="42"/></g>
+  <g fill="#2E7A3E"><circle cx="86" cy="520" r="34"/><circle cx="720" cy="524" r="38"/></g>
+  <rect y="580" width="800" height="20" fill="#12203A" opacity=".3"/>
+</svg>

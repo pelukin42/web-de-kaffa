@@ -1,0 +1,419 @@
+/* ===========================================================
+   KAFFA CAFÉ — Ejemplo del plan Esencial ($200)
+   Una sola sección · 4 servicios · 8 fotos · formulario simple.
+   Misma marca que el sitio completo, alcance reducido.
+   =========================================================== */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  --rojo:        #A81C22;
+  --rojo-vivo:   #C4302B;
+  --verde:       #2E7A3E;
+  --noche:       #12203A;
+  --noche-2:     #1A2C4C;
+  --arena:       #C9A24A;
+  --arena-claro: #E3C57F;
+  --crema:       #F3EADB;
+  --crema-2:     #E6D9C2;
+
+  --fondo:       var(--crema);
+  --tinta:       var(--noche);
+  --tinta-suave: #5A6478;
+  --acento:      var(--rojo);
+  --linea:       rgba(18, 32, 58, .15);
+
+  --ancho:       1180px;
+  --radio:       3px;
+  --bloque:      clamp(3.75rem, 7.5vw, 6.5rem);
+
+  --marca:   "Yellowtail", "Brush Script MT", cursive;
+  --display: "Alegreya", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --texto:   "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+
+  /* Greca chorotega: la misma banda geométrica del sitio completo. */
+  --greca: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='16' viewBox='0 0 72 16'%3E%3Cg fill='%23000'%3E%3Crect x='0' y='0' width='72' height='1.6'/%3E%3Crect x='0' y='14.4' width='72' height='1.6'/%3E%3Cpath d='M4 4h20v2.4H10.4V12H8V6.4H4z'/%3E%3Cpath d='M28 12h20V9.6H34.4V4H32v5.6h-4z'/%3E%3Cpath d='M52 4h16v2.4H58.4V12H56V6.4h-4z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- 2. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--texto);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* height:auto anula el atributo height="" del HTML, para que mande el aspect-ratio. */
+img { max-width: 100%; display: block; height: auto; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 em, h2 em { font-style: italic; color: var(--acento); font-weight: 700; }
+
+p { margin: 0 0 1.1rem; }
+p:last-child { margin-bottom: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--arena);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.saltar {
+  position: absolute; left: -9999px;
+  background: var(--noche); color: var(--crema);
+  padding: .8rem 1.2rem; z-index: 100; font-weight: 600;
+}
+.saltar:focus { left: 1rem; top: 1rem; }
+
+.envoltura {
+  width: min(100% - 2.5rem, var(--ancho));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin: 0 0 1rem;
+  /* flex-start para que el punto quede en la primera línea si el texto envuelve. */
+  display: flex; align-items: flex-start; gap: .55rem;
+}
+.punto {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--verde);
+  box-shadow: 0 0 0 3px rgba(46, 122, 62, .22);
+  flex: none;
+  margin-top: .5em;
+}
+
+.greca {
+  display: block; height: 16px;
+  background: var(--noche);
+  -webkit-mask: var(--greca) repeat-x center / auto 16px;
+          mask: var(--greca) repeat-x center / auto 16px;
+  opacity: .5;
+}
+
+/* ---------- 3. Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .85rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radio);
+  font-family: var(--texto);
+  font-size: .95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .18s var(--ease), background-color .18s var(--ease), border-color .18s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--peque { padding: .55rem 1.05rem; font-size: .875rem; }
+
+.btn--verde { background: var(--verde); color: #fff; }
+.btn--verde:hover { background: #276b35; }
+
+.btn--rojo { background: var(--rojo); color: #fff; }
+.btn--rojo:hover { background: var(--rojo-vivo); }
+
+.btn--linea {
+  background: transparent;
+  border-color: var(--linea);
+  color: var(--tinta);
+}
+.btn--linea:hover { border-color: var(--tinta); }
+
+.ico { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; }
+
+/* ---------- 4. Aviso de demostración (se borra al entregar) ---------- */
+.aviso {
+  background: var(--arena);
+  color: var(--noche);
+  font-size: .85rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: .4rem 1.1rem;
+  padding: .6rem 1.25rem;
+  text-align: center;
+}
+.aviso__enlaces { display: inline-flex; gap: 1.1rem; }
+.aviso a { font-weight: 600; text-underline-offset: 3px; }
+
+/* ---------- 5. Cabecera ---------- */
+.cabecera {
+  background: var(--noche);
+  color: var(--crema);
+  position: sticky; top: 0; z-index: 50;
+}
+.cabecera__caja {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: 68px;
+}
+.logo { display: block; line-height: 0; }
+.logo svg { width: 104px; height: auto; }
+
+.cabecera__acciones { display: flex; align-items: center; gap: 1.1rem; }
+.tel {
+  font-weight: 600; font-size: .95rem; text-decoration: none;
+  color: var(--crema);
+  border-bottom: 1px solid rgba(243, 234, 219, .3);
+  padding-bottom: 1px;
+}
+.tel:hover { border-color: var(--arena); }
+
+/* ---------- 6. Portada ---------- */
+.heroe {
+  background:
+    radial-gradient(120% 90% at 78% 18%, rgba(201, 162, 74, .20), transparent 62%),
+    var(--noche);
+  color: var(--crema);
+  padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(3.5rem, 7vw, 6rem);
+  overflow: hidden;
+}
+.heroe__rejilla {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.heroe .eyebrow { color: rgba(243, 234, 219, .72); }
+
+.heroe h1 {
+  font-size: clamp(2.9rem, 7vw, 5.1rem);
+  margin-bottom: 1.4rem;
+}
+.heroe h1 em { color: var(--arena-claro); }
+
+.entrada {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  color: rgba(243, 234, 219, .82);
+  max-width: 46ch;
+}
+
+.acciones { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.9rem; }
+.heroe .btn--linea { color: var(--crema); border-color: rgba(243, 234, 219, .34); }
+.heroe .btn--linea:hover { border-color: var(--arena); }
+
+.sellos {
+  display: flex; flex-wrap: wrap; gap: 1.75rem 2.75rem;
+  list-style: none; margin: 2.9rem 0 0; padding: 2rem 0 0;
+  border-top: 1px solid rgba(243, 234, 219, .16);
+}
+.sellos b {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  color: var(--arena-claro);
+  line-height: 1.1;
+}
+.sellos span { font-size: .82rem; color: rgba(243, 234, 219, .62); }
+
+.heroe__foto { margin: 0; }
+.heroe__foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--noche-2);
+  border-radius: var(--radio);
+  border: 1px solid rgba(201, 162, 74, .38);
+}
+
+/* ---------- 7. Bloques ---------- */
+.bloque { padding: var(--bloque) 0; }
+.bloque--noche {
+  background: var(--noche-2);
+  color: var(--crema);
+  --tinta-suave: #93A2BC;
+  --acento: var(--arena);
+}
+
+.bloque__intro { max-width: 34ch; margin-bottom: clamp(2.25rem, 4vw, 3.25rem); }
+.bloque__intro h2 { font-size: clamp(1.85rem, 3.6vw, 2.7rem); }
+
+/* ---------- 8. Servicios (4) ---------- */
+.servicios {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.servicio {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--arena);
+  border-radius: var(--radio);
+  padding: 0 0 1.6rem;
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+}
+.servicio:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px -18px rgba(18, 32, 58, .45);
+}
+.servicio figure { margin: 0 0 1.25rem; }
+.servicio img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  background: var(--crema-2);
+}
+.servicio h3 {
+  font-size: 1.25rem;
+  margin: 0 1.4rem .55rem;
+}
+.servicio p {
+  margin: 0 1.4rem;
+  font-size: .95rem;
+  color: var(--tinta-suave);
+}
+
+/* ---------- 9. Galería (8 fotos) ---------- */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.galeria figure { margin: 0; overflow: hidden; border-radius: var(--radio); }
+.galeria img {
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+  background: var(--noche);
+  transition: transform .4s var(--ease);
+}
+.galeria figure:hover img { transform: scale(1.05); }
+
+/* ---------- 10. Contacto ---------- */
+.contacto {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.contacto h2 { font-size: clamp(1.85rem, 3.4vw, 2.5rem); margin-bottom: 2rem; }
+
+.datos { margin: 0 0 1.9rem; display: grid; gap: .2rem; }
+.datos dt {
+  font-size: .74rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-top: 1.2rem;
+}
+.datos dt:first-child { margin-top: 0; }
+.datos dd { margin: 0; font-size: 1.02rem; }
+.datos a { text-decoration: none; border-bottom: 1px solid var(--linea); }
+.datos a:hover { border-color: var(--acento); color: var(--acento); }
+
+.redes { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+.redes a {
+  display: inline-flex; align-items: center; gap: .5rem;
+  text-decoration: none; font-size: .92rem; font-weight: 500;
+  color: var(--tinta-suave);
+}
+.redes svg { width: 1.35rem; height: 1.35rem; fill: currentColor; }
+.redes a:hover { color: var(--acento); }
+
+/* Formulario */
+.contacto__forma {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: clamp(1.6rem, 3vw, 2.25rem);
+}
+.contacto__forma h3 { font-size: 1.5rem; margin-bottom: .4rem; }
+.nota { font-size: .9rem; color: var(--tinta-suave); margin-bottom: 1.5rem; }
+
+.contacto__forma label {
+  display: block;
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: .4rem;
+}
+.contacto__forma input,
+.contacto__forma textarea {
+  width: 100%;
+  font-family: var(--texto); font-size: 1rem;
+  color: var(--tinta);
+  background: var(--crema);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: .7rem .85rem;
+  margin-bottom: 1.15rem;
+  transition: border-color .18s var(--ease), background-color .18s var(--ease);
+}
+.contacto__forma input:focus,
+.contacto__forma textarea:focus { background: #fff; border-color: var(--arena); }
+.contacto__forma textarea { resize: vertical; min-height: 120px; }
+.contacto__forma .btn { width: 100%; }
+
+.oculto { position: absolute; left: -9999px; }
+
+/* ---------- 11. Pie ---------- */
+.pie {
+  background: var(--noche);
+  color: rgba(243, 234, 219, .7);
+  font-size: .87rem;
+  padding: 1.9rem 0;
+}
+.pie__caja { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
+.pie__nota { color: rgba(243, 234, 219, .45); }
+
+/* ---------- 12. Botón flotante de WhatsApp ---------- */
+.flotante {
+  position: fixed; right: 1.15rem; bottom: 1.15rem; z-index: 60;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25D366;
+  display: grid; place-items: center;
+  box-shadow: 0 10px 26px -8px rgba(0, 0, 0, .5);
+  transition: transform .2s var(--ease);
+}
+.flotante svg { width: 30px; height: 30px; fill: #fff; }
+.flotante:hover { transform: scale(1.08); }
+
+/* ---------- 13. Responsive ---------- */
+@media (max-width: 1000px) {
+  .servicios { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .heroe__rejilla { grid-template-columns: 1fr; }
+  .heroe__foto { order: -1; max-width: 420px; }
+  .contacto { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  body { font-size: 1rem; }
+  .galeria { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+  .servicios { grid-template-columns: 1fr; gap: 1.1rem; }
+  .tel { display: none; }
+  .sellos { gap: 1.25rem 2rem; }
+  .aviso { font-size: .78rem; }
+}
+
+/* ---------- 14. Preferencias del sistema ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+@media print {
+  .aviso, .flotante, .cabecera__acciones, .contacto__forma, .galeria { display: none; }
+  body { background: #fff; color: #000; }
+  .heroe { background: #fff; color: #000; }
+}

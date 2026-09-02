@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Barra de espresso y tostadora en Kaffa">
+  <rect width="800" height="600" fill="#E6D9C2"/>
+  <rect width="800" height="300" fill="#12203A"/>
+  <g fill="#0C1729"><rect x="60" width="10" height="120"/><rect x="400" width="10" height="150"/><rect x="700" width="10" height="100"/></g>
+  <g fill="#F3EADB" opacity=".12"><circle cx="65" cy="140" r="70"/><circle cx="405" cy="170" r="70"/><circle cx="705" cy="120" r="70"/></g>
+  <g fill="#C9A24A"><circle cx="65" cy="140" r="30"/><circle cx="405" cy="170" r="30"/><circle cx="705" cy="120" r="30"/></g>
+  <rect x="120" y="196" width="560" height="12" fill="#8A5A32"/>
+  <g fill="#A81C22"><rect x="150" y="140" width="46" height="56" rx="4"/><rect x="210" y="140" width="46" height="56" rx="4"/></g>
+  <g fill="#2E7A3E"><rect x="272" y="140" width="46" height="56" rx="4"/><rect x="332" y="140" width="46" height="56" rx="4"/></g>
+  <g fill="#C9A24A"><rect x="470" y="146" width="42" height="50" rx="4"/><rect x="524" y="146" width="42" height="50" rx="4"/><rect x="578" y="146" width="42" height="50" rx="4"/></g>
+  <rect y="300" width="800" height="40" fill="#8A5A32"/>
+  <rect y="340" width="800" height="260" fill="#6E4526"/>
+  <g transform="translate(470 176)">
+    <rect y="24" width="180" height="100" rx="10" fill="#C9CFD8"/>
+    <rect x="14" width="152" height="34" rx="8" fill="#A9B3C0"/>
+    <rect x="26" y="52" width="60" height="42" rx="6" fill="#12203A"/>
+    <circle cx="132" cy="70" r="16" fill="#A81C22"/>
+    <rect x="40" y="124" width="16" height="26" fill="#8E98A6"/>
+    <rect x="24" y="150" width="48" height="8" rx="4" fill="#12203A"/>
+  </g>
+  <g transform="translate(120 190)">
+    <circle cx="90" cy="120" r="76" fill="#3D2A1C"/>
+    <circle cx="90" cy="120" r="52" fill="#12203A"/>
+    <circle cx="90" cy="120" r="28" fill="#C9A24A"/>
+    <rect x="76" y="196" width="28" height="60" fill="#3D2A1C"/>
+    <rect x="34" y="252" width="112" height="16" rx="6" fill="#2A1B12"/>
+  </g>
+  <g fill="#F3EADB"><rect x="330" y="404" width="34" height="40" rx="4"/><rect x="380" y="404" width="34" height="40" rx="4"/></g>
+  <g fill="#3D1D12"><rect x="334" y="410" width="26" height="10"/><rect x="384" y="410" width="26" height="10"/></g>
+</svg>

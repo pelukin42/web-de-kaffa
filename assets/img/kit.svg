@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Kit Vandola con café y taza">
+  <rect width="800" height="600" fill="#12203A"/>
+  <circle cx="400" cy="300" r="256" fill="#1A2C4C"/>
+  <ellipse cx="400" cy="520" rx="290" ry="30" fill="#0C1729" opacity=".7"/>
+  <g transform="translate(316 132) scale(.86)">
+    <path d="M-84 0h264l-84 152v30h-96v-30z" fill="#B05B36"/>
+    <path d="M-62 16h220l-72 130h-76z" fill="#2A1A14"/>
+    <path d="M-56 24h208l-16 30h-176z" fill="#C4714A"/>
+    <path d="M0 182h96v18H0z" fill="#7A3820"/>
+    <path d="M-26 200h148c32 0 56 28 56 66v46c0 42-34 76-76 76H-6c-42 0-76-34-76-76v-46c0-38 24-66 56-66z" fill="#B05B36"/>
+    <path d="M178 252c36 0 60 24 60 54s-24 54-60 54v-26c20 0 34-12 34-28s-14-28-34-28z" fill="#7A3820"/>
+    <path d="M-8 314h112c0 46-22 70-56 70s-56-24-56-70z" fill="#3D1D12"/>
+  </g>
+  <g transform="translate(112 268) scale(.72)">
+    <path d="M0 46h226v330c0 20-16 36-36 36H36c-20 0-36-16-36-36z" fill="#0C1729"/>
+    <path d="M0 46 L38 8h150l38 38z" fill="#243D63"/>
+    <rect x="26" y="98" width="174" height="94" fill="#A81C22"/>
+    <rect x="26" y="200" width="174" height="36" fill="#2E7A3E"/>
+    <rect x="22" y="94" width="182" height="146" fill="none" stroke="#C9A24A" stroke-width="5"/>
+  </g>
+  <g transform="translate(636 420)">
+    <ellipse cy="72" rx="86" ry="16" fill="#F3EADB" opacity=".9"/>
+    <path d="M-52 0h104l-12 68H-40z" fill="#F3EADB"/>
+    <path d="M-45 8h90l-9 52h-72z" fill="#3D1D12"/>
+    <path d="M52 12c24 0 40 14 40 30s-16 30-40 30v-14c13 0 22-7 22-16s-9-16-22-16z" fill="#F3EADB"/>
+  </g>
+  <g stroke="#C9A24A" stroke-width="2" fill="none" opacity=".45">
+    <rect x="42" y="42" width="716" height="516"/>
+  </g>
+</svg>

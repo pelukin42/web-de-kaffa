@@ -1,0 +1,88 @@
+/* ===========================================================
+   RÓTULO DE DEMOSTRACIÓN — no es parte del sitio.
+   Identifica esta página como el ejemplo del plan A Medida y
+   enlaza a las otras dos versiones.
+
+   Vive aparte a propósito: styles.css no se toca. Para entregar
+   el sitio de verdad se borran dos cosas de index.html:
+     1. el <link rel="stylesheet" href="assets/css/aviso.css">
+     2. el <div class="aviso"> ... </div>
+   y todo vuelve a quedar exactamente como estaba.
+
+   El truco: la barra de navegación del sitio es position:fixed
+   pegada al tope, así que el rótulo también va fijo y empuja
+   hacia abajo al nav, al cuerpo y al menú móvil usando --aviso-h.
+   =========================================================== */
+
+:root { --aviso-h: 40px; }
+
+/* El contenido baja para que el rótulo no lo tape. */
+body { padding-top: var(--aviso-h); }
+
+/* Los anclajes tienen que despejar rótulo + barra. */
+html { scroll-padding-top: calc(var(--aviso-h) + var(--nav-h) + 12px); }
+
+/* La barra de navegación deja de estar en el tope y se corre bajo el rótulo. */
+.nav { inset: var(--aviso-h) 0 auto 0; }
+
+.aviso {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 150;            /* sobre el nav (100), bajo el telón del carrito (190) */
+  height: var(--aviso-h);
+  background: var(--arena);
+  color: var(--noche);
+  font-family: var(--texto);
+  font-size: .85rem;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem 1.25rem;
+  padding: 0 1.25rem;
+  text-align: center;
+  overflow: hidden;        /* garantiza una sola línea */
+  white-space: nowrap;
+}
+
+.aviso b { font-weight: 700; }
+.aviso__detalle { opacity: .82; }
+
+.aviso__enlaces { display: inline-flex; gap: 1.1rem; flex: none; }
+.aviso a {
+  color: var(--noche);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.aviso a:hover { color: var(--rojo); }
+
+/* El rótulo es de una sola línea y de alto fijo, así que en pantallas
+   angostas se va soltando lastre por partes en vez de recortarse:
+   primero el detalle, después el precio, el "Ejemplo ·" y el "Ver". */
+@media (max-width: 900px) {
+  .aviso__detalle { display: none; }
+}
+@media (max-width: 620px) {
+  :root { --aviso-h: 36px; }
+  .aviso { font-size: .78rem; gap: .95rem; padding: 0 .8rem; }
+  .aviso__enlaces { gap: .95rem; }
+  .aviso__prefijo { display: none; }
+}
+@media (max-width: 430px) {
+  .aviso { font-size: .74rem; gap: .8rem; padding: 0 .6rem; }
+  .aviso__enlaces { gap: .8rem; }
+  .aviso__precio, .aviso__ver { display: none; }
+}
+
+/* El menú móvil cuelga del nav, que ahora está más abajo. */
+@media (max-width: 900px) {
+  .menu {
+    inset: calc(var(--aviso-h) + var(--nav-h)) 0 auto 0;
+    max-height: calc(100svh - var(--aviso-h) - var(--nav-h));
+  }
+}
+
+@media print {
+  .aviso { display: none; }
+  body { padding-top: 0; }
+}

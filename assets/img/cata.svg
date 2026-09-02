@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Cata y taller de café en la sala de eventos">
+  <rect width="800" height="600" fill="#1A2C4C"/>
+  <rect y="392" width="800" height="208" fill="#6E4526"/>
+  <rect y="392" width="800" height="12" fill="#8A5A32"/>
+  <g fill="#243D63"><rect x="52" y="96" width="180" height="220" rx="6"/><rect x="568" y="96" width="180" height="220" rx="6"/></g>
+  <g fill="#C9A24A" opacity=".35"><rect x="66" y="110" width="152" height="192" rx="4"/><rect x="582" y="110" width="152" height="192" rx="4"/></g>
+  <g transform="translate(400 300)">
+    <g fill="#F3EADB">
+      <g transform="translate(-210 60)"><ellipse cy="52" rx="48" ry="10"/><path d="M-32 0h64l-8 48h-48z"/></g>
+      <g transform="translate(-70 60)"><ellipse cy="52" rx="48" ry="10"/><path d="M-32 0h64l-8 48h-48z"/></g>
+      <g transform="translate(70 60)"><ellipse cy="52" rx="48" ry="10"/><path d="M-32 0h64l-8 48h-48z"/></g>
+      <g transform="translate(210 60)"><ellipse cy="52" rx="48" ry="10"/><path d="M-32 0h64l-8 48h-48z"/></g>
+    </g>
+    <g fill="#3D1D12">
+      <path d="M-236 68h52l-5 32h-42z"/><path d="M-96 68h52l-5 32h-42z"/><path d="M44 68h52l-5 32H49z"/><path d="M184 68h52l-5 32h-42z"/>
+    </g>
+  </g>
+  <g transform="translate(400 178)">
+    <path d="M-58 -52h116l-36 66v18h-44v-18z" fill="#B05B36"/>
+    <path d="M-46 -42h92l-28 54h-36z" fill="#2A1A14"/>
+    <path d="M-22 32h44v10h-44z" fill="#7A3820"/>
+    <path d="M-36 42h72c16 0 28 14 28 32v22c0 20-16 36-38 36h-52c-22 0-38-16-38-36V74c0-18 12-32 28-32z" fill="#B05B36"/>
+    <path d="M64 66c18 0 30 12 30 26s-12 26-30 26v-14c9 0 16-5 16-12s-7-12-16-12z" fill="#7A3820"/>
+  </g>
+  <g stroke="#C9A24A" stroke-width="3" fill="none" opacity=".5"><path d="M40 560h720"/></g>
+</svg>

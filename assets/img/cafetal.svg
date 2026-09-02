@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Cafetal en las montañas de Coronado">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2C4C"/><stop offset=".55" stop-color="#6E5A6B"/><stop offset="1" stop-color="#D9A46A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#cielo)"/>
+  <circle cx="618" cy="196" r="46" fill="#F3EADB" opacity=".9"/>
+  <path d="M0 250 L140 170 L250 232 L360 152 L470 226 L590 168 L700 234 L800 190 V600 H0Z" fill="#12203A" opacity=".85"/>
+  <path d="M0 316 L120 258 L236 312 L352 250 L470 314 L600 262 L800 320 V600 H0Z" fill="#1D3A2C"/>
+  <path d="M0 392 L160 344 L320 396 L500 340 L660 396 L800 358 V600 H0Z" fill="#2E7A3E"/>
+  <path d="M0 470 L200 430 L420 480 L640 432 L800 470 V600 H0Z" fill="#245F32"/>
+  <g fill="#3D8C4C">
+    <circle cx="80" cy="500" r="34"/><circle cx="196" cy="524" r="40"/><circle cx="322" cy="504" r="34"/>
+    <circle cx="452" cy="532" r="42"/><circle cx="590" cy="506" r="36"/><circle cx="716" cy="530" r="40"/>
+  </g>
+  <g fill="#A81C22">
+    <circle cx="70" cy="492" r="6"/><circle cx="94" cy="510" r="6"/><circle cx="188" cy="516" r="6"/><circle cx="208" cy="534" r="6"/>
+    <circle cx="314" cy="498" r="6"/><circle cx="334" cy="514" r="6"/><circle cx="444" cy="524" r="6"/><circle cx="466" cy="542" r="6"/>
+    <circle cx="582" cy="500" r="6"/><circle cx="602" cy="516" r="6"/><circle cx="708" cy="522" r="6"/><circle cx="728" cy="540" r="6"/>
+  </g>
+  <path d="M330 600 C376 520 396 470 390 402 L410 402 C418 476 400 526 356 600Z" fill="#C9A24A" opacity=".5"/>
+</svg>
