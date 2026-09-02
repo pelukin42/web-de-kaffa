@@ -281,6 +281,91 @@
       return pedido.reduce(function (s, l) { return s + l.precio * l.cant; }, 0);
     }
 
+    /* --- Entrega y regalo ---
+       Se guarda aparte del pedido para que al volver no haya que repetirlo. */
+    var LLAVE_ENTREGA = LLAVE + '-entrega';
+    var cajaEntrega   = $('#entrega');
+    var campoRecoger  = $('#campoRecoger');
+    var campoZona     = $('#campoZona');
+    var zonaEtiqueta  = $('#zonaEtiqueta');
+    var zona          = $('#zona');
+    var diaRecoge     = $('#diaRecoge');
+    var esRegalo      = $('#esRegalo');
+    var campoDedic    = $('#campoDedicatoria');
+    var dedicatoria   = $('#dedicatoria');
+    var radios        = $$('input[name="entrega"]');
+
+    var ETIQUETAS = {
+      recoger:    'Recoger en el café',
+      gam:        'Envío dentro del GAM',
+      encomienda: 'Encomienda al resto del país'
+    };
+    // Cada modo pide un dato distinto; encomienda necesita provincia y cantón.
+    var CAMPO_ZONA = {
+      gam:        { etiqueta: 'Distrito o barrio',  ejemplo: 'Moravia, San Vicente' },
+      encomienda: { etiqueta: 'Provincia y cantón', ejemplo: 'Puntarenas, Esparza' }
+    };
+
+    var DIAS  = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
+                 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
+
+    // Se arma la fecha con las partes, no con new Date(cadena): esa forma la
+    // interpreta como UTC y en Costa Rica (UTC−6) devolvía el día anterior.
+    function fechaLarga(valor) {
+      var p = valor.split('-');
+      var d = new Date(+p[0], +p[1] - 1, +p[2]);
+      return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()];
+    }
+
+    function modoEntrega() {
+      var marcado = radios.filter(function (r) { return r.checked; })[0];
+      return marcado ? marcado.value : 'recoger';
+    }
+
+    function guardarEntrega() {
+      try {
+        localStorage.setItem(LLAVE_ENTREGA, JSON.stringify({
+          modo: modoEntrega(),
+          dia: diaRecoge.value,
+          zona: zona.value,
+          regalo: esRegalo.checked,
+          dedicatoria: dedicatoria.value
+        }));
+      } catch (e) { /* modo privado */ }
+    }
+
+    function pintarEntrega() {
+      var modo = modoEntrega();
+      var conf = CAMPO_ZONA[modo];
+
+      campoRecoger.hidden = modo !== 'recoger';
+      campoZona.hidden    = !conf;
+      if (conf) {
+        zonaEtiqueta.textContent = conf.etiqueta;
+        zona.placeholder = conf.ejemplo;
+      }
+      campoDedic.hidden = !esRegalo.checked;
+    }
+
+    function resumenEntrega() {
+      var modo = modoEntrega();
+      var t = '\nEntrega: ' + ETIQUETAS[modo] + '\n';
+
+      if (modo === 'recoger' && diaRecoge.value) {
+        t += 'Pasa el: ' + fechaLarga(diaRecoge.value) + '\n';
+      }
+      if (CAMPO_ZONA[modo]) {
+        if (zona.value.trim()) t += 'Zona: ' + zona.value.trim() + '\n';
+        t += 'Envío: pendiente de cotizar\n';
+      }
+      if (esRegalo.checked) {
+        t += '\nEs para regalo.\n';
+        if (dedicatoria.value.trim()) t += 'Dedicatoria: "' + dedicatoria.value.trim() + '"\n';
+      }
+      return t;
+    }
+
     function mensaje() {
       if (!pedido.length) return 'Hola Kaffa, buenas.';
       var t = 'Hola Kaffa, quiero hacer este pedido:\n\n';
@@ -289,9 +374,39 @@
         if (l.variantes.length) t += ' (' + l.variantes.join(', ') + ')';
         t += ' — ' + colones(l.precio * l.cant) + '\n';
       });
-      t += '\nTotal estimado: ' + colones(total()) + '\n\nMi nombre es: ';
+      t += '\nTotal estimado: ' + colones(total()) + '\n';
+      t += resumenEntrega();
+      t += '\nMi nombre es: ';
       return t;
     }
+
+    function refrescarEnlace() {
+      enlaceWA.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensaje());
+    }
+
+    (function arrancarEntrega() {
+      // No se puede pedir que se lo guarden para ayer.
+      var hoy = ahoraCR();
+      diaRecoge.min = hoy.getFullYear() + '-' +
+        String(hoy.getMonth() + 1).padStart(2, '0') + '-' +
+        String(hoy.getDate()).padStart(2, '0');
+
+      try {
+        var g = JSON.parse(localStorage.getItem(LLAVE_ENTREGA)) || {};
+        radios.forEach(function (r) { r.checked = r.value === (g.modo || 'recoger'); });
+        diaRecoge.value   = g.dia || '';
+        zona.value        = g.zona || '';
+        esRegalo.checked  = !!g.regalo;
+        dedicatoria.value = g.dedicatoria || '';
+      } catch (e) { /* modo privado */ }
+
+      pintarEntrega();
+
+      [].concat(radios, [diaRecoge, zona, esRegalo, dedicatoria]).forEach(function (el) {
+        el.addEventListener('change', function () { pintarEntrega(); guardarEntrega(); refrescarEnlace(); });
+        el.addEventListener('input',  function () { guardarEntrega(); refrescarEnlace(); });
+      });
+    }());
 
     function pintar() {
       guardar();
@@ -320,8 +435,11 @@
         }).join('');
       }
 
+      // Las opciones de entrega no pintan nada si todavía no hay qué entregar.
+      cajaEntrega.hidden = !pedido.length;
+
       totalEl.textContent = colones(total());
-      enlaceWA.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(mensaje());
+      refrescarEnlace();
     }
 
     lista.addEventListener('click', function (e) {

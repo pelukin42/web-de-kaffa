@@ -198,8 +198,33 @@ No hay pasarela de pago ni servidor. El visitante escoge presentación y moliend
 pedido, y el botón verde arma un mensaje de WhatsApp con todo el detalle y el total, dirigido
 al 6161-2746. Kaffa confirma disponibilidad, envío y monto exacto por ese mismo chat.
 
-El pedido se guarda en el navegador del visitante (`localStorage`), así que no se pierde si
-cierra la pestaña.
+Antes de enviar, el carrito pregunta **cómo quiere recibirlo** y según la respuesta pide el
+dato que hace falta:
+
+| Opción | Qué pide | Qué sale en el mensaje |
+|---|---|---|
+| Recoger en el café | Qué día pasa | `Pasa el: sábado 5 de setiembre` |
+| Envío dentro del GAM | Distrito o barrio | `Zona: … / Envío: pendiente de cotizar` |
+| Encomienda al resto del país | Provincia y cantón | `Zona: … / Envío: pendiente de cotizar` |
+
+Y una casilla de **«Es para regalo»** con dedicatoria opcional, que también viaja en el
+mensaje. Todo esto existe para que Kaffa reciba el pedido completo de una vez y no tenga
+que preguntar por chat a dónde va y cuándo.
+
+El pedido y las opciones de entrega se guardan en el navegador del visitante
+(`localStorage`), así que no se pierden si cierra la pestaña.
+
+### Las apps de reparto
+
+En la sección de la Carta hay un bloque listo para **Uber Eats y DiDi Food**, pero está
+comentado en `index.html` porque **faltan las dos URL**. Hay que pedírselas a Don Minor
+(se sacan desde cada app con "Compartir"). Para activarlo se quitan los marcadores de
+comentario y se pega cada dirección en su `href`. No hay que inventarlas: una URL
+equivocada manda a la gente al restaurante de otro.
+
+Va en la Carta y no en la Tienda a propósito: esas apps reparten comida y bebida
+preparada para hoy. Una Vandola es cerámica frágil y un kilo de grano a provincia va por
+encomienda, no por DiDi.
 
 Para agregar un producto se copia un bloque `<article class="producto" ...>` completo. Reglas:
 

@@ -422,6 +422,31 @@
 
     <p class="nota-carta">Tenemos opciones sin lactosa y vegetarianas en toda la carta. Los precios y el plato del día se confirman en el local o por WhatsApp al <a href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20%C2%BFme%20confirman%20los%20precios%20y%20el%20plato%20del%20d%C3%ADa%3F" target="_blank" rel="noopener"><b>6161-2746</b></a>.</p>
 
+    <!-- ===========================================================
+         PEDIR POR LAS APPS DE REPARTO
+         Va aquí, en la Carta, porque es lo que esas apps reparten:
+         comida y bebida preparada para hoy. NO en la Tienda: una Vandola
+         es cerámica frágil y un kilo de grano a provincia va por
+         encomienda, no por DiDi.
+
+         Está comentado porque FALTAN LAS DOS URL. Hay que pedirle a Don
+         Minor el enlace de Kaffa en cada app (se saca desde la app misma,
+         con "Compartir"). Para activarlo: quitar los marcadores de
+         comentario de abajo y pegar cada URL en su href.
+
+         Ojo: no inventar la dirección. Una URL equivocada manda a la
+         gente al restaurante de otro.
+
+    <div class="reparto">
+      <p class="reparto__titulo">¿Prefiere que se lo lleven?</p>
+      <div class="reparto__botones">
+        <a class="btn btn--linea" href="PEGAR_AQUI_LA_URL_DE_UBER_EATS" target="_blank" rel="noopener">Pedir por Uber Eats</a>
+        <a class="btn btn--linea" href="PEGAR_AQUI_LA_URL_DE_DIDI_FOOD" target="_blank" rel="noopener">Pedir por DiDi Food</a>
+      </div>
+      <p class="reparto__nota">El café en grano y las Vandolas no van por las apps: eso se pide en la <a href="#tienda">tienda</a>.</p>
+    </div>
+    =========================================================== -->
+
   </div>
 </section>
 
@@ -1005,9 +1030,57 @@
     <h2>Mi pedido</h2>
     <button class="carrito__cerrar" id="cerrarCarrito" aria-label="Cerrar el pedido">&times;</button>
   </div>
-  <div class="carrito__lista" id="listaCarrito">
-    <p class="carrito__vacio">Todavía no ha agregado nada.<br>Escoja su café o su Vandola en la tienda.</p>
+  <!-- Lista y entrega comparten una sola zona de scroll, para que no queden
+       dos barras anidadas peleándose el alto en pantallas cortas. -->
+  <div class="carrito__cuerpo">
+    <div class="carrito__lista" id="listaCarrito">
+      <p class="carrito__vacio">Todavía no ha agregado nada.<br>Escoja su café o su Vandola en la tienda.</p>
+    </div>
+  <!-- Cómo quiere recibirlo. Lo que se escoja aquí viaja dentro del mensaje
+       de WhatsApp, para que Kaffa no tenga que preguntarlo por chat.
+       Queda oculto mientras el pedido esté vacío. -->
+  <div class="entrega" id="entrega" hidden>
+    <fieldset class="entrega__grupo">
+      <legend>¿Cómo lo quiere recibir?</legend>
+
+      <label class="opcion">
+        <input type="radio" name="entrega" value="recoger" checked>
+        <span><b>Recoger en el café</b><small>En Coronado, sin costo</small></span>
+      </label>
+
+      <label class="opcion">
+        <input type="radio" name="entrega" value="gam">
+        <span><b>Envío dentro del GAM</b><small>Se cotiza según la zona</small></span>
+      </label>
+
+      <label class="opcion">
+        <input type="radio" name="entrega" value="encomienda">
+        <span><b>Encomienda al resto del país</b><small>Se cotiza según el destino</small></span>
+      </label>
+    </fieldset>
+
+    <div class="entrega__campo" id="campoRecoger">
+      <label for="diaRecoge">¿Qué día pasa?</label>
+      <input type="date" id="diaRecoge">
+    </div>
+
+    <div class="entrega__campo" id="campoZona" hidden>
+      <label for="zona" id="zonaEtiqueta">Distrito o barrio</label>
+      <input type="text" id="zona" maxlength="80" placeholder="Moravia, San Vicente">
+    </div>
+
+    <label class="regalo">
+      <input type="checkbox" id="esRegalo">
+      <span>Es para regalo</span>
+    </label>
+
+    <div class="entrega__campo" id="campoDedicatoria" hidden>
+      <label for="dedicatoria">Dedicatoria (opcional)</label>
+      <textarea id="dedicatoria" rows="2" maxlength="140" placeholder="Va con una nota…"></textarea>
+    </div>
   </div>
+  </div><!-- /.carrito__cuerpo -->
+
   <div class="carrito__pie">
     <div class="carrito__total">
       <span>Total estimado</span>
