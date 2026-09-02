@@ -220,6 +220,11 @@ Para agregar un producto se copia un bloque `<article class="producto" ...>` com
 
 ## Pendiente para producción
 
-- Dominio y hosting.
-- Sustituir el `<link rel="canonical">` por el dominio definitivo.
-- Cambiar `og:image` por una foto real (hoy apunta a una ilustración).
+- **Dominio propio.** Hoy el sitio vive en `kaffacaffe.netlify.app`, y el `canonical`
+  y el `og:url` de las tres versiones apuntan ahí. Cuando se compre el dominio definitivo
+  hay que cambiarlo en seis lugares: el `canonical` y el `og:url` de `index.html`,
+  `esencial/index.html` y `profesional/index.html`. El `og:image` también, que es absoluto.
+- **Una foto real para `og:image`.** Es la imagen que sale cuando alguien comparte el
+  enlace por WhatsApp o Facebook. Hoy apunta a una ilustración en `.svg`, y **esas dos
+  redes no muestran vista previa con SVG**: hay que poner un `.jpg` o `.png`.
+- Quitar las barras doradas de demostración de las tres versiones.
