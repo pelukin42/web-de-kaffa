@@ -1,0 +1,31 @@
+# Configuración de Netlify para el sitio de Kaffa Café.
+#
+# El sitio es HTML, CSS y JS planos: no hay compilación. Por eso no se
+# define ningún "command" — Netlify solo publica los archivos tal cual.
+#
+# Al conectar el repositorio, Netlify lee este archivo y rellena los campos
+# de "Build settings" solo. No hay que escribir nada a mano.
+
+[build]
+  # La raíz del repositorio es la raíz del sitio:
+  #   /              → index.html          (plan A Medida)
+  #   /esencial/     → esencial/index.html
+  #   /profesional/  → profesional/index.html
+  publish = "."
+
+# Cabeceras de seguridad básicas para todo el sitio.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# Los nombres de archivo no llevan hash (styles.css, main.js), así que no se
+# pueden cachear a lo bruto: el navegador se quedaría con la versión vieja
+# después de cada cambio. Con must-revalidate pregunta siempre y Netlify
+# responde 304 si no cambió, que es rápido y además nunca sirve algo viejo.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
