@@ -16,6 +16,12 @@
   --crema:       #F3EADB;
   --crema-2:     #E6D9C2;
 
+  /* Para el chorreador de la portada */
+  --madera:      #7A4A2B;
+  --madera-luz:  #9A6238;
+  --cafe:        #4A2413;
+  --cafe-luz:    #7C4322;
+
   --fondo:       var(--crema);
   --tinta:       var(--noche);
   --tinta-suave: #5A6478;
@@ -209,12 +215,135 @@ p:last-child { margin-bottom: 0; }
 .sellos b { display: block; font-family: var(--display); font-size: 1.5rem; color: var(--arena-claro); line-height: 1.1; }
 .sellos span { font-size: .82rem; color: rgba(243, 234, 219, .62); }
 
-.heroe__foto { margin: 0; }
+.heroe__foto { margin: 0; position: relative; }
 .heroe__foto img {
   width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
   background: var(--noche-2);
   border-radius: var(--radio); border: 1px solid rgba(201, 162, 74, .38);
 }
+
+/* ---------- El chorreador ----------
+   La única pieza con movimiento del sitio. Todo el resto se queda quieto
+   para que esto sea lo que se recuerda. */
+.chorreador {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radio);
+  border: 1px solid rgba(201, 162, 74, .38);
+  background:
+    radial-gradient(70% 60% at 62% 34%, rgba(201, 162, 74, .16), transparent 70%),
+    var(--noche-2);
+}
+/* Los transform de dentro se miden contra el viewBox, no contra cada figura. */
+.chorreador * { transform-box: view-box; transform-origin: center; }
+
+.madera        { fill: var(--madera); }
+.chorreador rect.madera:nth-of-type(2) { fill: var(--madera-luz); }
+.aro           { fill: none; stroke: var(--arena); stroke-width: 3; }
+.tela          { fill: var(--crema); }
+.tela-sombra   { fill: var(--crema-2); opacity: .75; }
+.taza          { fill: var(--crema); }
+.taza-dentro   { fill: #C9BBA1; }   /* el interior en sombra, cuando la taza va vacía */
+.taza-borde    { fill: none; stroke: var(--crema); stroke-width: 3.5; }
+.asa           { fill: none; stroke: var(--crema); stroke-width: 7; stroke-linecap: round; }
+.platillo      { fill: rgba(243, 234, 219, .28); }
+.liquido       { fill: var(--cafe); }
+.crema-cafe    { fill: var(--cafe-luz); }
+.gota          { fill: var(--cafe-luz); }
+.onda {
+  fill: none;
+  stroke: var(--cafe-luz);
+  stroke-width: 1.6;
+  transform-origin: 236px 218px;   /* la superficie del café, no el centro del viewBox */
+  opacity: 0;
+}
+.vaho {
+  fill: none;
+  stroke: var(--crema);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+/* Entrada: la pieza se asienta una vez. */
+.pieza { animation: asentarse .9s var(--ease) both; }
+
+/* La taza se llena sola en los primeros segundos y se queda servida. */
+.liquido, .crema-cafe { animation: llenarse 5s var(--ease) .6s both; }
+
+/* El goteo no termina: es lo que dice que esto está pasando ahora. */
+.gota   { animation: caer 1.9s linear infinite; opacity: 0; }
+.gota--2 { animation-delay: .63s; }
+.gota--3 { animation-delay: 1.26s; }
+.onda { animation: ondear .633s ease-out 1.5s infinite; }
+
+/* El vapor entra cuando ya hay algo en la taza. */
+.vaho   { animation: subir 3.6s ease-in-out 4s infinite; }
+.vaho--2 { animation-delay: 4.9s; }
+.vaho--3 { animation-delay: 5.8s; }
+
+@keyframes asentarse {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes llenarse {
+  from { transform: translateY(52px); }
+  to   { transform: translateY(0); }
+}
+@keyframes caer {
+  0%        { opacity: 0; transform: translateY(-2px) scaleY(.9); }
+  15%       { opacity: 1; }
+  75%       { opacity: 1; transform: translateY(19px) scaleY(1.25); }
+  92%, 100% { opacity: 0; transform: translateY(25px) scaleY(.45); }
+}
+/* Un ciclo por cada gota: tres en el mismo tiempo que dura la caída. */
+@keyframes ondear {
+  0%   { opacity: .5; transform: scale(.15); }
+  100% { opacity: 0;  transform: scale(1); }
+}
+@keyframes subir {
+  0%       { opacity: 0; transform: translateY(6px) scaleX(.9); }
+  35%      { opacity: .5; }
+  100%     { opacity: 0; transform: translateY(-18px) scaleX(1.15); }
+}
+
+/* Qué se sirve a esta hora, sobre la pieza. */
+.ahora {
+  position: absolute;
+  left: 1rem; bottom: 1rem;
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  background: rgba(18, 32, 58, .82);
+  border: 1px solid rgba(201, 162, 74, .38);
+  backdrop-filter: blur(6px);
+  font-size: .82rem; font-weight: 500;
+  color: var(--crema);
+}
+.ahora .punto { margin-top: 0; }
+
+/* En pantallas angostas la pastilla tapaba la taza: baja a ser pie de foto. */
+@media (max-width: 900px) {
+  .ahora {
+    position: static;
+    margin-top: .8rem;
+    background: transparent;
+    border-color: transparent;
+    padding: 0;
+    backdrop-filter: none;
+    color: rgba(243, 234, 219, .8);
+  }
+}
+
+/* Con movimiento reducido: la taza ya está servida y nada se mueve. */
+@media (prefers-reduced-motion: reduce) {
+  .pieza, .liquido, .crema-cafe, .gota, .vaho, .onda { animation: none; }
+  .liquido, .crema-cafe { transform: none; }
+  .gota, .onda { display: none; }
+  .vaho { opacity: .35; }
+}
+
 
 /* ---------- 7. Bloques ---------- */
 .bloque { padding: var(--bloque) 0; }

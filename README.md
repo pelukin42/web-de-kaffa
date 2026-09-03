@@ -72,6 +72,30 @@ Si en algún momento se quiere volver a subir el peso de la Vandola, los lugares
 `<h1>`, la tarjeta de servicio, el `alt` de una foto de la galería y la opción "Taller de
 Vandola" del formulario.
 
+### El chorreador de la portada
+
+La portada tenía una ilustración plana. Ahora tiene **la única pieza con movimiento del
+sitio**: un chorreador que cuela de verdad. Gotea sin parar, la taza se llena sola en los
+primeros segundos y después sale el vapor. Todo el resto del sitio se queda quieto para que
+esto sea lo que se recuerda.
+
+Es SVG escrito dentro de `index.html`, no una imagen: así hereda los colores de la marca y
+se anima con CSS. **Sin librerías, sin GIF, sin video** — pesa lo que pesa el HTML.
+
+Se eligió el chorreador y no la Vandola a propósito. El chorreador es lo que usa cualquier
+café de Coronado: dice «esto es una soda de pueblo que cuela su café», que es justo el
+mensaje que pidió Don Minor. La Vandola habría vuelto a poner el foco donde no va.
+
+Con `prefers-reduced-motion` no se mueve nada: la taza aparece ya servida.
+
+Encima de la pieza hay una **pastilla que dice qué se está sirviendo a esta hora**, calculada
+con la hora de Costa Rica: desayuno hasta las 11, almuerzo hasta las 3, café y repostería
+después, y «cerrado» fuera del horario. En pantallas angostas baja a ser pie de foto para no
+tapar la taza.
+
+Los colores del chorreador salen de cuatro tokens nuevos (`--madera`, `--madera-luz`,
+`--cafe`, `--cafe-luz`), así que cuando llegue la paleta se cambian ahí y la pieza sigue.
+
 ### Qué lleva
 
 Es la versión del plan Profesional, que es lo que Kaffa contrató. Lleva exactamente lo que ofrece

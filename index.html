@@ -92,8 +92,73 @@
         </ul>
       </div>
 
+      <!-- ===========================================================
+           EL CHORREADOR
+           La pieza que cuela sola: gotea, la taza se llena y sale el
+           vapor. Es la promesa del lugar hecha visible — aquí se
+           prepara, ahora mismo. Va en SVG dentro del HTML para que
+           herede los colores de la marca y se anime con CSS, sin
+           librerías ni imágenes que descargar.
+           Con prefers-reduced-motion la taza aparece ya servida.
+           =========================================================== -->
       <figure class="heroe__foto">
-        <img src="assets/img/barra.svg" alt="La barra de Kaffa Café, con el tostador a la vista" width="800" height="600">
+        <svg class="chorreador" viewBox="70 78 260 195" role="img"
+             aria-label="Un chorreador de café goteando sobre una taza servida">
+
+          <defs>
+            <clipPath id="dentroTaza">
+              <path d="M206 216 h60 l-6 38 a8 8 0 0 1-8 6 h-32 a8 8 0 0 1-8-6 z"/>
+            </clipPath>
+          </defs>
+
+          <g class="pieza">
+            <!-- Soporte de madera -->
+            <rect class="madera" x="112" y="256" width="176" height="13" rx="6"/>
+            <rect class="madera" x="132" y="92" width="14" height="166" rx="7"/>
+            <rect class="madera" x="139" y="92" width="62" height="13" rx="6"/>
+
+            <!-- Aro y bolsita de tela -->
+            <path class="tela" d="M194 108 C198 152 214 180 236 190 C258 180 274 152 278 108 Z"/>
+            <path class="tela-sombra" d="M236 190 C258 180 274 152 278 108 L262 108 C258 148 248 174 236 190 Z"/>
+            <ellipse class="aro" cx="236" cy="107" rx="42" ry="12"/>
+
+            <!-- Taza -->
+            <ellipse class="platillo" cx="236" cy="262" rx="52" ry="9"/>
+            <path class="asa" d="M274 220 a17 17 0 0 1 0 26"/>
+            <path class="taza" d="M199 208 h74 l-8 48 a10 10 0 0 1-10 8 h-38 a10 10 0 0 1-10-8 z"/>
+            <ellipse class="taza-dentro" cx="236" cy="211" rx="34" ry="6"/>
+
+            <!-- El café que se va juntando -->
+            <g clip-path="url(#dentroTaza)">
+              <rect class="liquido" x="200" y="212" width="72" height="60"/>
+              <ellipse class="crema-cafe" cx="236" cy="218" rx="29" ry="3.5"/>
+              <!-- La onda del impacto, recortada dentro de la taza. -->
+              <ellipse class="onda" cx="236" cy="218" rx="13" ry="2.8"/>
+            </g>
+
+            <ellipse class="taza-borde" cx="236" cy="209" rx="37" ry="6"/>
+
+            <!-- Vapor: sale cuando la taza ya tiene algo -->
+            <g class="vapor" aria-hidden="true">
+              <path class="vaho vaho--1" d="M222 198 c-7-13 7-20 0-33"/>
+              <path class="vaho vaho--2" d="M236 194 c-8-15 8-23 0-38"/>
+              <path class="vaho vaho--3" d="M250 198 c-7-13 7-20 0-33"/>
+            </g>
+
+            <!-- Las gotas -->
+            <g aria-hidden="true">
+              <ellipse class="gota gota--1" cx="236" cy="193" rx="3.2" ry="4.6"/>
+              <ellipse class="gota gota--2" cx="236" cy="193" rx="3.2" ry="4.6"/>
+              <ellipse class="gota gota--3" cx="236" cy="193" rx="3.2" ry="4.6"/>
+            </g>
+          </g>
+        </svg>
+
+        <!-- Qué se está sirviendo a esta hora. Lo calcula el JS con la hora
+             de Costa Rica; si el JS no corre, no estorba. -->
+        <figcaption class="ahora" id="ahora" hidden>
+          <span class="punto" aria-hidden="true"></span><span id="ahoraTexto"></span>
+        </figcaption>
       </figure>
 
     </div>
