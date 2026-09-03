@@ -54,8 +54,7 @@ regresiva, letrero de "Abierto ahora", visor de fotos ni ficha Schema.org.
 
 Son 2 archivos, contra los 3 de la demostración A Medida.
 
-El formulario usa **Netlify Forms**: funciona solo al publicar en Netlify, con *Forms*
-habilitado en el panel del sitio. Abierto en local no envía nada.
+El formulario usa **Netlify Forms**. Ver más abajo la nota sobre la detección.
 
 ## El sitio real (la raíz)
 
@@ -247,3 +246,24 @@ Para agregar un producto se copia un bloque `<article class="producto" ...>` com
   (Domain management) y que el certificado se emita.
 - **Una foto real para `og:image`.** Hoy es el logo sobre el crema de la marca, que
   funciona pero no vende. Una foto buena del local o de una Vandola sirve mejor.
+
+---
+
+## Los formularios (Netlify Forms)
+
+Hay dos: `reserva` en el sitio real y `contacto` en la demostración Esencial. Los dos
+mandan a `/gracias/` al enviarse, que es una página propia en vez de la genérica de Netlify.
+
+Para que funcionen hacen falta **tres cosas**, y si falta cualquiera el envío termina en un
+404 de Netlify:
+
+1. En el HTML: `data-netlify="true"`, un `<input type="hidden" name="form-name">` con el
+   nombre del formulario, y el honeypot. **Esto ya está.**
+2. En Netlify: **Site configuration → Forms → Form detection → Enable.** Viene apagado por
+   defecto en los sitios nuevos.
+3. **Un despliegue posterior a activar la detección.** Netlify escanea el HTML en el momento
+   de publicar, así que no basta con encender el ajuste: hay que volver a desplegar para que
+   encuentre los formularios.
+
+Una vez detectados aparecen listados en esa misma pantalla, y ahí llegan los envíos.
+El plan gratuito admite 100 al mes entre los dos.

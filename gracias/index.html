@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es-CR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Solicitud recibida — Kaffa Café</title>
+<meta name="description" content="Recibimos su solicitud de reserva. Le confirmamos disponibilidad y precio por correo o WhatsApp.">
+<!-- Una página de gracias no debe salir en buscadores. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12203A">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23C9A24A'/%3E%3Crect x='3' y='3' width='58' height='34' fill='%23A81C22'/%3E%3Crect x='3' y='40' width='58' height='21' fill='%232E7A3E'/%3E%3Ccircle cx='32' cy='20' r='9' fill='%23F3EADB'/%3E%3Ccircle cx='32' cy='50' r='6' fill='%23F3EADB'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Archivo:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/estilos.css">
+
+<style>
+  /* La página es un solo mensaje centrado: no necesita el resto del sistema. */
+  .gracias {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 2rem 0;
+    background:
+      radial-gradient(120% 90% at 70% 20%, rgba(201, 162, 74, .18), transparent 62%),
+      var(--noche);
+    color: var(--crema);
+    text-align: center;
+  }
+  .gracias__caja { width: min(100% - 2.5rem, 620px); }
+  .gracias .logo { display: inline-block; margin-bottom: 2.5rem; }
+  .gracias h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin-bottom: 1.2rem; }
+  .gracias h1 em { color: var(--arena-claro); }
+  .gracias p { color: rgba(243, 234, 219, .82); font-size: 1.05rem; }
+  .gracias .acciones { justify-content: center; margin-top: 2.2rem; }
+  .gracias .btn--linea { color: var(--crema); border-color: rgba(243, 234, 219, .34); }
+  .gracias .btn--linea:hover { border-color: var(--arena); }
+  .gracias__pie { margin-top: 2.5rem; font-size: .88rem; color: rgba(243, 234, 219, .55); }
+  .gracias__pie a { color: var(--arena-claro); }
+</style>
+</head>
+<body>
+
+<main class="gracias">
+  <div class="gracias__caja">
+
+    <a class="logo" href="/" aria-label="Kaffa Café, inicio">
+      <img src="../assets/img/logo.png" alt="Kaffa Café" width="480" height="403">
+    </a>
+
+    <h1>Recibimos su <em>solicitud</em></h1>
+
+    <p>
+      Le contestamos por correo o por WhatsApp con la disponibilidad y el monto exacto.
+      Si es para hoy o mañana, escríbanos directo por WhatsApp y le respondemos más rápido.
+    </p>
+
+    <div class="acciones">
+      <a class="btn btn--verde" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20acabo%20de%20enviar%20una%20solicitud%20de%20reserva." target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.1 1.5Z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <a class="btn btn--linea" href="/">Volver al inicio</a>
+    </div>
+
+    <p class="gracias__pie">
+      Kaffa Café · 250 m sur del Banco de Costa Rica, San Isidro de Coronado<br>
+      Teléfono <a href="tel:+50622923552">2292-3552</a>
+    </p>
+
+  </div>
+</main>
+
+</body>
+</html>
