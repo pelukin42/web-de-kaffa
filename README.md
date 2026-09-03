@@ -4,46 +4,43 @@ Sitio estático (HTML + CSS + JS, sin dependencias ni compilación). Se abre con
 en `index.html` o se sube tal cual a cualquier hosting.
 
 ```
-index.html              Toda la página
-assets/css/styles.css   Sistema visual completo
-assets/css/aviso.css    Solo el rótulo de demostración (se borra al entregar)
-assets/js/main.js       Horario, pestañas, galería, cuenta regresiva y carrito
-assets/img/*.svg        Ilustraciones y logo vectorial
-assets/video/           Vacía: aquí van los videos si se quieren locales
-esencial/               Ejemplo del plan Esencial ($200), para comparar
-profesional/            Ejemplo del plan Profesional ($400–450), para comparar
+index.html              EL SITIO REAL (plan Profesional)
+assets/css/estilos.css  Su hoja de estilos
+assets/js/principal.js  Su JavaScript
+assets/img/logo.png     Logo oficial de Kaffa (negro sobre transparencia)
+assets/img/og.png       Imagen de vista previa al compartir el enlace
+assets/img/*.svg        Ilustraciones de relleno
+amedida/                Demostración del plan A Medida, con noindex
+esencial/               Demostración del plan Esencial, con noindex
 ```
 
-## Las tres versiones, para enseñárselas juntas
+## Qué vive en cada ruta
 
-| | Esencial | Profesional | Completa |
-|---|---|---|---|
-| Ruta | `/esencial/` | `/profesional/` | `/` |
-| Secciones | 1 | 3 ampliadas | 9 |
-| Menú de navegación | ninguno | 3 enlaces | 7 enlaces |
-| Servicios | 4 | 10 | 6 productos + 49 platos |
-| Galería | 8 fotos | hasta 25 + antes/después | 6 + visor ampliado |
-| Testimonios | — | sí, lista para activar | — |
-| Formulario | contacto simple | reservas con fecha y hora | — (todo por WhatsApp) |
-| Carta / tienda / carrito | — | — | sí |
-| Archivos / líneas | 2 / 670 | 3 / 1.235 | 3 / 2.740 |
+| Ruta | Qué es |
+|---|---|
+| `/` | **El sitio real.** Es la versión del plan Profesional, que es lo que Kaffa contrató. |
+| `/amedida/` | Demostración del plan A Medida. Sirve de vitrina para venderles la migración. |
+| `/esencial/` | Demostración del plan Esencial. |
 
-Las tres llevan arriba una **barra dorada** que dice de qué plan son y enlaza a las otras
-dos, para que Don Minor salte entre ellas sin necesidad de tres direcciones.
+Las dos demostraciones llevan `<meta name="robots" content="noindex, nofollow">` para que
+Google no las indexe: son copias casi idénticas del sitio real y le competirían en los
+resultados. No están enlazadas desde ninguna parte, así que solo llega quien tenga la
+dirección.
 
-### Cómo se quita el rótulo al entregar
+**El dominio es `kaffacafecr.com`.** Está puesto en el `canonical`, el `og:url` y el
+`og:image` de las tres.
 
-En `esencial/` y `profesional/` basta con borrar el `<div class="aviso">` del HTML.
+## El logo
 
-En el sitio principal es distinto, porque su barra de navegación es `position: fixed`
-pegada al tope y el rótulo tiene que correrla hacia abajo. Para no ensuciar `styles.css`,
-todo ese ajuste vive aparte en `assets/css/aviso.css`. Se quita borrando **dos líneas**
-de `index.html`:
+`assets/img/logo.png` es el logo oficial, negro sobre fondo transparente. Como la barra de
+navegación es azul noche, el CSS lo invierte (`filter: invert(1)`) para que salga blanco.
+Al ser negro puro el invertido da blanco limpio, sin grises sucios.
 
-1. el `<link rel="stylesheet" href="assets/css/aviso.css">` del `<head>`
-2. el `<div class="aviso"> ... </div>` que está justo después del enlace "Saltar al contenido"
+Si algún día se pone sobre fondo claro, hay que quitarle ese filtro.
 
-`styles.css` no se toca, así que el sitio vuelve exactamente a como estaba.
+`assets/img/og.png` (1200×630) es la imagen que sale al compartir el enlace por WhatsApp o
+Facebook: el logo centrado sobre el crema de la marca. Se generó a partir del logo, porque
+esas dos redes no muestran vista previa con archivos `.svg`.
 
 ## La carpeta `esencial/`
 
@@ -55,18 +52,14 @@ descripción, galería de 8 fotos, WhatsApp y redes, información de contacto, f
 y SEO técnico básico. **No** lleva menú de navegación, carta, tienda, carrito, cuenta
 regresiva, letrero de "Abierto ahora", visor de fotos ni ficha Schema.org.
 
-Son 2 archivos y 670 líneas, contra 3 archivos y 2.740 del sitio completo.
+Son 2 archivos, contra los 3 de la demostración A Medida.
 
-Dos cosas al entregarla o al publicarla:
+El formulario usa **Netlify Forms**: funciona solo al publicar en Netlify, con *Forms*
+habilitado en el panel del sitio. Abierto en local no envía nada.
 
-1. La barra dorada de arriba (`<div class="aviso">` en `esencial/index.html`) es el rótulo
-   que la identifica como ejemplo. Si alguna vez se entrega de verdad, se borra ese bloque.
-2. El formulario usa **Netlify Forms**: funciona solo al publicar en Netlify, con
-   *Forms* habilitado en el panel del sitio. Abierto en local no envía nada.
+## El sitio real (la raíz)
 
-## La carpeta `profesional/`
-
-El escalón intermedio. Se publica en `/profesional/` y lleva exactamente lo que ofrece
+Es la versión del plan Profesional, que es lo que Kaffa contrató. Lleva exactamente lo que ofrece
 ese plan: **3 secciones ampliadas** (Inicio, Servicios, Galería) con su menú de navegación,
 **10 servicios** con foto y descripción, **antes y después** arrastrable, galería preparada
 para **hasta 25 fotos**, **testimonios listos para activar**, **formulario de reserva con
@@ -75,18 +68,17 @@ fecha y hora**, y SEO con metadatos y un encabezado por sección.
 Sigue **sin** carta, tienda, carrito, cuenta regresiva, letrero de "Abierto ahora" ni ficha
 Schema.org: eso es lo que separa este plan del sitio completo.
 
-Cuatro cosas al entregarla:
+Tres cosas pendientes en él:
 
-1. La barra dorada de arriba (`<div class="aviso">`) es el rótulo de ejemplo. Se borra.
-2. **Los testimonios son de relleno, no son reseñas reales.** La sección está construida y
+1. **Los testimonios son de relleno, no son reseñas reales.** La sección está construida y
    funcionando, pero el texto dice explícitamente que hay que reemplazarlo. Para activarla:
    se cambia cada `<blockquote>` y su `<cite>` por el testimonio y el nombre reales, y se
    borra la clase `testimonios--ejemplo` del `<section>` (eso quita el recuadro amarillo).
    Si no se van a poner testimonios, se borra la sección completa.
-3. **El antes y después** funciona con mouse, con el dedo y con las flechas del teclado.
+2. **El antes y después** funciona con mouse, con el dedo y con las flechas del teclado.
    Hoy compara ilustraciones (finca → taza, grano → molido); con fotos reales es donde
    entra el par que Don Minor quiera mostrar.
-4. La galería trae 12 fotos porque son las ilustraciones de relleno que existen. Para
+3. La galería trae 12 fotos porque son las ilustraciones de relleno que existen. Para
    llegar a las 25 del plan se copia un `<figure>` dentro de `<div class="galeria">`.
 
 El formulario de reserva también es de Netlify Forms, con la misma condición que el otro:
@@ -103,14 +95,23 @@ Luego abrir `http://localhost:5177`.
 
 ---
 
-## Lo primero que hay que decirle a Don Minor
+## El dominio viejo sigue perdido
 
-**El dominio `kaffacafe.com` ya no es de Kaffa.** Hoy resuelve a un sitio basura llamado
-"Raja Botak". Los enlaces que quedan en Google, en TripAdvisor y en los directorios de café
-mandan a la gente a ese sitio. Verificado el 1.º de setiembre de 2026 abriendo el dominio.
+**`kaffacafe.com` ya no es de Kaffa.** Hoy lo usa "Raja Botak", una tostadora de café
+indonesia con tienda propia. El registro es de 2011 y vence en 2027, con última modificación
+del 17 de junio de 2026: nunca se liberó, cambió de manos — casi seguro en la subasta de
+dominios vencidos de GoDaddy.
 
-Eso significa dos cosas: que Kaffa lleva tiempo sin sitio propio, y que el sitio nuevo hay
-que amarrarlo a un dominio recuperado o nuevo (`kaffacafe.cr`, por ejemplo).
+Recuperarlo no es realista: quien lo tiene está haciendo negocio con él, y "Kaffa" es la
+región de Etiopía de donde viene el café, así que el nombre es casi genérico en el rubro.
+
+Por eso se compró **`kaffacafecr.com`**, que además comunica mejor para un café de Coronado.
+
+Lo que sí urge, y no depende del dominio: **los enlaces viejos.** Google, TripAdvisor y los
+directorios de café siguen mandando gente a `kaffacafe.com`, o sea al negocio indonesio.
+Hay que actualizar la ficha de Google Business Profile (es el punto número uno para SEO
+local), TripAdvisor, los directorios, y la biografía de Instagram y Facebook — esas dos las
+controla Kaffa y se cambian en un minuto.
 
 ---
 
@@ -141,19 +142,16 @@ buzón lo más probable es que ya no llegue a Kaffa. Si Don Minor tiene un corre
 
 ## Lo que hay que pedirle a Don Minor para cerrar
 
-1. **El logo en PNG o SVG con fondo transparente.** Se guarda como `assets/img/logo.png`
-   y el sitio lo toma solo, sin tocar código. Mientras tanto se dibuja una versión vectorial
-   del logo que está en `index.html`.
-2. **Fotos reales.** Reemplazar los archivos de `assets/img/` conservando el nombre
+1. **Fotos reales.** Reemplazar los archivos de `assets/img/` conservando el nombre
    (`barra`, `fachada`, `taza`, `reposteria`, `cafetal`, `vandola-servicio`) o cambiar la ruta
    en el `<img>` y en el `data-visor` de cada tarjeta de la galería. Sirven `.jpg` y `.webp`.
-3. **Videos.** Hoy las tres tarjetas de video abren el Instagram de Kaffa. Si quiere que
+2. **Videos.** Hoy las tres tarjetas de video abren el Instagram de Kaffa. Si quiere que
    se reproduzcan dentro de la página, se dejan los `.mp4` en `assets/video/` y se cambia
    el `<a class="video">` por un reproductor.
-4. **Precios de la carta y de la tienda.** Los de la tienda son de referencia y están marcados
+3. **Precios de la carta y de la tienda.** Los de la tienda son de referencia y están marcados
    como tales en la página; hay que sustituirlos por la lista oficial. Se editan en el atributo
    `data-precio` de cada botón de opción, en la sección `<!-- TIENDA -->`.
-5. **Datos del campeonato.** La fecha, el número de edición, el cupo y la fecha de cierre
+4. **Datos del campeonato.** La fecha, el número de edición, el cupo y la fecha de cierre
    son de ejemplo. La cuenta regresiva sale del atributo
    `data-fecha="2026-11-14T09:00:00-06:00"` en `<div class="cuenta">`; cambiando esa fecha
    se recalcula sola. En "Ediciones anteriores" no se pusieron nombres de campeones para
@@ -179,8 +177,8 @@ sección que el visitante esté leyendo**, porque ese botón lo acompaña por to
 | Tienda | «…quiero hacer un pedido de café para llevar.» |
 | Visítanos | «…quiero reservar una mesa.» |
 
-Se editan en el objeto `MENSAJES` de `assets/js/main.js` (dentro de `navegacion()`) y en
-`POR_SECCION` de `profesional/main.js`. La clave de cada línea es el `id` de la sección.
+Se editan en el objeto `MENSAJES` de `amedida/main.js` (dentro de `navegacion()`) y en
+`POR_SECCION` de `assets/js/principal.js`. La clave de cada línea es el `id` de la sección.
 
 En la Profesional, además, el enlace «Escríbanos por WhatsApp» del formulario recoge lo que
 el visitante ya escogió en *motivo*: si marcó «Taller de Vandola», el chat abre diciendo que
@@ -245,11 +243,7 @@ Para agregar un producto se copia un bloque `<article class="producto" ...>` com
 
 ## Pendiente para producción
 
-- **Dominio propio.** Hoy el sitio vive en `kaffacaffe.netlify.app`, y el `canonical`
-  y el `og:url` de las tres versiones apuntan ahí. Cuando se compre el dominio definitivo
-  hay que cambiarlo en seis lugares: el `canonical` y el `og:url` de `index.html`,
-  `esencial/index.html` y `profesional/index.html`. El `og:image` también, que es absoluto.
-- **Una foto real para `og:image`.** Es la imagen que sale cuando alguien comparte el
-  enlace por WhatsApp o Facebook. Hoy apunta a una ilustración en `.svg`, y **esas dos
-  redes no muestran vista previa con SVG**: hay que poner un `.jpg` o `.png`.
-- Quitar las barras doradas de demostración de las tres versiones.
+- **Dominio propio.** Ya comprado: `kaffacafecr.com`. Falta apuntarlo en Netlify
+  (Domain management) y que el certificado se emita.
+- **Una foto real para `og:image`.** Hoy es el logo sobre el crema de la marca, que
+  funciona pero no vende. Una foto buena del local o de una Vandola sirve mejor.

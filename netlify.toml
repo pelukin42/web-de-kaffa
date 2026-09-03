@@ -8,9 +8,9 @@
 
 [build]
   # La raíz del repositorio es la raíz del sitio:
-  #   /              → index.html          (plan A Medida)
-  #   /esencial/     → esencial/index.html
-  #   /profesional/  → profesional/index.html
+  #   /            → index.html           EL SITIO REAL (plan Profesional)
+  #   /amedida/    → amedida/index.html    demo, con noindex
+  #   /esencial/   → esencial/index.html   demo, con noindex
   publish = "."
 
 # Cabeceras de seguridad básicas para todo el sitio.
@@ -21,7 +21,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "SAMEORIGIN"
 
-# Los nombres de archivo no llevan hash (styles.css, main.js), así que no se
+# Los nombres de archivo no llevan hash (estilos.css, principal.js), así que no se
 # pueden cachear a lo bruto: el navegador se quedaría con la versión vieja
 # después de cada cambio. Con must-revalidate pregunta siempre y Netlify
 # responde 304 si no cambió, que es rápido y además nunca sirve algo viejo.

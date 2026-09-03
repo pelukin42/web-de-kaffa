@@ -36,7 +36,7 @@
   --radio:       3px;
   --pastilla:    999px;
   --seccion:     clamp(4.5rem, 9vw, 8.5rem);
-  --nav-h:       72px;
+  --nav-h:       80px;
 
   /* Tipos */
   --marca:   "Yellowtail", "Brush Script MT", cursive;
@@ -209,8 +209,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- 4. Marca y navegación ---------- */
 .logo { display: flex; align-items: center; gap: .7rem; margin-right: auto; }
-.logo img, .logo svg { height: 46px; width: auto; }
-.logo svg { aspect-ratio: 400 / 160; }
+.logo img { height: 58px; width: auto; filter: invert(1); }
 .logo__lema {
   font-size: .56rem;
   font-weight: 600;

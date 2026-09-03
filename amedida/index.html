@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es-CR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaffa Café — Café de especialidad en Coronado, Costa Rica</title>
+<meta name="description" content="Kaffa Café, en el centro de San Isidro de Coronado desde 2003. Café de finca propia tostado en la casa, cuna de la Vandola. Carta, tienda en línea, competencias y horarios.">
+<!-- Copia de demostración: no debe competir con el sitio real en Google. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12203A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23C9A24A'/%3E%3Crect x='3' y='3' width='58' height='34' fill='%23A81C22'/%3E%3Crect x='3' y='40' width='58' height='21' fill='%232E7A3E'/%3E%3Ccircle cx='32' cy='20' r='9' fill='%23F3EADB'/%3E%3Ccircle cx='32' cy='50' r='6' fill='%23F3EADB'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://kaffacafecr.com/amedida/">
+
+<!-- Redes sociales -->
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="es_CR">
+<meta property="og:title" content="Kaffa Café — Coronado, Costa Rica">
+<meta property="og:description" content="Café de especialidad de finca propia, tostado en la casa. Aquí nació la Vandola.">
+<meta property="og:url" content="https://kaffacafecr.com/amedida/">
+<!-- og:image tiene que ser URL absoluta: con ruta relativa no se ve la
+     vista previa al compartir el enlace. Sustituir por una foto real
+     en .jpg o .png; WhatsApp y Facebook no muestran previews en .svg. -->
+<meta property="og:image" content="https://kaffacafecr.com/assets/img/og.png">
+
+<!-- Tipografías: Yellowtail (marca) · Alegreya (títulos) · Archivo (texto) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Archivo:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<!-- Rótulo de demostración. Se borra esta línea al entregar el sitio. -->
+
+<!-- Ficha del negocio para Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Kaffa Café",
+  "description": "Café de especialidad de finca propia, tostado en el local. Cuna de la Vandola.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "250 metros al sur del Banco de Costa Rica, Calle 153",
+    "addressLocality": "San Isidro de Coronado",
+    "addressRegion": "San José",
+    "addressCountry": "CR"
+  },
+  "telephone": "+506 2292 3552",
+  "servesCuisine": "Café de especialidad",
+  "sameAs": [
+    "https://www.instagram.com/kaffacafeoficial/",
+    "https://www.facebook.com/kaffacafecr"
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "08:00", "closes": "19:00" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+
+<!-- ============ NAVEGACIÓN ============ -->
+<header class="nav" id="nav">
+  <div class="nav__caja">
+
+    <a class="logo" href="#inicio" aria-label="Kaffa Café, inicio">
+      <img src="../assets/img/logo.png" alt="Kaffa Café" width="480" height="403">
+    </a>
+
+    <nav class="menu" id="menu" aria-label="Secciones del sitio">
+      <a href="#historia">Historia</a>
+      <a href="#vandola">La Vandola</a>
+      <a href="#carta">Carta</a>
+      <a href="#competencias">Competencias</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#galeria">Galería</a>
+      <a href="#visitanos">Visítanos</a>
+      <a class="btn btn--verde" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">Reservar</a>
+    </nav>
+
+    <button class="btn btn--linea btn--peque carrito-abre btn--pedido" id="abrirCarrito" style="color:var(--crema);border-color:rgba(243,234,219,.3)" aria-label="Abrir el pedido">
+      Pedido <b id="conteoCarrito" aria-live="polite">0</b>
+    </button>
+
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir el menú" aria-expanded="false" aria-controls="menu"><i></i></button>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ============ PORTADA ============ -->
+<section class="portada" id="inicio">
+  <div class="envoltura portada__rejilla">
+
+    <div class="portada__texto">
+      <p class="portada__eyebrow"><span class="punto" aria-hidden="true"></span> San Isidro de Coronado · Costa Rica</p>
+
+      <h1>Aquí nació la <em>Vandola</em></h1>
+
+      <p>Sembramos el café en la montaña de Coronado, lo tostamos aquí mismo en la casa y se lo servimos en la pieza de barro que inventamos nosotros. Veintitrés años haciendo lo mismo, cada vez mejor.</p>
+
+      <div class="acciones">
+        <a class="btn btn--verde" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.1 1.5Z"/></svg>
+          Reservar mesa
+        </a>
+        <a class="btn btn--linea" href="#carta" style="color:var(--crema);border-color:rgba(243,234,219,.34)">Ver la carta</a>
+      </div>
+
+      <div class="portada__sellos">
+        <div class="sello"><b>2003</b><span>Abrimos la casa</span></div>
+        <div class="sello"><b>12 K</b><span>En Instagram</span></div>
+        <div class="sello"><b>100 %</b><span>Tueste propio</span></div>
+        <div class="sello"><b>+5</b><span>Países con Vandola</span></div>
+      </div>
+    </div>
+
+    <!-- Pieza firma: la lámina técnica de la Vandola -->
+    <figure class="lamina" style="margin:0">
+      <svg class="vandola-svg" viewBox="0 0 500 540" role="img" aria-label="Corte de la Vandola: el agua baja por el cono de barro y el cafe se acumula en la panza">
+        <defs>
+          <linearGradient id="barroCono" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8E4227"/>
+            <stop offset=".26" stop-color="#C4714A"/>
+            <stop offset=".60" stop-color="#9C4A2C"/>
+            <stop offset="1" stop-color="#5B2712"/>
+          </linearGradient>
+          <linearGradient id="barroPanza" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7A3820"/>
+            <stop offset=".24" stop-color="#C97A52"/>
+            <stop offset=".56" stop-color="#9C4A2C"/>
+            <stop offset="1" stop-color="#54240F"/>
+          </linearGradient>
+          <linearGradient id="barroInterior" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#26150F"/>
+            <stop offset="1" stop-color="#120A09"/>
+          </linearGradient>
+          <linearGradient id="liquidoCafe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#63321B"/>
+            <stop offset="1" stop-color="#2A1109"/>
+          </linearGradient>
+        </defs>
+
+        <!-- sombra de apoyo -->
+        <ellipse cx="210" cy="492" rx="128" ry="15" fill="#0A1120" opacity=".55"/>
+
+        <!-- vapor: sale de la boca y queda por detras del labio -->
+        <g>
+          <path class="vapor" d="M184 60c-11-13 7-21-4-33"/>
+          <path class="vapor" d="M210 52c-11-13 7-21-4-33"/>
+          <path class="vapor" d="M236 60c-11-13 7-21-4-33"/>
+        </g>
+
+        <!-- cono en V -->
+        <path class="barro-relleno" d="M76 82C80 158 148 254 192 286h36c44-32 112-128 116-204A134 28 0 0 1 76 82Z"/>
+        <ellipse class="barro-sombra" cx="210" cy="82" rx="134" ry="28"/>
+        <path class="barro-int" d="M90 84A120 23 0 0 0 330 84c-4 72-66 160-106 188h-28C156 244 94 156 90 84Z"/>
+        <path class="barro-anillo" d="M96 146C142 162 278 162 324 146"/>
+
+        <!-- lecho de cafe molido -->
+        <path class="lecho" d="M180 232h60c-7 21-16 32-22 40h-16c-6-8-15-19-22-40Z"/>
+        <ellipse class="lecho-sup" cx="210" cy="232" rx="30" ry="7"/>
+        <g class="grano">
+          <circle cx="197" cy="231" r="3.4"/><circle cx="212" cy="228" r="3.4"/><circle cx="226" cy="233" r="3.4"/>
+          <circle cx="205" cy="238" r="3"/><circle cx="220" cy="239" r="3"/>
+        </g>
+
+        <!-- cuello -->
+        <path class="barro-relleno" d="M191 286h38l-4 24h-30Z"/>
+
+        <!-- asa, por detras de la panza para que se vea pegada -->
+        <path d="M256 334C332 342 356 366 356 394c0 28-28 44-70 48" fill="none" stroke="#8E4227" stroke-width="17" stroke-linecap="round"/>
+        <path d="M256 334C332 342 356 366 356 394c0 28-28 44-70 48" fill="none" stroke="#5B2712" stroke-width="17" stroke-linecap="round" opacity=".45"/>
+
+        <!-- panza -->
+        <path class="barro-panza" d="M190 308C152 322 104 364 104 410c0 38 44 66 106 66s106-28 106-66c0-46-48-88-86-102Z"/>
+        <path class="brillo" d="M154 334c-26 22-36 50-32 80 8-30 20-58 40-76Z"/>
+
+        <!-- corte: se ve el interior y el cafe subiendo -->
+        <path class="barro-int" d="M198 324C168 336 124 370 124 410c0 32 38 54 86 54s86-22 86-54c0-40-44-74-74-86Z"/>
+        <g class="nivel">
+          <path class="cafe" d="M126 400c6 38 40 64 84 64s78-26 84-64Z"/>
+        </g>
+
+        <!-- base -->
+        <ellipse class="barro-sombra" cx="210" cy="472" rx="74" ry="10"/>
+
+        <!-- contornos de lamina -->
+        <g class="contorno">
+          <path d="M76 82C80 158 148 254 192 286h36c44-32 112-128 116-204"/>
+          <ellipse cx="210" cy="82" rx="134" ry="28"/>
+          <ellipse cx="210" cy="84" rx="120" ry="23"/>
+          <path d="M191 286h38l-4 24h-30"/>
+          <path d="M190 308C152 322 104 364 104 410c0 38 44 66 106 66s106-28 106-66c0-46-48-88-86-102"/>
+          <path d="M198 324C168 336 124 370 124 410c0 32 38 54 86 54s86-22 86-54c0-40-44-74-74-86"/>
+          <path d="M256 334C332 342 356 366 356 394c0 28-28 44-70 48"/>
+        </g>
+
+        <!-- el chorro que cae -->
+        <path class="chorro" d="M210 282V448"/>
+
+        <!-- cotas y rotulos -->
+        <g class="cota">
+          <path d="M346 82h32"/><path d="M250 250h128"/><path d="M298 462h80"/>
+        </g>
+        <g class="rotulillo">
+          <text x="384" y="86">BOCA EN V</text>
+          <text x="384" y="254">LECHO DE CAFÉ</text>
+          <text x="384" y="466">BARRO COCIDO</text>
+          <text x="210" y="518" text-anchor="middle">EXTRACCIÓN POR GRAVEDAD</text>
+        </g>
+      </svg>
+      <figcaption class="lamina__pie">
+        <span>La Vandola · corte</span>
+        <span>Coronado, C.R.</span>
+      </figcaption>
+    </figure>
+
+  </div>
+  <div class="greca portada__greca" aria-hidden="true"></div>
+</section>
+
+<!-- ============ BARRA DE DATOS ============ -->
+<div class="barra-datos">
+  <div class="envoltura barra-datos__caja">
+    <div class="dato dato--estado">
+      <span class="pastilla-estado" id="estado"><i aria-hidden="true"></i><span id="estadoTexto">Consultando horario…</span></span>
+    </div>
+    <div class="dato">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+      <span>250 m sur del BCR, <b>Coronado</b></span>
+    </div>
+    <a class="dato" href="tel:+50622923552">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
+      <span>2292-3552</span>
+    </a>
+    <div class="dato">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h13v9H3zM17 9h2.6L22 12v3h-5zM6.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
+      <span>Uber Eats · DiDi · Express</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HISTORIA ============ -->
+<section class="seccion" id="historia">
+  <div class="envoltura historia__rejilla">
+    <div class="aparece">
+      <p class="rotulo">Quiénes somos</p>
+      <h2 class="titulo">Una finca, un tostador y una casa antigua en el centro de <em>Coronado</em>.</h2>
+
+      <p class="entradilla">Minor Alfaro abrió Kaffa en 2003, cuando en Costa Rica casi nadie hablaba de café de especialidad. Un año después dejó de comprar café mezclado y se quedó solo con microlotes de origen.</p>
+
+      <p>Hoy el café que servimos sale en buena parte de nuestra propia finca, aquí en las montañas de Coronado. Lo tostamos en el local, en tandas pequeñas, y lo molemos al momento según el método que usted escoja. La casa —de arquitectura victoriana, como buena parte del centro de Coronado— la fuimos arreglando sin quitarle lo que era.</p>
+
+      <div class="hitos">
+        <div class="hito"><b>2003</b><p>Abrimos Kaffa en el centro de San Isidro de Coronado.</p></div>
+        <div class="hito"><b>2004</b><p>Dejamos las mezclas: solo café de origen, comprado lote por lote.</p></div>
+        <div class="hito"><b>2016</b><p>Nace la Vandola y empieza la producción con alfareros costarricenses.</p></div>
+        <div class="hito"><b>Hoy</b><p>Finca propia, tueste en casa y una Vandola que ya cruzó el mar.</p></div>
+      </div>
+    </div>
+
+    <figure class="marco aparece" data-retardo="1">
+      <img src="../assets/img/cafetal.svg" alt="El cafetal de Kaffa en las montañas de Coronado al amanecer" width="800" height="600">
+      <figcaption>Nuestra finca · Coronado, San José</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="greca greca--tenue" aria-hidden="true" style="--acento:var(--rojo)"></div>
+
+<!-- ============ LA VANDOLA ============ -->
+<section class="seccion s--noche" id="vandola">
+  <div class="envoltura">
+
+    <div class="vandola__cabecera">
+      <div class="aparece">
+        <p class="rotulo">El método</p>
+        <h2 class="titulo">La <em>Vandola</em>: el chorreador que se volvió instrumento.</h2>
+        <p class="entradilla">Una pieza de barro hecha a mano por alfareros costarricenses, con la forma en V que mantiene el flujo del agua constante. Nació aquí, en esta casa, y hoy se cuela café con ella en varios países.</p>
+      </div>
+
+      <blockquote class="cita aparece" data-retardo="1">
+        «Los países productores de café no tenían métodos de infusión propios»
+        <footer>Minor Alfaro, creador de la Vandola — El Financiero</footer>
+      </blockquote>
+    </div>
+
+    <div class="pasos">
+      <article class="paso aparece"><b>El barro</b><h3>Torneada a mano</h3><p>Cada pieza sale del torno de alfareros especializados en cerámica precolombina. Toma cerca de un mes terminarla.</p></article>
+      <article class="paso aparece" data-retardo="1"><b>La forma</b><h3>El cono en V</h3><p>La V mantiene la columna de agua pareja sobre el café. Sin canales, sin prisas, sin amargor.</p></article>
+      <article class="paso aparece" data-retardo="2"><b>La cocción</b><h3>Barro que respira</h3><p>El barro guarda el calor y le presta al café una nota de tierra que ningún filtro de plástico da.</p></article>
+      <article class="paso aparece" data-retardo="3"><b>La taza</b><h3>Cuerpo y dulzor</h3><p>Extracción por gravedad, limpia y con cuerpo. La chorreadora de siempre, con estándar de especialidad.</p></article>
+    </div>
+
+    <div class="vandola__cierre aparece">
+      <p>La Vandola ya se exporta a Alemania, China y Estados Unidos, y se usa en cafeterías de Chile y Argentina. Aquí en Coronado la puede ver trabajar, probarla en taza y llevarse la suya.</p>
+      <div class="acciones" style="margin:0">
+        <a class="btn btn--oro" href="#tienda">Comprar una Vandola</a>
+        <a class="btn btn--linea" href="#competencias" style="color:var(--crema);border-color:rgba(243,234,219,.34)">Ver competencias</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ LA CARTA ============ -->
+<section class="seccion" id="carta">
+  <div class="envoltura">
+
+    <div class="carta__cabecera aparece">
+      <div>
+        <p class="rotulo">La carta</p>
+        <h2 class="titulo">Qué se toma y qué se come.</h2>
+      </div>
+      <a class="btn btn--linea" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20me%20env%C3%ADan%20la%20carta%20con%20precios%2C%20por%20favor." target="_blank" rel="noopener">Pedir la carta por WhatsApp</a>
+    </div>
+
+    <div class="pestanas" role="tablist" aria-label="Categorías de la carta">
+      <button class="pestana" role="tab" aria-selected="true" aria-controls="p-cafe" id="t-cafe">Café y métodos</button>
+      <button class="pestana" role="tab" aria-selected="false" aria-controls="p-desayuno" id="t-desayuno">Desayunos</button>
+      <button class="pestana" role="tab" aria-selected="false" aria-controls="p-almuerzo" id="t-almuerzo">Almuerzos</button>
+      <button class="pestana" role="tab" aria-selected="false" aria-controls="p-dulce" id="t-dulce">Repostería</button>
+      <button class="pestana" role="tab" aria-selected="false" aria-controls="p-frio" id="t-frio">Fríos y tés</button>
+    </div>
+
+    <div class="platos" role="tabpanel" id="p-cafe" aria-labelledby="t-cafe">
+      <div class="plato"><h3>Café en Vandola <span class="marca-v">La casa</span></h3><p>Nuestro método. Colado en barro, servido en jarra para compartir.</p></div>
+      <div class="plato"><h3>Chemex</h3><p>Taza limpia y brillante. Ideal para microlotes lavados.</p></div>
+      <div class="plato"><h3>V60</h3><p>Filtrado rápido, acidez marcada y aromas florales.</p></div>
+      <div class="plato"><h3>Prensa francesa</h3><p>Inmersión total. Cuerpo pesado y textura redonda.</p></div>
+      <div class="plato"><h3>Aeropress</h3><p>Concentrado y suave a la vez. Se prepara en la mesa.</p></div>
+      <div class="plato"><h3>Espresso y ristretto</h3><p>Nuestro tueste de la casa, extraído al momento.</p></div>
+      <div class="plato"><h3>Cappuccino</h3><p>Leche texturizada, arte latte hecho a mano.</p></div>
+      <div class="plato"><h3>Latte y cortado</h3><p>Con leche entera, deslactosada o de almendra.</p></div>
+      <div class="plato"><h3>Americano</h3><p>Espresso alargado, para acompañar el desayuno.</p></div>
+      <div class="plato"><h3>Mocha de la casa</h3><p>Chocolate costarricense y espresso doble.</p></div>
+      <div class="plato"><h3>Cold brew</h3><p>Doce horas de infusión en frío. Dulce y sin filo.</p></div>
+      <div class="plato"><h3>Cata de tres orígenes <span class="marca-v">Experiencia</span></h3><p>Tres cafés de la finca y de otros orígenes, con guía del barista.</p></div>
+    </div>
+
+    <div class="platos" role="tabpanel" id="p-desayuno" aria-labelledby="t-desayuno" hidden>
+      <div class="plato"><h3>Gallo pinto Kaffa</h3><p>Con huevo al gusto, queso, natilla y plátano maduro.</p></div>
+      <div class="plato"><h3>Huevos rancheros</h3><p>Sobre tortilla de maíz, con salsa de la casa y frijoles.</p></div>
+      <div class="plato"><h3>Tostadas francesas</h3><p>Pan brioche, miel de tapa de dulce y fruta de temporada.</p></div>
+      <div class="plato"><h3>Bowl de fruta y granola</h3><p>Yogurt natural, granola tostada en la casa y miel.</p></div>
+      <div class="plato"><h3>Sándwich de desayuno</h3><p>Huevo, queso y tocineta en pan artesanal.</p></div>
+      <div class="plato"><h3>Chorreadas</h3><p>De maíz tierno, con natilla. Receta de siempre.</p></div>
+      <div class="plato"><h3>Avena de la casa</h3><p>Cocida con leche, canela y banano.</p></div>
+      <div class="plato"><h3>Desayuno del cafetalero</h3><p>Pinto, huevos, carne en salsa, aguacate y café de la finca.</p></div>
+    </div>
+
+    <div class="platos" role="tabpanel" id="p-almuerzo" aria-labelledby="t-almuerzo" hidden>
+      <div class="plato"><h3>Casado del día</h3><p>Arroz, frijoles, ensalada, picadillo y proteína del día.</p></div>
+      <div class="plato"><h3>Sopa negra</h3><p>Con huevo escalfado, cilantro y tortilla.</p></div>
+      <div class="plato"><h3>Sándwich de pollo al pesto</h3><p>En pan de masa madre, con papas rústicas.</p></div>
+      <div class="plato"><h3>Ensalada de la casa</h3><p>Verdes, queso de cabra, nueces y vinagreta de miel.</p></div>
+      <div class="plato"><h3>Quesadilla de la huerta</h3><p>Vegetales asados, queso y pico de gallo.</p></div>
+      <div class="plato"><h3>Lasaña de la casa</h3><p>Horneada al momento, con pan de ajo.</p></div>
+      <div class="plato"><h3>Wrap de vegetales</h3><p>Hummus, aguacate y vegetales frescos.</p></div>
+      <div class="plato"><h3>Plato de la semana</h3><p>Cambia cada lunes. Pregunte en la barra.</p></div>
+    </div>
+
+    <div class="platos" role="tabpanel" id="p-dulce" aria-labelledby="t-dulce" hidden>
+      <div class="plato"><h3>Tres leches</h3><p>El clásico de la casa, con merengue tostado.</p></div>
+      <div class="plato"><h3>Queque de zanahoria</h3><p>Con queso crema y nuez.</p></div>
+      <div class="plato"><h3>Cheesecake de mora</h3><p>Mora de altura, base de galleta.</p></div>
+      <div class="plato"><h3>Brownie con helado</h3><p>Chocolate costarricense, servido tibio.</p></div>
+      <div class="plato"><h3>Pie de limón</h3><p>Merengue quemado a mano.</p></div>
+      <div class="plato"><h3>Croissant de almendra</h3><p>Horneado en la mañana.</p></div>
+      <div class="plato"><h3>Galleta de avena</h3><p>Grande, para acompañar el café.</p></div>
+      <div class="plato"><h3>Postre del día</h3><p>Lo que salga del horno esa mañana.</p></div>
+    </div>
+
+    <div class="platos" role="tabpanel" id="p-frio" aria-labelledby="t-frio" hidden>
+      <div class="plato"><h3>Frappé de café</h3><p>Con nuestro espresso y leche al gusto.</p></div>
+      <div class="plato"><h3>Affogato</h3><p>Helado de vainilla ahogado en espresso.</p></div>
+      <div class="plato"><h3>Matcha latte</h3><p>Frío o caliente.</p></div>
+      <div class="plato"><h3>Té chai de la casa</h3><p>Especias molidas aquí mismo.</p></div>
+      <div class="plato"><h3>Infusiones de fruta</h3><p>Amplia selección de tés de hierbas y frutas.</p></div>
+      <div class="plato"><h3>Limonada de hierbabuena</h3><p>Natural, sin azúcar añadida.</p></div>
+      <div class="plato"><h3>Refrescos naturales</h3><p>De la fruta que llegue esa semana.</p></div>
+      <div class="plato"><h3>Chocolate caliente</h3><p>De cacao costarricense.</p></div>
+    </div>
+
+    <p class="nota-carta">Tenemos opciones sin lactosa y vegetarianas en toda la carta. Los precios y el plato del día se confirman en el local o por WhatsApp al <a href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20%C2%BFme%20confirman%20los%20precios%20y%20el%20plato%20del%20d%C3%ADa%3F" target="_blank" rel="noopener"><b>6161-2746</b></a>.</p>
+
+    <!-- ===========================================================
+         PEDIR POR LAS APPS DE REPARTO
+         Va aquí, en la Carta, porque es lo que esas apps reparten:
+         comida y bebida preparada para hoy. NO en la Tienda: una Vandola
+         es cerámica frágil y un kilo de grano a provincia va por
+         encomienda, no por DiDi.
+
+         Está comentado porque FALTAN LAS DOS URL. Hay que pedirle a Don
+         Minor el enlace de Kaffa en cada app (se saca desde la app misma,
+         con "Compartir"). Para activarlo: quitar los marcadores de
+         comentario de abajo y pegar cada URL en su href.
+
+         Ojo: no inventar la dirección. Una URL equivocada manda a la
+         gente al restaurante de otro.
+
+    <div class="reparto">
+      <p class="reparto__titulo">¿Prefiere que se lo lleven?</p>
+      <div class="reparto__botones">
+        <a class="btn btn--linea" href="PEGAR_AQUI_LA_URL_DE_UBER_EATS" target="_blank" rel="noopener">Pedir por Uber Eats</a>
+        <a class="btn btn--linea" href="PEGAR_AQUI_LA_URL_DE_DIDI_FOOD" target="_blank" rel="noopener">Pedir por DiDi Food</a>
+      </div>
+      <p class="reparto__nota">El café en grano y las Vandolas no van por las apps: eso se pide en la <a href="#tienda">tienda</a>.</p>
+    </div>
+    =========================================================== -->
+
+  </div>
+</section>
+
+<!-- ============ COMPETENCIAS ============ -->
+<section class="seccion s--azul" id="competencias">
+  <div class="envoltura">
+
+    <div class="aparece" style="margin-bottom:2.8rem">
+      <p class="rotulo">Competencias</p>
+      <h2 class="titulo">El campeonato nacional de <em>Vandola</em>.</h2>
+      <p class="entradilla">Desde que la Vandola salió de este taller, cada año se reúnen baristas y aficionados de todo el país a colar en barro. Aquí publicamos la convocatoria, las categorías y los resultados.</p>
+    </div>
+
+    <!-- Próxima competencia -->
+    <article class="torneo aparece">
+      <div>
+        <span class="torneo__estado"><i aria-hidden="true"></i> Convocatoria abierta</span>
+        <h3>IV Campeonato Nacional de <span>Vandola</span></h3>
+        <p style="color:rgba(243,234,219,.76);max-width:46ch">Dos rondas: preparación libre y ronda ciega con café sorpresa de la finca. Jurado de catadores certificados Q Grader.</p>
+
+        <div class="torneo__meta">
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 8v9H5v-9h14Z"/></svg> Sábado 14 de noviembre de 2026, 9:00 a. m.</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg> Kaffa Café, San Isidro de Coronado</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-8 0a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3 0-8 1.5-8 4.5V21h10v-3.5c0-1.2.6-2.3 1.6-3.2A13 13 0 0 0 8 13Zm8 0c-.7 0-1.5.1-2.3.2 1.4 1 2.3 2.3 2.3 3.8V21h8v-3.5C24 14.5 19 13 16 13Z"/></svg> Cupo de 24 competidores</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm0 6a2.5 2.5 0 1 1-2.5 2.5A2.5 2.5 0 0 1 12 7Zm0 11c-1.7 0-3.6-.8-4.6-2.4.1-1.5 3.1-2.3 4.6-2.3s4.5.8 4.6 2.3A5.6 5.6 0 0 1 12 18Z"/></svg> Inscripción gratuita, se cierra el 31 de octubre</div>
+        </div>
+
+        <div class="acciones">
+          <a class="btn btn--oro" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20inscribirme%20en%20el%20Campeonato%20Nacional%20de%20Vandola." target="_blank" rel="noopener">Inscribirme</a>
+          <a class="btn btn--linea" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20me%20env%C3%ADan%20las%20bases%20del%20campeonato%2C%20por%20favor." target="_blank" rel="noopener" style="color:var(--crema);border-color:rgba(243,234,219,.34)">Pedir las bases</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="cuenta" id="cuenta" data-fecha="2026-11-14T09:00:00-06:00">
+          <div><b id="cDias">--</b><span>Días</span></div>
+          <div><b id="cHoras">--</b><span>Horas</span></div>
+          <div><b id="cMin">--</b><span>Minutos</span></div>
+          <div><b id="cSeg">--</b><span>Segundos</span></div>
+        </div>
+        <p class="cuenta__pie" id="cuentaPie">Para el arranque del campeonato</p>
+      </div>
+    </article>
+
+    <!-- Categorías -->
+    <div class="categorias">
+      <article class="categoria aparece">
+        <b>01</b>
+        <h3>Vandola clásica</h3>
+        <p>Receta abierta, café de origen costarricense. Se evalúa taza, técnica y limpieza.</p>
+      </article>
+      <article class="categoria aparece" data-retardo="1">
+        <b>02</b>
+        <h3>Vandola libre</h3>
+        <p>Bebida de autor con la Vandola como base. Vale infusionar, mezclar y sorprender.</p>
+      </article>
+      <article class="categoria aparece" data-retardo="2">
+        <b>03</b>
+        <h3>Barista junior</h3>
+        <p>Menores de 21 años. Misma exigencia técnica, jurado que además acompaña.</p>
+      </article>
+      <article class="categoria aparece" data-retardo="3">
+        <b>04</b>
+        <h3>Aficionados</h3>
+        <p>Para quien cuela en su casa. Sin experiencia profesional, con muchas ganas.</p>
+      </article>
+    </div>
+
+    <!-- Ediciones anteriores -->
+    <h3 style="margin-top:3.4rem;font-size:1.35rem" class="aparece">Ediciones anteriores</h3>
+    <div class="ediciones">
+      <div class="edicion aparece"><b>2025</b><p>III Campeonato Nacional de Vandola — sede Kaffa Café, Coronado.</p><span>Galería</span></div>
+      <div class="edicion aparece"><b>2024</b><p>II Campeonato Nacional de Vandola — ronda ciega con café de la finca.</p><span>Galería</span></div>
+      <div class="edicion aparece"><b>2023</b><p>I Campeonato Nacional de Vandola — primera convocatoria abierta al público.</p><span>Galería</span></div>
+    </div>
+
+    <p style="margin-top:2rem;font-size:.9rem;color:rgba(243,234,219,.6)">¿Organiza una feria, un festival o una competencia de café? Llevamos las Vandolas y el equipo. Escríbanos al <a href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20organizo%20un%20evento%20y%20quisiera%20llevar%20las%20Vandolas.%20%C2%BFMe%20pasan%20informaci%C3%B3n%3F" target="_blank" rel="noopener" style="color:var(--arena-claro)"><b>6161-2746</b></a>.</p>
+
+  </div>
+</section>
+
+<!-- ============ TIENDA ============ -->
+<section class="seccion" id="tienda">
+  <div class="envoltura">
+
+    <div class="tienda__cabecera aparece">
+      <div>
+        <p class="rotulo">Tienda</p>
+        <h2 class="titulo">Llévese <em>Kaffa</em> para la casa.</h2>
+        <p class="entradilla" style="margin-top:1rem">Escoja el café y la molienda, o la Vandola que quiera. Arma su pedido aquí y nosotros lo confirmamos por WhatsApp.</p>
+      </div>
+      <button class="btn carrito-abre" id="abrirCarrito2">Ver mi pedido <b id="conteoCarrito2">0</b></button>
+    </div>
+
+    <div class="productos">
+
+      <!-- Café de la finca -->
+      <article class="producto aparece" data-producto data-nombre="Kaffa Coronado — Finca propia">
+        <div class="producto__foto">
+          <img src="../assets/img/grano.svg" alt="Bolsa de café Kaffa Coronado de finca propia" width="800" height="600" loading="lazy">
+          <span class="producto__cinta">De nuestra finca</span>
+        </div>
+        <div class="producto__cuerpo">
+          <h3>Kaffa Coronado</h3>
+          <p class="producto__notas">Lavado, altura media. Notas de panela, mandarina y nuez. Tostado en la casa cada semana.</p>
+          <div class="opciones">
+            <div>
+              <span class="opcion__titulo">Presentación</span>
+              <div class="fichas" data-grupo="tamano">
+                <button class="ficha" data-valor="250 g" data-precio="6500" aria-pressed="true">250 g</button>
+                <button class="ficha" data-valor="500 g" data-precio="11900" aria-pressed="false">500 g</button>
+                <button class="ficha" data-valor="1 kg" data-precio="21500" aria-pressed="false">1 kg</button>
+              </div>
+            </div>
+            <div>
+              <span class="opcion__titulo">Molienda</span>
+              <div class="fichas" data-grupo="molienda">
+                <button class="ficha" data-valor="Grano entero" aria-pressed="true">Grano entero</button>
+                <button class="ficha" data-valor="Vandola" aria-pressed="false">Vandola</button>
+                <button class="ficha" data-valor="Espresso" aria-pressed="false">Espresso</button>
+                <button class="ficha" data-valor="Prensa" aria-pressed="false">Prensa</button>
+              </div>
+            </div>
+          </div>
+          <div class="producto__pie">
+            <span class="precio" data-precio-vista>₡6.500</span>
+            <button class="btn btn--peque" data-agregar>Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Microlote -->
+      <article class="producto aparece" data-retardo="1" data-producto data-nombre="Microlote Tarrazú Honey">
+        <div class="producto__foto">
+          <img src="../assets/img/molido.svg" alt="Café microlote Tarrazú Honey de Kaffa" width="800" height="600" loading="lazy">
+          <span class="producto__cinta producto__cinta--oro">Edición limitada</span>
+        </div>
+        <div class="producto__cuerpo">
+          <h3>Microlote Tarrazú Honey</h3>
+          <p class="producto__notas">Proceso honey. Cuerpo dulce, notas de miel de caña y fruta madura. Lote pequeño de temporada.</p>
+          <div class="opciones">
+            <div>
+              <span class="opcion__titulo">Presentación</span>
+              <div class="fichas" data-grupo="tamano">
+                <button class="ficha" data-valor="250 g" data-precio="7900" aria-pressed="true">250 g</button>
+                <button class="ficha" data-valor="500 g" data-precio="14500" aria-pressed="false">500 g</button>
+              </div>
+            </div>
+            <div>
+              <span class="opcion__titulo">Molienda</span>
+              <div class="fichas" data-grupo="molienda">
+                <button class="ficha" data-valor="Grano entero" aria-pressed="true">Grano entero</button>
+                <button class="ficha" data-valor="Vandola" aria-pressed="false">Vandola</button>
+                <button class="ficha" data-valor="Chemex" aria-pressed="false">Chemex</button>
+              </div>
+            </div>
+          </div>
+          <div class="producto__pie">
+            <span class="precio" data-precio-vista>₡7.900</span>
+            <button class="btn btn--peque" data-agregar>Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Café de la casa -->
+      <article class="producto aparece" data-retardo="2" data-producto data-nombre="Café de la Casa">
+        <div class="producto__foto">
+          <img src="../assets/img/taza.svg" alt="Café de la casa de Kaffa, tueste medio" width="800" height="600" loading="lazy">
+        </div>
+        <div class="producto__cuerpo">
+          <h3>Café de la Casa</h3>
+          <p class="producto__notas">Tueste medio, el mismo que servimos en la barra. Rinde bien en espresso y en cualquier método.</p>
+          <div class="opciones">
+            <div>
+              <span class="opcion__titulo">Presentación</span>
+              <div class="fichas" data-grupo="tamano">
+                <button class="ficha" data-valor="500 g" data-precio="9500" aria-pressed="true">500 g</button>
+                <button class="ficha" data-valor="1 kg" data-precio="17500" aria-pressed="false">1 kg</button>
+              </div>
+            </div>
+            <div>
+              <span class="opcion__titulo">Molienda</span>
+              <div class="fichas" data-grupo="molienda">
+                <button class="ficha" data-valor="Grano entero" aria-pressed="true">Grano entero</button>
+                <button class="ficha" data-valor="Vandola" aria-pressed="false">Vandola</button>
+                <button class="ficha" data-valor="Espresso" aria-pressed="false">Espresso</button>
+              </div>
+            </div>
+          </div>
+          <div class="producto__pie">
+            <span class="precio" data-precio-vista>₡9.500</span>
+            <button class="btn btn--peque" data-agregar>Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Vandola -->
+      <article class="producto aparece" data-producto data-nombre="Vandola de barro">
+        <div class="producto__foto">
+          <img src="../assets/img/vandola-producto.svg" alt="Vandola de barro hecha a mano" width="800" height="600" loading="lazy">
+          <span class="producto__cinta producto__cinta--oro">Hecha a mano</span>
+        </div>
+        <div class="producto__cuerpo">
+          <h3>Vandola de barro</h3>
+          <p class="producto__notas">La pieza original, torneada por alfareros costarricenses. Cada una es distinta: el barro no repite.</p>
+          <div class="opciones">
+            <div>
+              <span class="opcion__titulo">Tamaño</span>
+              <div class="fichas" data-grupo="tamano">
+                <button class="ficha" data-valor="500 ml · 2 tazas" data-precio="38000" aria-pressed="true">500 ml</button>
+                <button class="ficha" data-valor="750 ml · 4 tazas" data-precio="46000" aria-pressed="false">750 ml</button>
+              </div>
+            </div>
+            <div>
+              <span class="opcion__titulo">Acabado</span>
+              <div class="fichas" data-grupo="acabado">
+                <button class="ficha" data-valor="Barro natural" aria-pressed="true">Barro natural</button>
+                <button class="ficha" data-valor="Engobe rojo" aria-pressed="false">Engobe rojo</button>
+              </div>
+            </div>
+          </div>
+          <div class="producto__pie">
+            <span class="precio" data-precio-vista>₡38.000</span>
+            <button class="btn btn--peque" data-agregar>Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kit -->
+      <article class="producto aparece" data-retardo="1" data-producto data-nombre="Kit Vandola completo">
+        <div class="producto__foto">
+          <img src="../assets/img/kit.svg" alt="Kit completo: Vandola, café de la finca y taza" width="800" height="600" loading="lazy">
+          <span class="producto__cinta producto__cinta--rojo">Para regalo</span>
+        </div>
+        <div class="producto__cuerpo">
+          <h3>Kit Vandola completo</h3>
+          <p class="producto__notas">Vandola de 500 ml, 500 g de café de la finca molido a la medida, taza de cerámica y guía de preparación.</p>
+          <div class="opciones">
+            <div>
+              <span class="opcion__titulo">Café incluido</span>
+              <div class="fichas" data-grupo="cafe">
+                <button class="ficha" data-valor="Kaffa Coronado" data-precio="62000" aria-pressed="true">Kaffa Coronado</button>
+                <button class="ficha" data-valor="Tarrazú Honey" data-precio="66000" aria-pressed="false">Tarrazú Honey</button>
+              </div>
+            </div>
+            <div>
+              <span class="opcion__titulo">Envoltura</span>
+              <div class="fichas" data-grupo="envoltura">
+                <button class="ficha" data-valor="Caja de regalo" aria-pressed="true">Caja de regalo</button>
+                <button class="ficha" data-valor="Sin envolver" aria-pressed="false">Sin envolver</button>
+              </div>
+            </div>
+          </div>
+          <div class="producto__pie">
+            <span class="precio" data-precio-vista>₡62.000</span>
+            <button class="btn btn--peque" data-agregar>Agregar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Taller -->
+      <article class="producto aparece" data-retardo="2" data-producto data-nombre="Taller de Vandola">
+        <div class="producto__foto">
+          <img src="../assets/img/cata.svg" alt="Taller y cata de Vandola en la sala de eventos" width="800" height="600" loading="lazy">
+          <span class="producto__cinta">Experiencia</span>
+        </div>
+        <div class="producto__cuerpo">
+          <h3>Taller de Vandola</h3>
+          <p class="producto__notas">Dos horas en la casa: historia de la pieza, molienda, temperatura y práctica. Se lleva el café que preparó.</p>
+          <div class="opciones">
+            <div>
+              <span class="opcion__titulo">Modalidad</span>
+              <div class="fichas" data-grupo="modalidad">
+                <button class="ficha" data-valor="Individual" data-precio="18000" aria-pressed="true">Individual</button>
+                <button class="ficha" data-valor="Pareja" data-precio="32000" aria-pressed="false">Pareja</button>
+                <button class="ficha" data-valor="Grupo de 6" data-precio="84000" aria-pressed="false">Grupo de 6</button>
+              </div>
+            </div>
+          </div>
+          <div class="producto__pie">
+            <span class="precio" data-precio-vista>₡18.000</span>
+            <button class="btn btn--peque" data-agregar>Agregar</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="nota-precio">Enviamos a todo el país por Correos de Costa Rica y mensajería privada. En el Gran Área Metropolitana entregamos en 24 horas; también puede retirar en la casa, en Coronado. Los precios que ve aquí son de referencia y se confirman al cerrar el pedido.</p>
+
+  </div>
+</section>
+
+<!-- ============ GALERÍA Y VIDEOS ============ -->
+<section class="seccion s--noche" id="galeria">
+  <div class="envoltura">
+
+    <div class="aparece" style="margin-bottom:2.6rem">
+      <p class="rotulo">La casa por dentro</p>
+      <h2 class="titulo">Coronado, en tazas.</h2>
+    </div>
+
+    <div class="galeria" id="galeria">
+      <button class="pieza pieza--ancha aparece" data-visor="../assets/img/barra.svg" data-pie="La barra y la tostadora, en el mismo salón">
+        <img src="../assets/img/barra.svg" alt="La barra de espresso y la tostadora de Kaffa" width="800" height="600" loading="lazy">
+        <figcaption>La barra y la tostadora</figcaption>
+      </button>
+      <button class="pieza pieza--alta aparece" data-retardo="1" data-visor="../assets/img/vandola-servicio.svg" data-pie="Vandola en servicio, colando a la vista">
+        <img src="../assets/img/vandola-servicio.svg" alt="Una Vandola colando café" width="800" height="600" loading="lazy">
+        <figcaption>Vandola en servicio</figcaption>
+      </button>
+      <button class="pieza pieza--media aparece" data-retardo="2" data-visor="../assets/img/taza.svg" data-pie="Arte latte hecho a mano">
+        <img src="../assets/img/taza.svg" alt="Capuchino con arte latte" width="800" height="600" loading="lazy">
+        <figcaption>Arte latte</figcaption>
+      </button>
+      <button class="pieza pieza--media aparece" data-visor="../assets/img/reposteria.svg" data-pie="Repostería horneada esa misma mañana">
+        <img src="../assets/img/reposteria.svg" alt="Postre y café de Kaffa" width="800" height="600" loading="lazy">
+        <figcaption>Repostería de la casa</figcaption>
+      </button>
+      <button class="pieza pieza--media aparece" data-retardo="1" data-visor="../assets/img/fachada.svg" data-pie="La casa victoriana en el centro de Coronado">
+        <img src="../assets/img/fachada.svg" alt="Fachada de Kaffa Café en Coronado" width="800" height="600" loading="lazy">
+        <figcaption>Nuestra casa</figcaption>
+      </button>
+      <button class="pieza pieza--llena aparece" data-retardo="2" data-visor="../assets/img/cafetal.svg" data-pie="La finca en las montañas de Coronado">
+        <img src="../assets/img/cafetal.svg" alt="El cafetal de Kaffa" width="800" height="600" loading="lazy">
+        <figcaption>La finca</figcaption>
+      </button>
+    </div>
+
+    <div style="margin:3.6rem 0 1.6rem" class="aparece">
+      <p class="rotulo">Videos</p>
+      <h2 class="titulo" style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Véalo colando.</h2>
+    </div>
+
+    <div class="videos">
+      <a class="video aparece" href="https://www.instagram.com/kaffacafeoficial/" target="_blank" rel="noopener">
+        <img src="../assets/img/vandola-servicio.svg" alt="Video: cómo se cuela en Vandola" width="800" height="600" loading="lazy">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="video__capa"><span>Ver en Instagram</span><h3>Cómo se cuela en Vandola</h3></span>
+      </a>
+      <a class="video aparece" data-retardo="1" href="https://www.instagram.com/kaffacafeoficial/" target="_blank" rel="noopener">
+        <img src="../assets/img/barra.svg" alt="Video: el tueste de la semana" width="800" height="600" loading="lazy">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="video__capa"><span>Ver en Instagram</span><h3>El tueste de la semana</h3></span>
+      </a>
+      <a class="video aparece" data-retardo="2" href="https://www.instagram.com/kaffacafeoficial/" target="_blank" rel="noopener">
+        <img src="../assets/img/torneo.svg" alt="Video: el campeonato de Vandola" width="800" height="600" loading="lazy">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="video__capa"><span>Ver en Instagram</span><h3>El campeonato, por dentro</h3></span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ VISÍTANOS ============ -->
+<section class="seccion" id="visitanos">
+  <div class="envoltura">
+
+    <div class="aparece" style="margin-bottom:2.8rem">
+      <p class="rotulo">Visítanos</p>
+      <h2 class="titulo">En el centro de Coronado, a 250 metros del <em>BCR</em>.</h2>
+    </div>
+
+    <div class="visita__rejilla">
+
+      <div class="aparece">
+        <div class="mapa">
+          <svg viewBox="0 0 600 460" role="img" aria-label="Croquis del centro de Coronado con la ubicación de Kaffa Café">
+            <rect width="600" height="460" fill="#E8DCC4"/>
+            <g fill="#DCCDB2">
+              <rect x="30" y="30" width="170" height="120" rx="4"/><rect x="230" y="30" width="150" height="120" rx="4"/><rect x="410" y="30" width="160" height="120" rx="4"/>
+              <rect x="30" y="190" width="170" height="110" rx="4"/><rect x="410" y="190" width="160" height="110" rx="4"/>
+              <rect x="30" y="340" width="170" height="90" rx="4"/><rect x="230" y="340" width="150" height="90" rx="4"/><rect x="410" y="340" width="160" height="90" rx="4"/>
+            </g>
+            <rect x="230" y="190" width="150" height="110" rx="4" fill="#B9CFAE"/>
+            <g fill="#9BBA91"><circle cx="260" cy="220" r="12"/><circle cx="350" cy="272" r="12"/><circle cx="262" cy="276" r="10"/></g>
+            <g stroke="#F3EADB" stroke-width="14" stroke-linecap="square">
+              <path d="M0 170h600M0 320h600M215 0v460M395 0v460"/>
+            </g>
+            <g stroke="#C9A24A" stroke-width="2" stroke-dasharray="7 7" fill="none">
+              <path d="M305 214v170"/>
+            </g>
+            <text x="316" y="306" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#12203A">250 m sur</text>
+
+            <g transform="translate(305 210)">
+              <rect x="-13" y="-13" width="26" height="26" rx="4" fill="#12203A"/>
+              <rect x="-7" y="-7" width="14" height="14" rx="2" fill="#C9A24A"/>
+            </g>
+            <text x="326" y="204" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#12203A">Banco de Costa Rica</text>
+
+            <g transform="translate(120 106)">
+              <path d="M0 -30 L14 -6 H-14Z" fill="#12203A"/><rect x="-5" y="-6" width="10" height="30" fill="#12203A"/>
+            </g>
+            <text x="30" y="150" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#12203A">Iglesia de Coronado</text>
+
+            <g transform="translate(305 384)">
+              <circle r="34" fill="#A81C22" opacity=".16"/>
+              <path d="M0 -26c-13 0-23 10-23 23 0 17 23 37 23 37s23-20 23-37c0-13-10-23-23-23Z" fill="#A81C22"/>
+              <circle cy="-3" r="8.5" fill="#F3EADB"/>
+            </g>
+            <text x="348" y="392" font-family="Alegreya, serif" font-size="20" font-weight="800" fill="#A81C22">Kaffa Café</text>
+            <text x="348" y="410" font-family="Archivo, sans-serif" font-size="12" fill="#5A6478">Calle 153, San Isidro</text>
+
+            <g transform="translate(548 414)" fill="#12203A" opacity=".55">
+              <path d="M0 -18 L6 4 L0 0 L-6 4Z"/>
+              <text x="-4" y="-22" font-family="Archivo, sans-serif" font-size="11" font-weight="700">N</text>
+            </g>
+          </svg>
+
+          <div class="mapa__ficha">
+            <div>
+              <b>250 m sur del Banco de Costa Rica</b>
+              <span>Calle 153, San Isidro de Coronado, San José</span>
+            </div>
+            <div class="acciones">
+              <a class="btn btn--peque" href="https://www.google.com/maps/search/?api=1&query=Kaffa+Caf%C3%A9+San+Isidro+de+Coronado" target="_blank" rel="noopener">Google Maps</a>
+              <a class="btn btn--peque btn--linea" href="https://waze.com/ul?q=Kaffa%20Caf%C3%A9%20Coronado" target="_blank" rel="noopener" style="color:var(--crema);border-color:rgba(243,234,219,.34)">Waze</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="aparece" data-retardo="1">
+        <h3 style="font-size:1.4rem">Horario</h3>
+        <dl class="horario" id="horario">
+          <div data-dia="1"><dt>Lunes</dt><dd>8:00 a. m. — 8:00 p. m.</dd></div>
+          <div data-dia="2"><dt>Martes</dt><dd>8:00 a. m. — 8:00 p. m.</dd></div>
+          <div data-dia="3"><dt>Miércoles</dt><dd>8:00 a. m. — 8:00 p. m.</dd></div>
+          <div data-dia="4"><dt>Jueves</dt><dd>8:00 a. m. — 8:00 p. m.</dd></div>
+          <div data-dia="5"><dt>Viernes</dt><dd>8:00 a. m. — 8:00 p. m.</dd></div>
+          <div data-dia="6"><dt>Sábado</dt><dd>8:00 a. m. — 8:00 p. m.</dd></div>
+          <div data-dia="0"><dt>Domingo</dt><dd>8:00 a. m. — 7:00 p. m.</dd></div>
+        </dl>
+
+        <h3 style="font-size:1.4rem;margin-top:2.4rem">Contacto</h3>
+        <div class="contactos">
+          <a class="contacto-fila" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20buenas.%20Quisiera%20informaci%C3%B3n." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.1 1.5Z"/></svg>
+            <span><b>WhatsApp 6161-2746</b><span>Reservas, pedidos y encargos</span></span>
+          </a>
+          <a class="contacto-fila" href="tel:+50622923552">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
+            <span><b>Teléfono 2292-3552</b><span>De 8:00 a. m. a 8:00 p. m.</span></span>
+          </a>
+          <a class="contacto-fila" href="https://www.instagram.com/kaffacafeoficial/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.3A6.5 6.5 0 1 0 18.5 12 6.5 6.5 0 0 0 12 5.5Zm0 10.7A4.2 4.2 0 1 1 16.2 12 4.2 4.2 0 0 1 12 16.2Zm6.8-10.9a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5Z"/></svg>
+            <span><b>@kaffacafeoficial</b><span>Lo que sale del horno, cada día</span></span>
+          </a>
+          <a class="contacto-fila" href="https://www.facebook.com/kaffacafecr" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+            <span><b>Kaffa Café en Facebook</b><span>Eventos y actividades del pueblo</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="servicios">
+      <div class="servicio aparece">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0-7.5c1.9 0 3.6.8 4.8 2l1.8-1.8A9.4 9.4 0 0 0 12 10a9.4 9.4 0 0 0-6.6 2.7l1.8 1.8a6.8 6.8 0 0 1 4.8-2Zm0-5c3.2 0 6.2 1.3 8.4 3.4l1.8-1.8A14.4 14.4 0 0 0 12 5 14.4 14.4 0 0 0 1.8 9.1l1.8 1.8A11.9 11.9 0 0 1 12 7.5Z"/></svg>
+        <h3>WiFi para trabajar</h3><p>Señal estable y tomacorrientes en la mayoría de las mesas.</p>
+      </div>
+      <div class="servicio aparece" data-retardo="1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm5-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm5 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm5 3a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-7.5 1c-2.5 0-5.5 2.6-5.5 5a3 3 0 0 0 3 3c1.1 0 1.8-.5 2.5-.5s1.4.5 2.5.5a3 3 0 0 0 3-3c0-2.4-3-5-5.5-5Z"/></svg>
+        <h3>Pet friendly</h3><p>Su perro es bienvenido en la terraza y el jardín.</p>
+      </div>
+      <div class="servicio aparece" data-retardo="2">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4zm2 4h12v12H6zm2 2v8h8v-8Z"/></svg>
+        <h3>Sala de eventos</h3><p>Espacio privado para reuniones, catas, cumpleaños y capacitaciones.</p>
+      </div>
+      <div class="servicio aparece" data-retardo="3">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 3.5a2.5 2.5 0 1 1-2.5 2.5A2.5 2.5 0 0 1 12 5.5ZM7 19v-1.5c0-1.7 3.3-2.6 5-2.6s5 .9 5 2.6V19Z"/></svg>
+        <h3>Accesible</h3><p>Entrada a nivel y servicio sanitario accesible.</p>
+      </div>
+      <div class="servicio aparece">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h-1V6a5 5 0 0 0-10 0v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2ZM9 6a3 3 0 0 1 6 0v2H9Z"/></svg>
+        <h3>Sin lactosa</h3><p>Leche deslactosada, de almendra y de avena, sin recargo sorpresa.</p>
+      </div>
+      <div class="servicio aparece" data-retardo="1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h13v9H3zM17 9h2.6L22 12v3h-5zM6.5 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
+        <h3>Servicio exprés</h3><p>Pedidos por Uber Eats, DiDi Food y Express, o para recoger en la barra.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="seccion s--noche llamada">
+  <div class="envoltura">
+    <p class="rotulo" style="justify-content:center">Lo esperamos</p>
+    <h2>Venga por un café, quédese por la <em>Vandola</em>.</h2>
+    <p class="entradilla" style="max-width:52ch">Estamos en el centro de Coronado de lunes a domingo. Si viene en grupo o quiere la sala de eventos, avísenos antes por WhatsApp.</p>
+    <div class="acciones">
+      <a class="btn btn--verde" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">Reservar por WhatsApp</a>
+      <a class="btn btn--linea" href="#visitanos" style="color:var(--crema);border-color:rgba(243,234,219,.34)">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie__rejilla">
+      <div>
+        <svg viewBox="0 0 400 160" width="150" height="60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kaffa Café">
+          <rect width="400" height="160" fill="#C9A24A"/>
+          <rect x="6" y="6" width="278" height="92" fill="#A81C22"/>
+          <rect x="292" y="6" width="102" height="148" fill="#12203A"/>
+          <rect x="6" y="104" width="278" height="50" fill="#2E7A3E"/>
+          <text x="26" y="80" font-family="Yellowtail, cursive" font-size="72" fill="#F3EADB">Kaffa</text>
+          <text x="52" y="139" font-family="Archivo, sans-serif" font-size="24" font-weight="600" letter-spacing="17" fill="#F3EADB">Café</text>
+          <g transform="translate(343 80)">
+            <path d="M0 44 C0 14 0 -10 4 -34" stroke="#2E7A3E" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M2 6 C-22 4 -32 -8 -30 -24 C-12 -22 0 -12 2 6Z" fill="#3D8C4C"/>
+            <path d="M4 -14 C28 -16 38 -28 36 -44 C18 -42 6 -32 4 -14Z" fill="#3D8C4C"/>
+            <path d="M2 -30 C-18 -32 -26 -42 -24 -54 C-10 -52 0 -44 2 -30Z" fill="#2E7A3E"/>
+            <circle cx="-14" cy="24" r="9" fill="#A81C22"/>
+            <circle cx="12" cy="30" r="9" fill="#C4302B"/>
+            <circle cx="-2" cy="42" r="8" fill="#A81C22"/>
+          </g>
+        </svg>
+        <p style="margin-top:1.1rem;max-width:32ch">Café de especialidad de finca propia, tostado en la casa. En el centro de Coronado desde 2003.</p>
+        <div class="redes">
+          <a href="https://www.instagram.com/kaffacafeoficial/" target="_blank" rel="noopener" aria-label="Instagram de Kaffa Café">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.3A6.5 6.5 0 1 0 18.5 12 6.5 6.5 0 0 0 12 5.5Zm0 10.7A4.2 4.2 0 1 1 16.2 12 4.2 4.2 0 0 1 12 16.2Zm6.8-10.9a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5Z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/kaffacafecr" target="_blank" rel="noopener" aria-label="Facebook de Kaffa Café">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <a href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20buenas.%20Quisiera%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="WhatsApp de Kaffa Café">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.1 1.5Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>El sitio</h4>
+        <ul>
+          <li><a href="#historia">Quiénes somos</a></li>
+          <li><a href="#vandola">La Vandola</a></li>
+          <li><a href="#carta">La carta</a></li>
+          <li><a href="#competencias">Competencias</a></li>
+          <li><a href="#tienda">Tienda</a></li>
+          <li><a href="#galeria">Galería y videos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Horario</h4>
+        <ul>
+          <li>Lunes a sábado<br>8:00 a. m. — 8:00 p. m.</li>
+          <li>Domingo<br>8:00 a. m. — 7:00 p. m.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Dónde estamos</h4>
+        <ul>
+          <li>250 m sur del Banco de Costa Rica,<br>Calle 153, San Isidro de Coronado,<br>San José, Costa Rica.</li>
+          <li><a href="tel:+50622923552">Teléfono 2292-3552</a></li>
+          <li><a href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20buenas.%20Quisiera%20informaci%C3%B3n." target="_blank" rel="noopener">WhatsApp 6161-2746</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pie__legal">
+      <span>© <span id="anio">2026</span> Kaffa Café · San Isidro de Coronado, Costa Rica.</span>
+      <span>La Vandola es una creación de Minor Alfaro.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CARRITO ============ -->
+<div class="telon" id="telon" hidden></div>
+
+<aside class="carrito" id="carrito" aria-label="Mi pedido" aria-hidden="true">
+  <div class="carrito__cabeza">
+    <h2>Mi pedido</h2>
+    <button class="carrito__cerrar" id="cerrarCarrito" aria-label="Cerrar el pedido">&times;</button>
+  </div>
+  <!-- Lista y entrega comparten una sola zona de scroll, para que no queden
+       dos barras anidadas peleándose el alto en pantallas cortas. -->
+  <div class="carrito__cuerpo">
+    <div class="carrito__lista" id="listaCarrito">
+      <p class="carrito__vacio">Todavía no ha agregado nada.<br>Escoja su café o su Vandola en la tienda.</p>
+    </div>
+  <!-- Cómo quiere recibirlo. Lo que se escoja aquí viaja dentro del mensaje
+       de WhatsApp, para que Kaffa no tenga que preguntarlo por chat.
+       Queda oculto mientras el pedido esté vacío. -->
+  <div class="entrega" id="entrega" hidden>
+    <fieldset class="entrega__grupo">
+      <legend>¿Cómo lo quiere recibir?</legend>
+
+      <label class="opcion">
+        <input type="radio" name="entrega" value="recoger" checked>
+        <span><b>Recoger en el café</b><small>En Coronado, sin costo</small></span>
+      </label>
+
+      <label class="opcion">
+        <input type="radio" name="entrega" value="gam">
+        <span><b>Envío dentro del GAM</b><small>Se cotiza según la zona</small></span>
+      </label>
+
+      <label class="opcion">
+        <input type="radio" name="entrega" value="encomienda">
+        <span><b>Encomienda al resto del país</b><small>Se cotiza según el destino</small></span>
+      </label>
+    </fieldset>
+
+    <div class="entrega__campo" id="campoRecoger">
+      <label for="diaRecoge">¿Qué día pasa?</label>
+      <input type="date" id="diaRecoge">
+    </div>
+
+    <div class="entrega__campo" id="campoZona" hidden>
+      <label for="zona" id="zonaEtiqueta">Distrito o barrio</label>
+      <input type="text" id="zona" maxlength="80" placeholder="Moravia, San Vicente">
+    </div>
+
+    <label class="regalo">
+      <input type="checkbox" id="esRegalo">
+      <span>Es para regalo</span>
+    </label>
+
+    <div class="entrega__campo" id="campoDedicatoria" hidden>
+      <label for="dedicatoria">Dedicatoria (opcional)</label>
+      <textarea id="dedicatoria" rows="2" maxlength="140" placeholder="Va con una nota…"></textarea>
+    </div>
+  </div>
+  </div><!-- /.carrito__cuerpo -->
+
+  <div class="carrito__pie">
+    <div class="carrito__total">
+      <span>Total estimado</span>
+      <b id="totalCarrito">₡0</b>
+    </div>
+    <!-- El JS reescribe este enlace con el detalle del pedido y el total.
+         El texto de aquí es solo el respaldo por si el JS no llega a cargar. -->
+    <a class="btn btn--verde" id="pedirWhatsApp" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.1 1.5Z"/></svg>
+      Enviar pedido por WhatsApp
+    </a>
+    <p class="carrito__aviso">Le confirmamos disponibilidad, envío y total exacto por el mismo chat.</p>
+  </div>
+</aside>
+
+<!-- ============ VISOR DE FOTOS ============ -->
+<div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="visor__cerrar" id="visorCerrar" aria-label="Cerrar">&times;</button>
+  <button class="visor__nav visor__nav--ant" id="visorAnt" aria-label="Anterior">&#8249;</button>
+  <button class="visor__nav visor__nav--sig" id="visorSig" aria-label="Siguiente">&#8250;</button>
+  <div>
+    <img id="visorImg" alt="">
+    <p class="visor__pie" id="visorPie"></p>
+  </div>
+</div>
+
+<!-- ============ BOTÓN FLOTANTE ============ -->
+<a class="flotante" id="flotante" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20buenas." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.9-1c.2-.2.3-.2.6-.1l2.1 1c.3.1.5.2.5.4.1.1.1.8-.1 1.5Z"/></svg>
+  <span>Escríbanos</span>
+</a>
+
+<script src="main.js"></script>
+</body>
+</html>

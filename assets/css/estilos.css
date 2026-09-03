@@ -25,7 +25,7 @@
   --ancho:       1240px;
   --radio:       3px;
   --bloque:      clamp(4rem, 8vw, 7rem);
-  --nav-h:       68px;
+  --nav-h:       80px;
 
   --marca:   "Yellowtail", "Brush Script MT", cursive;
   --display: "Alegreya", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
@@ -133,15 +133,6 @@ p:last-child { margin-bottom: 0; }
 
 .ico { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; }
 
-/* ---------- 4. Aviso de demostración (se borra al entregar) ---------- */
-.aviso {
-  background: var(--arena); color: var(--noche); font-size: .85rem;
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-  gap: .35rem 1.25rem; padding: .6rem 1.25rem; text-align: center;
-}
-.aviso__enlaces { display: inline-flex; gap: 1.1rem; }
-.aviso a { font-weight: 600; text-underline-offset: 3px; }
-
 /* ---------- 5. Cabecera ---------- */
 .cabecera {
   background: var(--noche); color: var(--crema);
@@ -152,7 +143,10 @@ p:last-child { margin-bottom: 0; }
   min-height: var(--nav-h);
 }
 .logo { display: block; line-height: 0; }
-.logo svg { width: 104px; height: auto; }
+/* El logo es negro sobre transparencia y la barra es azul noche, así que se
+   invierte para que salga blanco. Al ser negro puro (RGB 0,0,0) el invertido
+   da blanco limpio, sin grises sucios. */
+.logo img { height: 58px; width: auto; filter: invert(1); }
 
 .menu { display: flex; align-items: center; gap: 1.9rem; }
 .menu a {
@@ -531,7 +525,6 @@ p:last-child { margin-bottom: 0; }
   .servicios { grid-template-columns: 1fr; }
   .forma__par { grid-template-columns: 1fr; }
   .sellos { gap: 1.25rem 2rem; }
-  .aviso { font-size: .78rem; }
   .pie__caja { justify-content: flex-start; }
 }
 
@@ -545,6 +538,5 @@ p:last-child { margin-bottom: 0; }
 }
 
 @media print {
-  .aviso, .flotante, .cabecera, .comparadores, .galeria, .forma, .carrusel__mando { display: none; }
   body, .bloque--noche, .heroe { background: #fff; color: #000; }
 }
