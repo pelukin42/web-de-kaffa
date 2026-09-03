@@ -267,3 +267,22 @@ Para que funcionen hacen falta **tres cosas**, y si falta cualquiera el envío t
 
 Una vez detectados aparecen listados en esa misma pantalla, y ahí llegan los envíos.
 El plan gratuito admite 100 al mes entre los dos.
+
+### El número de reserva
+
+Cada visita genera un código tipo `KF-0309-V5YR`: el prefijo, el día y el mes, y cuatro
+caracteres al azar. Se omiten `0`, `O`, `1` e `I` porque el código se dicta por teléfono y
+esos se confunden.
+
+El código aparece en tres lugares, siempre el mismo:
+
+1. **En el formulario**, en un campo de solo lectura, antes de enviar.
+2. **En el envío**, como el campo `codigo` de Netlify Forms.
+3. **En `/gracias/`** y en el mensaje de WhatsApp de esa página.
+
+Viaja por `sessionStorage`, no por la URL, para que no quede en el historial del navegador
+ni en los registros del servidor. Se mantiene si el visitante recarga a medio llenar, y se
+borra al mostrarse en `/gracias/`, de modo que la siguiente reserva genere uno nuevo.
+
+Si el visitante prefiere WhatsApp al formulario, el enlace de "Escríbanos por WhatsApp"
+también lleva el código, así que la conversación arranca identificada de todas formas.

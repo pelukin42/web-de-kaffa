@@ -171,6 +171,39 @@
     pintarFlotante();
   }
 
+  /* ---------- Código de reserva ----------
+     Se genera uno por visita y acompaña al pedido en los tres lados: el envío
+     del formulario, el mensaje de WhatsApp y la página de gracias. Así, cuando
+     el cliente escribe, Kaffa ya sabe de qué reserva habla.
+     Se omiten 0/O y 1/I porque el código se dicta por teléfono. */
+  var codigo = document.getElementById('codigo');
+  var LETRAS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var CLAVE_CODIGO = 'kaffa-codigo-reserva';
+
+  function generarCodigo() {
+    var h = new Date();
+    var dia = String(h.getDate()).padStart(2, '0') + String(h.getMonth() + 1).padStart(2, '0');
+    var azar = '';
+    for (var i = 0; i < 4; i++) azar += LETRAS[Math.floor(Math.random() * LETRAS.length)];
+    return 'KF-' + dia + '-' + azar;
+  }
+
+  if (codigo) {
+    // Se guarda en la sesión para que no cambie si recarga a medio llenar,
+    // y para que /gracias/ pueda mostrárselo después de enviar.
+    var guardado = '';
+    try { guardado = sessionStorage.getItem(CLAVE_CODIGO) || ''; } catch (e) {}
+    if (!guardado) {
+      guardado = generarCodigo();
+      try { sessionStorage.setItem(CLAVE_CODIGO, guardado); } catch (e) {}
+    }
+    codigo.value = guardado;
+  }
+
+  function textoCodigo() {
+    return codigo && codigo.value && codigo.value !== '—' ? ' (reserva ' + codigo.value + ')' : '';
+  }
+
   // El enlace de WhatsApp del formulario recoge lo que ya escogió en "motivo",
   // para que no tenga que repetirlo en el chat.
   var chat = document.getElementById('chatReserva');
@@ -185,9 +218,12 @@
       'Evento privado':            'Hola Kaffa, quiero consultar por un evento privado.'
     };
 
-    motivo.addEventListener('change', function () {
-      chat.href = enlaceWA(POR_MOTIVO[motivo.value] || 'Hola Kaffa, quiero reservar una mesa o un taller.');
-    });
+    function pintarChat() {
+      var base = POR_MOTIVO[motivo.value] || 'Hola Kaffa, quiero reservar una mesa o un taller.';
+      chat.href = enlaceWA(base.replace(/\.$/, '') + textoCodigo() + '.');
+    }
+    motivo.addEventListener('change', pintarChat);
+    pintarChat();
   }
 
   /* ---------- 6. Formulario y pie ---------- */

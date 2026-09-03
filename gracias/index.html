@@ -40,6 +40,26 @@
   .gracias .btn--linea:hover { border-color: var(--arena); }
   .gracias__pie { margin-top: 2.5rem; font-size: .88rem; color: rgba(243, 234, 219, .55); }
   .gracias__pie a { color: var(--arena-claro); }
+  .codigo-recibo {
+    display: inline-block;
+    border: 1px dashed var(--arena);
+    background: rgba(201, 162, 74, .12);
+    border-radius: var(--radio);
+    padding: .8rem 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+  .codigo-recibo span {
+    display: block;
+    font-size: .7rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(243, 234, 219, .6);
+    margin-bottom: .2rem;
+  }
+  .codigo-recibo b {
+    font-family: var(--display);
+    font-size: 1.7rem; letter-spacing: .06em;
+    color: var(--arena-claro);
+  }
 </style>
 </head>
 <body>
@@ -52,6 +72,12 @@
     </a>
 
     <h1>Recibimos su <em>solicitud</em></h1>
+
+    <!-- El código lo dejó el formulario en sessionStorage antes de enviar. -->
+    <div class="codigo-recibo" id="recibo" hidden>
+      <span>Su número de reserva</span>
+      <b id="reciboCodigo"></b>
+    </div>
 
     <p>
       Le contestamos por correo o por WhatsApp con la disponibilidad y el monto exacto.
@@ -73,6 +99,29 @@
 
   </div>
 </main>
+
+<script>
+  /* El código de reserva llega por sessionStorage, no por la URL: así no queda
+     en el historial ni en los registros del servidor. Se borra al mostrarlo
+     para que la siguiente reserva genere uno nuevo. */
+  (function () {
+    var CLAVE = 'kaffa-codigo-reserva';
+    var codigo = '';
+    try { codigo = sessionStorage.getItem(CLAVE) || ''; } catch (e) {}
+    if (!codigo) return;
+
+    document.getElementById('reciboCodigo').textContent = codigo;
+    document.getElementById('recibo').hidden = false;
+
+    var wa = document.querySelector('.acciones a[href*="wa.me"]');
+    if (wa) {
+      wa.href = 'https://wa.me/50661612746?text=' +
+        encodeURIComponent('Hola Kaffa, acabo de enviar la reserva ' + codigo + '.');
+    }
+
+    try { sessionStorage.removeItem(CLAVE); } catch (e) {}
+  }());
+</script>
 
 </body>
 </html>
