@@ -496,31 +496,6 @@ p:last-child { margin-bottom: 0; }
   outline: none;
 }
 .forma textarea { resize: vertical; min-height: 96px; }
-/* Número de reserva: se lee, no se escribe. Se destaca para que el cliente
-   lo note y lo pueda dictar por teléfono. */
-.codigo {
-  background: rgba(201, 162, 74, .14);
-  border: 1px dashed var(--arena);
-  border-radius: var(--radio);
-  padding: .8rem .9rem 1rem;
-  margin-bottom: 1.3rem;
-}
-.codigo label { margin-bottom: .3rem; }
-.codigo input {
-  font-family: var(--display);
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-align: center;
-  background: transparent;
-  border: 0;
-  padding: .1rem 0;
-  margin: 0;
-  cursor: text;
-}
-.codigo input:focus { box-shadow: none; }
-.codigo__nota { margin: .35rem 0 0; font-size: .78rem; color: #5A6478; text-align: center; }
-
 .forma__par { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
 .forma .btn { width: 100%; }
 .forma__pie { margin-top: 1rem; font-size: .88rem; color: #5A6478; text-align: center; }

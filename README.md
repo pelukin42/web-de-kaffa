@@ -295,15 +295,28 @@ El plan gratuito admite 100 al mes entre los dos.
 
 ### El número de reserva
 
-Cada visita genera un código tipo `KF-0309-V5YR`: el prefijo, el día y el mes, y cuatro
-caracteres al azar. Se omiten `0`, `O`, `1` e `I` porque el código se dicta por teléfono y
-esos se confunden.
+El código es tipo `KF-0309-NW8TW`: el prefijo, el día y el mes, y cinco caracteres al azar.
+Se omiten `0`, `O`, `1` e `I` porque se dicta por teléfono y esos se confunden.
 
-El código aparece en tres lugares, siempre el mismo:
+**Nace cuando hay una reserva de verdad**, no al abrir la página: se genera al enviar el
+formulario, o al hacer clic en el enlace de WhatsApp. Quien solo mira el sitio no consume
+ningún número, y nadie ve un "su número de reserva" antes de haber reservado.
 
-1. **En el formulario**, en un campo de solo lectura, antes de enviar.
-2. **En el envío**, como el campo `codigo` de Netlify Forms.
-3. **En `/gracias/`** y en el mensaje de WhatsApp de esa página.
+Contra el riesgo de que dos clientes simultáneos reciban el mismo código, los caracteres
+salen de `crypto.getRandomValues` y no de `Math.random`. Son 32⁵ combinaciones por día,
+unos 33 millones: para el volumen de un café el choque es despreciable. Conviene saber que
+**el momento de generarlo no influye en eso** —dos códigos aleatorios chocan con la misma
+probabilidad se generen cuando se generen—; lo que lo reduce es la cantidad de
+combinaciones y la calidad del azar.
+
+El código aparece en:
+
+1. **El envío**, como el campo `codigo` de Netlify Forms.
+2. **`/gracias/`** y el mensaje de WhatsApp de esa página.
+3. **El enlace de WhatsApp del formulario**, para quien prefiera el chat.
+
+Si el mismo visitante envía el formulario y además escribe por WhatsApp, lleva el mismo
+código en los dos lados: se guarda en `sessionStorage` la primera vez que se pide.
 
 Viaja por `sessionStorage`, no por la URL, para que no quede en el historial del navegador
 ni en los registros del servidor. Se mantiene si el visitante recarga a medio llenar, y se

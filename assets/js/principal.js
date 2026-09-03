@@ -172,36 +172,49 @@
   }
 
   /* ---------- Código de reserva ----------
-     Se genera uno por visita y acompaña al pedido en los tres lados: el envío
-     del formulario, el mensaje de WhatsApp y la página de gracias. Así, cuando
-     el cliente escribe, Kaffa ya sabe de qué reserva habla.
+     Nace cuando hay una reserva de verdad: al enviar el formulario o al abrir
+     el chat de WhatsApp. Antes de eso no existe, porque antes no hay reserva.
+
+     Contra choques entre dos clientes simultáneos: el código lleva el día y el
+     mes más cinco caracteres sacados de crypto.getRandomValues, que es
+     aleatoriedad de verdad y no Math.random. Son 32^5 combinaciones por día,
+     unos 33 millones; para el volumen de un café el choque es despreciable.
      Se omiten 0/O y 1/I porque el código se dicta por teléfono. */
   var codigo = document.getElementById('codigo');
+  var forma  = document.getElementById('formaReserva');
   var LETRAS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   var CLAVE_CODIGO = 'kaffa-codigo-reserva';
 
-  function generarCodigo() {
-    var h = new Date();
-    var dia = String(h.getDate()).padStart(2, '0') + String(h.getMonth() + 1).padStart(2, '0');
-    var azar = '';
-    for (var i = 0; i < 4; i++) azar += LETRAS[Math.floor(Math.random() * LETRAS.length)];
-    return 'KF-' + dia + '-' + azar;
-  }
-
-  if (codigo) {
-    // Se guarda en la sesión para que no cambie si recarga a medio llenar,
-    // y para que /gracias/ pueda mostrárselo después de enviar.
-    var guardado = '';
-    try { guardado = sessionStorage.getItem(CLAVE_CODIGO) || ''; } catch (e) {}
-    if (!guardado) {
-      guardado = generarCodigo();
-      try { sessionStorage.setItem(CLAVE_CODIGO, guardado); } catch (e) {}
+  function azar(n) {
+    var salida = '', i;
+    if (window.crypto && window.crypto.getRandomValues) {
+      var bytes = new Uint8Array(n);
+      window.crypto.getRandomValues(bytes);
+      for (i = 0; i < n; i++) salida += LETRAS[bytes[i] % LETRAS.length];
+    } else {
+      for (i = 0; i < n; i++) salida += LETRAS[Math.floor(Math.random() * LETRAS.length)];
     }
-    codigo.value = guardado;
+    return salida;
   }
 
-  function textoCodigo() {
-    return codigo && codigo.value && codigo.value !== '—' ? ' (reserva ' + codigo.value + ')' : '';
+  // Se guarda en la sesión para que el mismo visitante no genere dos códigos
+  // distintos si envía el formulario y además escribe por WhatsApp.
+  function codigoReserva() {
+    var c = '';
+    try { c = sessionStorage.getItem(CLAVE_CODIGO) || ''; } catch (e) {}
+    if (!c) {
+      var h = new Date();
+      c = 'KF-' + String(h.getDate()).padStart(2, '0') +
+                  String(h.getMonth() + 1).padStart(2, '0') + '-' + azar(5);
+      try { sessionStorage.setItem(CLAVE_CODIGO, c); } catch (e) {}
+    }
+    return c;
+  }
+
+  if (forma && codigo) {
+    forma.addEventListener('submit', function () {
+      codigo.value = codigoReserva();
+    });
   }
 
   // El enlace de WhatsApp del formulario recoge lo que ya escogió en "motivo",
@@ -220,10 +233,13 @@
 
     function pintarChat() {
       var base = POR_MOTIVO[motivo.value] || 'Hola Kaffa, quiero reservar una mesa o un taller.';
-      chat.href = enlaceWA(base.replace(/\.$/, '') + textoCodigo() + '.');
+      chat.href = enlaceWA(base.replace(/\.$/, '') + ' (reserva ' + codigoReserva() + ').');
     }
-    motivo.addEventListener('change', pintarChat);
-    pintarChat();
+    // Se arma al hacer clic para no crear un código a quien solo mira la página.
+    chat.addEventListener('click', pintarChat);
+    motivo.addEventListener('change', function () {
+      if (chat.href.indexOf('reserva') !== -1) pintarChat();
+    });
   }
 
   /* ---------- 6. Formulario y pie ---------- */

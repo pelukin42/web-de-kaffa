@@ -450,20 +450,16 @@
     <!-- Formulario de cotización y solicitud de citas. Netlify lo detecta al publicar. -->
     <div class="forma">
       <h3>Solicitud de reserva</h3>
-      <p class="nota">Le respondemos por correo o WhatsApp con la disponibilidad y el monto.</p>
+      <p class="nota">Le respondemos por correo o WhatsApp con la disponibilidad y el monto. Al enviar le damos un número de reserva.</p>
 
       <form name="reserva" method="POST" action="/gracias/" data-netlify="true" netlify-honeypot="bot-field" id="formaReserva">
         <input type="hidden" name="form-name" value="reserva">
         <p class="oculto"><label>No llenar este campo: <input name="bot-field"></label></p>
 
-        <!-- Código de reserva. Lo genera el JS al cargar la página; viaja en el
-             envío, en el mensaje de WhatsApp y se muestra en /gracias/, para que
-             cliente y Kaffa hablen del mismo pedido desde el primer mensaje. -->
-        <div class="codigo">
-          <label for="codigo">Su número de reserva</label>
-          <input id="codigo" name="codigo" type="text" readonly value="—">
-          <p class="codigo__nota">Menciónelo si nos escribe por WhatsApp o nos llama.</p>
-        </div>
+        <!-- Código de reserva. Nace al enviar, no al abrir la página: antes de
+             que haya reserva no hay número que dar. El JS lo rellena en el
+             submit y lo muestra después en /gracias/. -->
+        <input type="hidden" id="codigo" name="codigo" value="">
 
         <div class="forma__par">
           <div>
