@@ -211,9 +211,50 @@
     return c;
   }
 
+  /* La descripción corta de la reserva: motivo, cuándo y cuántos. Va junto al
+     código para que Kaffa entienda la solicitud de un vistazo, y para que el
+     cliente vea en /gracias/ qué fue lo que pidió. */
+  var resumen = document.getElementById('resumen');
+  var DIAS  = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
+               'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
+  var CLAVE_RESUMEN = 'kaffa-resumen-reserva';
+
+  // Con las partes y no con new Date(cadena): esa forma la interpreta como UTC
+  // y en Costa Rica (UTC−6) devuelve el día anterior.
+  function fechaLarga(valor) {
+    var p = valor.split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()];
+  }
+
+  function valor(id) {
+    var el = document.getElementById(id);
+    return el && el.value ? el.value.trim() : '';
+  }
+
+  function resumenReserva() {
+    var partes = [];
+    var motivo = valor('motivo');
+    var fecha  = valor('fecha');
+    var hora   = valor('hora');
+    var gente  = valor('personas');
+
+    if (motivo) partes.push(motivo);
+    if (fecha)  partes.push(fechaLarga(fecha) + (hora ? ', ' + hora : ''));
+    else if (hora) partes.push(hora);
+    if (gente)  partes.push(gente + (gente === '1' ? ' persona' : ' personas'));
+
+    return partes.join(' · ');
+  }
+
   if (forma && codigo) {
     forma.addEventListener('submit', function () {
       codigo.value = codigoReserva();
+      var texto = resumenReserva();
+      if (resumen) resumen.value = texto;
+      // /gracias/ lo lee de aquí para mostrárselo al cliente.
+      try { sessionStorage.setItem(CLAVE_RESUMEN, texto); } catch (e) {}
     });
   }
 
@@ -233,7 +274,12 @@
 
     function pintarChat() {
       var base = POR_MOTIVO[motivo.value] || 'Hola Kaffa, quiero reservar una mesa o un taller.';
-      chat.href = enlaceWA(base.replace(/\.$/, '') + ' (reserva ' + codigoReserva() + ').');
+      var detalle = resumenReserva();
+      var texto = base.replace(/\.$/, '');
+      // Si ya llenó fecha, hora o personas, el chat abre con todo eso puesto.
+      if (detalle && detalle !== motivo.value) texto += '.\n\nDetalle: ' + detalle;
+      else texto += '.';
+      chat.href = enlaceWA(texto + '\n\nReserva ' + codigoReserva() + '.');
     }
     // Se arma al hacer clic para no crear un código a quien solo mira la página.
     chat.addEventListener('click', pintarChat);

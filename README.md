@@ -309,9 +309,21 @@ unos 33 millones: para el volumen de un café el choque es despreciable. Convien
 probabilidad se generen cuando se generen—; lo que lo reduce es la cantidad de
 combinaciones y la calidad del azar.
 
-El código aparece en:
+Junto al código viaja una **descripción corta** armada con los campos del formulario:
 
-1. **El envío**, como el campo `codigo` de Netlify Forms.
+```
+KF-0309-2UADY
+Cata guiada · sábado 12 de setiembre, 3:00 p. m. · 1 persona
+```
+
+Así Kaffa entiende cada solicitud de un vistazo, sin abrir el detalle, y el cliente ve en
+`/gracias/` qué fue lo que pidió. La descripción se adapta a lo que esté lleno: si falta la
+hora o las personas, esas partes no salen. Singulariza «1 persona» y arma la fecha con las
+partes, no con `new Date(cadena)`, que en Costa Rica devolvía el día anterior.
+
+El código y la descripción aparecen en:
+
+1. **El envío**, como los campos `codigo` y `resumen` de Netlify Forms.
 2. **`/gracias/`** y el mensaje de WhatsApp de esa página.
 3. **El enlace de WhatsApp del formulario**, para quien prefiera el chat.
 

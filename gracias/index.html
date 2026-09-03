@@ -56,10 +56,21 @@
     margin-bottom: .2rem;
   }
   .codigo-recibo b {
+    display: block;
     font-family: var(--display);
     font-size: 1.7rem; letter-spacing: .06em;
     color: var(--arena-claro);
   }
+  .codigo-recibo em {
+    display: block;
+    font-style: normal;
+    font-size: .92rem;
+    color: rgba(243, 234, 219, .78);
+    margin-top: .5rem;
+    padding-top: .5rem;
+    border-top: 1px solid rgba(201, 162, 74, .3);
+  }
+  .codigo-recibo em:empty { display: none; }
 </style>
 </head>
 <body>
@@ -77,6 +88,7 @@
     <div class="codigo-recibo" id="recibo" hidden>
       <span>Su número de reserva</span>
       <b id="reciboCodigo"></b>
+      <em id="reciboResumen"></em>
     </div>
 
     <p>
@@ -106,20 +118,29 @@
      para que la siguiente reserva genere uno nuevo. */
   (function () {
     var CLAVE = 'kaffa-codigo-reserva';
-    var codigo = '';
-    try { codigo = sessionStorage.getItem(CLAVE) || ''; } catch (e) {}
+    var CLAVE_RESUMEN = 'kaffa-resumen-reserva';
+    var codigo = '', resumen = '';
+    try {
+      codigo  = sessionStorage.getItem(CLAVE) || '';
+      resumen = sessionStorage.getItem(CLAVE_RESUMEN) || '';
+    } catch (e) {}
     if (!codigo) return;
 
     document.getElementById('reciboCodigo').textContent = codigo;
+    document.getElementById('reciboResumen').textContent = resumen;
     document.getElementById('recibo').hidden = false;
 
     var wa = document.querySelector('.acciones a[href*="wa.me"]');
     if (wa) {
-      wa.href = 'https://wa.me/50661612746?text=' +
-        encodeURIComponent('Hola Kaffa, acabo de enviar la reserva ' + codigo + '.');
+      var texto = 'Hola Kaffa, acabo de enviar la reserva ' + codigo + '.';
+      if (resumen) texto += '\n\nDetalle: ' + resumen;
+      wa.href = 'https://wa.me/50661612746?text=' + encodeURIComponent(texto);
     }
 
-    try { sessionStorage.removeItem(CLAVE); } catch (e) {}
+    try {
+      sessionStorage.removeItem(CLAVE);
+      sessionStorage.removeItem(CLAVE_RESUMEN);
+    } catch (e) {}
   }());
 </script>
 
