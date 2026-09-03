@@ -260,6 +260,43 @@ p:last-child { margin-bottom: 0; }
 .servicio h3 { font-size: 1.15rem; margin-bottom: .45rem; }
 .servicio p { font-size: .92rem; color: var(--tinta-suave); }
 
+/* ---------- La carta, en corto ---------- */
+.carta {
+  margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  padding-top: clamp(2.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--linea);
+}
+.carta h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1.75rem;
+}
+.carta__rejilla {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.carta__grupo {
+  border-left: 2px solid var(--arena);
+  padding-left: 1rem;
+}
+.carta__grupo h4 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 .4rem;
+}
+.carta__grupo p { font-size: .93rem; color: var(--tinta-suave); margin: 0; }
+
+.carta__pie {
+  margin-top: 1.9rem;
+  font-size: .95rem;
+  color: var(--tinta-suave);
+}
+.carta__pie a { color: var(--acento); font-weight: 600; text-underline-offset: 3px; }
+
+@media (max-width: 900px) { .carta__rejilla { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .carta__rejilla { grid-template-columns: 1fr; } }
+
 /* ---------- 10. Antes y después ---------- */
 .comparadores {
   display: grid; grid-template-columns: repeat(2, 1fr);

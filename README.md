@@ -58,6 +58,22 @@ El formulario usa **Netlify Forms**. Ver más abajo la nota sobre la detección.
 
 ## El sitio real (la raíz)
 
+### El enfoque: restaurante, no Vandola
+
+Don Minor fue claro: **la Vandola tiene su propio sitio en vandolaoficial.com**, y este es
+el sitio de Kaffa como restaurante. El eje son **la comida y el café de finca propia**, que
+son las dos cosas que Kaffa hace con sus manos.
+
+La Vandola no desapareció —es parte de la historia de la casa y le da prestigio— pero pasó
+de ser el titular a ser una tarjeta más entre diez, con enlace afuera. En texto visible se
+menciona dos veces, contra las quince de antes.
+
+Si en algún momento se quiere volver a subir el peso de la Vandola, los lugares son: el
+`<h1>`, la tarjeta de servicio, el `alt` de una foto de la galería y la opción "Taller de
+Vandola" del formulario.
+
+### Qué lleva
+
 Es la versión del plan Profesional, que es lo que Kaffa contrató. Lleva exactamente lo que ofrece
 ese plan: **3 secciones ampliadas** (Inicio, Servicios, Galería) con su menú de navegación,
 **10 servicios** con foto y descripción, **antes y después** arrastrable, galería preparada
@@ -79,6 +95,15 @@ Tres cosas pendientes en él:
    entra el par que Don Minor quiera mostrar.
 3. La galería trae 12 fotos porque son las ilustraciones de relleno que existen. Para
    llegar a las 25 del plan se copia un `<figure>` dentro de `<div class="galeria">`.
+4. **La carta está en corto y a propósito.** El bloque "Qué se sirve" describe los cuatro
+   rubros (desayunos, almuerzos, repostería, café) sin nombrar platos concretos ni precios,
+   porque **no se inventaron platos**: solo se puso lo que Kaffa confirmó que sirve. Cuando
+   Don Minor pase la lista real con nombres y precios, se sustituye ese bloque por la carta
+   de verdad. Mientras tanto, el enlace de WhatsApp pide la carta del día, que además es lo
+   que de verdad cambia cada semana.
+5. **Las ilustraciones no siempre calzan con el rótulo** (Almuerzos muestra la barra, Catas
+   muestra un trofeo). Es aceptable porque son de relleno, pero se resuelve solo cuando
+   lleguen las fotos reales.
 
 El formulario de reserva también es de Netlify Forms, con la misma condición que el otro:
 solo envía una vez publicado. La fecha mínima se ajusta sola al día de hoy, así que nadie
