@@ -8,8 +8,10 @@ index.html              EL SITIO REAL (plan Profesional)
 assets/css/estilos.css  Su hoja de estilos
 assets/js/principal.js  Su JavaScript
 assets/img/logo.png     Logo oficial de Kaffa (negro sobre transparencia)
-assets/img/og.png       Imagen de vista previa al compartir el enlace
-assets/img/*.svg        Ilustraciones de relleno
+assets/img/og.jpg       Imagen de vista previa al compartir el enlace
+assets/img/*.jpg        Fotos reales del local, los platos y las láminas de marca
+assets/img/*.svg        Ilustraciones de relleno (solo las usan las dos demos)
+assets/img/fotos/       Originales sin procesar — ignorado por git, no se publica
 amedida/                Demostración del plan A Medida, con noindex
 esencial/               Demostración del plan Esencial, con noindex
 ```
@@ -107,27 +109,40 @@ fecha y hora**, y SEO con metadatos y un encabezado por sección.
 Sigue **sin** carta, tienda, carrito, cuenta regresiva, letrero de "Abierto ahora" ni ficha
 Schema.org: eso es lo que separa este plan del sitio completo.
 
-Tres cosas pendientes en él:
+### La carta
+
+El bloque `<div class="carta">` de `index.html` es la carta de verdad: **67 renglones en
+8 secciones**, con nombres, descripciones y precios tomados del menú oficial de Kaffa
+(`FINAL AF_KaffaMenu v3.pdf`). No hay nada inventado ahí.
+
+Los precios cambian, así que al pie hay un aviso que lo dice y un enlace de WhatsApp para
+confirmarlos. **Cuando suban los precios hay que editar este bloque**: cada plato es un
+`<li>` con `plato__nombre`, `plato__precio` y, si lleva, `plato__nota`.
+
+### Las fotos
+
+Las 34 fotos que pasó Kaffa están procesadas a 880&nbsp;px de lado mayor y calidad 76
+(las cuatro láminas de marca, a 1000&nbsp;px). Pesan 3,3&nbsp;MB en total y todas cargan
+con `loading="lazy"` menos las de la portada.
+
+Los originales viven en `assets/img/fotos/`, que está en `.gitignore`: pesan 9&nbsp;MB, no
+se suben al repositorio y no se publican. Para volver a generarlas hay un script de Pillow
+que redimensiona y renombra; si llegan fotos nuevas, se tiran ahí y se repite.
+
+`image (1).png` de ese lote es el manual de marca y **no se usa en el sitio**: de ahí salió
+la paleta.
+
+### Dos cosas pendientes
 
 1. **Los testimonios son de relleno, no son reseñas reales.** La sección está construida y
    funcionando, pero el texto dice explícitamente que hay que reemplazarlo. Para activarla:
    se cambia cada `<blockquote>` y su `<cite>` por el testimonio y el nombre reales, y se
    borra la clase `testimonios--ejemplo` del `<section>` (eso quita el recuadro amarillo).
    Si no se van a poner testimonios, se borra la sección completa.
-2. **El antes y después** funciona con mouse, con el dedo y con las flechas del teclado.
-   Hoy compara ilustraciones (finca → taza, grano → molido); con fotos reales es donde
-   entra el par que Don Minor quiera mostrar.
-3. La galería trae 12 fotos porque son las ilustraciones de relleno que existen. Para
-   llegar a las 25 del plan se copia un `<figure>` dentro de `<div class="galeria">`.
-4. **La carta está en corto y a propósito.** El bloque "Qué se sirve" describe los cuatro
-   rubros (desayunos, almuerzos, repostería, café) sin nombrar platos concretos ni precios,
-   porque **no se inventaron platos**: solo se puso lo que Kaffa confirmó que sirve. Cuando
-   Don Minor pase la lista real con nombres y precios, se sustituye ese bloque por la carta
-   de verdad. Mientras tanto, el enlace de WhatsApp pide la carta del día, que además es lo
-   que de verdad cambia cada semana.
-5. **Las ilustraciones no siempre calzan con el rótulo** (Almuerzos muestra la barra, Catas
-   muestra un trofeo). Es aceptable porque son de relleno, pero se resuelve solo cuando
-   lleguen las fotos reales.
+2. **El formulario de reserva ofrece "Cata guiada" y "Taller de Vandola"**, que se
+   escribieron antes de tener el menú y **no están confirmados por Don Minor**. Si Kaffa no
+   los da, hay que borrar esas dos `<option>` del `<select id="motivo">` y ajustar el
+   encabezado de la sección, que hoy dice "su mesa, su cata o su taller".
 
 El formulario de reserva también es de Netlify Forms, con la misma condición que el otro:
 solo envía una vez publicado. La fecha mínima se ajusta sola al día de hoy, así que nadie
@@ -288,6 +303,27 @@ Para agregar un producto se copia un bloque `<article class="producto" ...>` com
 - Ficha de negocio en formato Schema.org para que Google muestre dirección y horario.
 - Responsive hasta 375 px, foco visible con teclado, y respeta `prefers-reduced-motion`.
 - Hoja de estilos para imprimir la carta.
+
+## La paleta
+
+Los siete colores salen del manual de marca de Kaffa (`image (1).png` del lote de fotos) y
+están declarados en `:root`, dentro de `assets/css/estilos.css`:
+
+| Token | Color | Dónde manda |
+|---|---|---|
+| `--carbon` | `#231F20` | El negro del logotipo. Cabecera, bloques oscuros y el texto. |
+| `--vino` | `#891E46` | El acento: botones, precios, enlaces, cursivas destacadas. |
+| `--terracota` | `#CC5B23` | Acento secundario. |
+| `--tostado` | `#AA7D50` | La madera del chorreador de la portada y los detalles. |
+| `--azul` | `#5F9BAE` | De la lámina del boyero. |
+| `--agua` | `#5BA7A8` | De la lámina de la finca. |
+| `--coral` | `#DD6770` | De la lámina de la recolectora. |
+
+Los nombres viejos (`--rojo`, `--verde`, `--arena`…) siguen existiendo pero ahora apuntan a
+los nuevos, para no tener que tocar las cuatrocientas líneas que ya los usaban.
+
+Las cuatro láminas de la sección "La marca" traen su propio fondo, y cada uno es uno de
+estos colores: por eso van sin marco.
 
 ## Pendiente para producción
 

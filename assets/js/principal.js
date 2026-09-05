@@ -292,21 +292,23 @@
      La portada dice que aquí se desayuna, se almuerza y se toma café. Esto
      dice cuál de las tres está pasando en este momento, con la hora de Costa
      Rica (UTC−6, sin horario de verano) para que dé igual desde dónde miren.
-     Horario: lunes a sábado 8–20, domingo 8–19. */
+     Horario: lunes a sábado 8–20, domingo 8–19.
+     El desayuno se sirve hasta las 11:45, así que aquí se cuentan minutos
+     y no solo horas. */
   var ahora = document.getElementById('ahora');
 
   if (ahora) {
     var d = new Date();
     var cr = new Date(d.getTime() + (d.getTimezoneOffset() - 360) * 60000);
-    var hora = cr.getHours();
-    var cierra = cr.getDay() === 0 ? 19 : 20;
+    var minuto = cr.getHours() * 60 + cr.getMinutes();
+    var cierra = (cr.getDay() === 0 ? 19 : 20) * 60;
     var texto;
 
-    if (hora < 8 || hora >= cierra) {
+    if (minuto < 8 * 60 || minuto >= cierra) {
       texto = 'Cerrado ahora · abrimos a las 8 a. m.';
-    } else if (hora < 11) {
+    } else if (minuto < 11 * 60 + 45) {
       texto = 'Ahora se está sirviendo el desayuno';
-    } else if (hora < 15) {
+    } else if (minuto < 15 * 60) {
       texto = 'Ahora se está sirviendo el almuerzo';
     } else {
       texto = 'Ahora: café recién colado y repostería';

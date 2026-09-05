@@ -16,3 +16,7 @@ $RECYCLE.BIN/
 .idea/
 *.swp
 *~
+
+# Fotos originales sin procesar (pesan 9 MB y no se publican).
+# Las versiones optimizadas viven en assets/img/*.jpg
+assets/img/fotos/

@@ -1,32 +1,42 @@
 /* ===========================================================
-   KAFFA CAFÉ — Ejemplo del plan Profesional ($400–450)
-   3 secciones ampliadas · 10 servicios · antes y después ·
-   galería hasta 25 · testimonios · reservas con fecha.
+   KAFFA CAFÉ — kaffacafecr.com
+   Paleta oficial tomada del manual de marca de Kaffa.
    =========================================================== */
 
 /* ---------- 1. Tokens ---------- */
 :root {
-  --rojo:        #A81C22;
-  --rojo-vivo:   #C4302B;
-  --verde:       #2E7A3E;
-  --noche:       #12203A;
-  --noche-2:     #1A2C4C;
-  --arena:       #C9A24A;
-  --arena-claro: #E3C57F;
-  --crema:       #F3EADB;
-  --crema-2:     #E6D9C2;
+  /* Paleta de marca de Kaffa. Los siete colores salen del manual;
+     los nombres viejos (--rojo, --verde, --arena…) se conservan para
+     no tocar las 400 líneas que ya los usan. */
+  --carbon:      #231F20;  /* el negro del logotipo */
+  --azul:        #5F9BAE;
+  --agua:        #5BA7A8;
+  --vino:        #891E46;
+  --coral:       #DD6770;
+  --terracota:   #CC5B23;
+  --tostado:     #AA7D50;
+
+  --rojo:        var(--vino);
+  --rojo-vivo:   var(--terracota);
+  --verde:       var(--agua);
+  --noche:       #231F20;
+  --noche-2:     #33292A;
+  --arena:       var(--tostado);
+  --arena-claro: #C9A57B;
+  --crema:       #FAF5EE;
+  --crema-2:     #EFE5D8;
 
   /* Para el chorreador de la portada */
-  --madera:      #7A4A2B;
-  --madera-luz:  #9A6238;
-  --cafe:        #4A2413;
-  --cafe-luz:    #7C4322;
+  --madera:      #AA7D50;
+  --madera-luz:  #C29A6E;
+  --cafe:        #3A2118;
+  --cafe-luz:    #6B3A22;
 
   --fondo:       var(--crema);
   --tinta:       var(--noche);
-  --tinta-suave: #5A6478;
+  --tinta-suave: #6E6462;
   --acento:      var(--rojo);
-  --linea:       rgba(18, 32, 58, .15);
+  --linea:       rgba(35, 31, 32, .15);
 
   --ancho:       1240px;
   --radio:       3px;
@@ -389,42 +399,133 @@ p:last-child { margin-bottom: 0; }
 .servicio h3 { font-size: 1.15rem; margin-bottom: .45rem; }
 .servicio p { font-size: .92rem; color: var(--tinta-suave); }
 
-/* ---------- La carta, en corto ---------- */
+/* ---------- La carta ----------
+   Cada sección alterna la foto de lado. Los platos se listan con el
+   precio pegado a la derecha y la descripción debajo, ocupando el
+   ancho completo de la fila. */
 .carta {
   margin-top: clamp(2.5rem, 5vw, 3.75rem);
   padding-top: clamp(2.25rem, 4vw, 3rem);
   border-top: 1px solid var(--linea);
 }
-.carta h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: 1.75rem;
-}
-.carta__rejilla {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-.carta__grupo {
-  border-left: 2px solid var(--arena);
-  padding-left: 1rem;
-}
-.carta__grupo h4 {
+.carta__intro { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.carta__intro h3 {
   font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 0 0 .4rem;
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  margin: .3rem 0 .8rem;
 }
-.carta__grupo p { font-size: .93rem; color: var(--tinta-suave); margin: 0; }
+.carta__intro em { font-style: italic; color: var(--acento); }
 
-.carta__pie {
-  margin-top: 1.9rem;
+.carta__seccion {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  border-top: 1px solid var(--linea);
+}
+/* La foto cambia de lado en las secciones pares. */
+.carta__seccion:nth-of-type(even) .carta__foto { order: 2; }
+
+.carta__foto { margin: 0; position: sticky; top: calc(var(--nav-h) + 1.5rem); }
+.carta__foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radio);
+  background: var(--crema-2);
+}
+
+.carta__lista h4 {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 800;
+  margin: 0 0 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem .8rem;
+}
+.carta__horario {
+  font-family: var(--texto);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--acento);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: .18rem .6rem;
+}
+
+.platos { list-style: none; margin: 0; padding: 0; }
+.platos li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 .75rem;
+  padding: .7rem 0;
+  border-bottom: 1px dotted var(--linea);
+}
+.platos li:last-child { border-bottom: 0; }
+.plato__nombre { font-weight: 600; }
+.plato__precio {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--acento);
+  white-space: nowrap;
+}
+.plato__nota {
+  grid-column: 1 / -1;
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+  margin-top: .2rem;
+}
+.plato__nota a { color: var(--acento); text-underline-offset: 3px; }
+
+.carta__aviso {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linea);
   font-size: .95rem;
   color: var(--tinta-suave);
 }
-.carta__pie a { color: var(--acento); font-weight: 600; text-underline-offset: 3px; }
+.carta__aviso a { color: var(--acento); font-weight: 600; text-underline-offset: 3px; }
 
-@media (max-width: 900px) { .carta__rejilla { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .carta__rejilla { grid-template-columns: 1fr; } }
+@media (max-width: 820px) {
+  .carta__seccion { grid-template-columns: 1fr; }
+  .carta__seccion:nth-of-type(even) .carta__foto { order: 0; }
+  .carta__foto { position: static; }
+  .carta__foto img { aspect-ratio: 16 / 9; }
+}
+
+/* ---------- Las láminas de marca ----------
+   Las cuatro ilustraciones ya traen su propio fondo de la paleta, así
+   que van sin marco: solo se recortan a cuadrado y se separan. */
+.laminas {
+  background: var(--crema-2);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+.laminas .bloque__intro { margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem); }
+.laminas__rejilla {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(.6rem, 1.5vw, 1.1rem);
+}
+.laminas figure { margin: 0; overflow: hidden; border-radius: var(--radio); }
+.laminas img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform .5s var(--ease);
+}
+.laminas figure:hover img { transform: scale(1.04); }
+
+@media (max-width: 700px) { .laminas__rejilla { grid-template-columns: repeat(2, 1fr); } }
+@media (prefers-reduced-motion: reduce) {
+  .laminas img, .laminas figure:hover img { transition: none; transform: none; }
+}
 
 /* ---------- 10. Antes y después ---------- */
 .comparadores {
