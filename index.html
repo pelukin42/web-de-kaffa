@@ -52,6 +52,7 @@
       <a href="#inicio" data-nav="inicio">Inicio</a>
       <a href="#servicios" data-nav="servicios">La cocina</a>
       <a href="#carta">Carta</a>
+      <a href="#menu-impreso">Menú</a>
       <a href="#portafolio" data-nav="portafolio">Galería</a>
       <a class="btn btn--verde btn--peque" href="#reservar">Reservar</a>
     </nav>
@@ -85,7 +86,7 @@
         <div class="acciones">
           <a class="btn btn--verde" href="#reservar">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2h10V2h2v2h2a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h2V2h2Zm13 8H4v10h16V10Zm-9 2v2H9v-2h2Zm4 0v2h-2v-2h2Z"/></svg>
-            Reservar mesa o taller
+            Reservar mesa
           </a>
           <a class="btn btn--linea" href="#servicios">Ver lo que hacemos</a>
         </div>
@@ -423,7 +424,7 @@
         <li><span class="plato__nombre">Negro</span><span class="plato__precio">¢2.000</span></li>
         <li><span class="plato__nombre">Con leche</span><span class="plato__precio">¢2.400</span></li>
         <li><span class="plato__nombre">Capuccino</span><span class="plato__precio">¢2.800</span><span class="plato__nota">Con sabores, ¢3.150.</span></li>
-        <li><span class="plato__nombre">Chorreado en vandola</span><span class="plato__precio">¢1.680 – ¢3.355</span><span class="plato__nota">De una a cuatro tazas, coladas a mano.</span></li>
+        <li><span class="plato__nombre">Infusiones</span><span class="plato__precio">¢1.680 – ¢3.355</span><span class="plato__nota">Según sean una, dos, tres o cuatro tazas. También hay té en agua, té en leche y agua dulce.</span></li>
         <li><span class="plato__nombre">Kaffa</span><span class="plato__precio">¢3.920</span><span class="plato__nota">La bebida insignia, con más de dieciocho años de historia: café, leche condensada, ron, cocoa y helado.</span></li>
         <li><span class="plato__nombre">Café de la abuela</span><span class="plato__precio">¢2.460</span><span class="plato__nota">Café con leche y tapa de dulce. Un clásico de nuestra cultura.</span></li>
         <li><span class="plato__nombre">Los volcanes</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Café, cocoa, ron, vainilla, canela, helado y leche.</span></li>
@@ -462,10 +463,46 @@
       <p class="carta__aviso">
         Precios en colones, sujetos a cambio.
         <a href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20%C2%BFme%20confirman%20precios%20y%20el%20plato%20del%20d%C3%ADa%3F" target="_blank" rel="noopener">Confírmelos por WhatsApp</a>
-        y le decimos también cuál es el postre del día.
+        y le decimos también cuál es el postre del día. También puede
+        <a href="#menu-impreso">ver el menú impreso</a>, tal cual se lo dan en la mesa.
       </p>
 
     </div>
+  </div>
+</section>
+
+<!-- ===========================================================
+     EL MENÚ IMPRESO
+     La carta de arriba es este mismo menú transcrito a HTML, que es lo
+     que lee Google y lo que se abre rápido en el teléfono. Esta sección
+     es para quien lo quiera ver tal cual, con su diseño.
+     El PDF es una copia preparada para la web: se le corrigió el
+     dominio de la contraportada y pesa 5,4 MB en vez de 8,6.
+     =========================================================== -->
+<section class="menu-pdf" id="menu-impreso" aria-labelledby="h-menu">
+  <div class="envoltura menu-pdf__caja">
+
+    <div class="menu-pdf__texto">
+      <p class="eyebrow">El menú impreso</p>
+      <h2 id="h-menu">El mismo menú que le dan <em>en la mesa</em>.</h2>
+      <p>
+        Diez páginas con todo: café de especialidad, desayunos, entradas,
+        platillos fuertes, boulangerie, crepería y repostería.
+      </p>
+      <a class="btn btn--verde" href="assets/menu-kaffa-cafe.pdf" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2v7h7l-9 9-9-9h7V2h4Zm-9 18h16v2H4v-2Z"/></svg>
+        Abrir el menú completo
+      </a>
+      <p class="menu-pdf__peso">PDF de 10 páginas · 5,4&nbsp;MB · se abre en una pestaña nueva</p>
+    </div>
+
+    <a class="menu-pdf__hojas" href="assets/menu-kaffa-cafe.pdf" target="_blank" rel="noopener"
+       aria-label="Abrir el menú completo de Kaffa Café en PDF">
+      <img src="assets/img/menu-hoja-1.jpg" alt="Portada del menú de Kaffa Café" width="479" height="620" loading="lazy">
+      <img src="assets/img/menu-hoja-2.jpg" alt="Página de café de especialidad del menú de Kaffa" width="479" height="620" loading="lazy">
+      <img src="assets/img/menu-hoja-3.jpg" alt="Página de desayunos del menú de Kaffa" width="479" height="620" loading="lazy">
+    </a>
+
   </div>
 </section>
 
@@ -627,9 +664,9 @@
 
     <div class="reservar__datos">
       <p class="eyebrow">Reservas</p>
-      <h2 id="h-reservar">Aparte su mesa, su cata o su <em>taller</em>.</h2>
+      <h2 id="h-reservar">Aparte su mesa o su <em>evento</em>.</h2>
       <p class="bajada">
-        Para mesa no siempre hace falta reservar, pero para catas, talleres y grupos sí.
+        Para mesa no siempre hace falta reservar, pero para grupos y eventos sí.
         Llene el formulario y le confirmamos disponibilidad y precio.
       </p>
 
@@ -705,10 +742,9 @@
         <select id="motivo" name="motivo" required>
           <option value="">Escoja una opción</option>
           <option>Mesa</option>
-          <option>Cata guiada</option>
-          <option>Taller de Vandola</option>
-          <option>Pedido de café en grano</option>
+          <option>Grupo grande</option>
           <option>Evento privado</option>
+          <option>Pedido de café en grano</option>
         </select>
 
         <div class="forma__par">
@@ -744,7 +780,7 @@
 
         <button class="btn btn--rojo" type="submit">Enviar solicitud</button>
         <p class="forma__pie">
-          ¿Prefiere el chat? <a id="chatReserva" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20reservar%20una%20mesa%20o%20un%20taller." target="_blank" rel="noopener">Escríbanos por WhatsApp</a>.
+          ¿Prefiere el chat? <a id="chatReserva" href="https://wa.me/50661612746?text=Hola%20Kaffa%2C%20quiero%20reservar%20una%20mesa." target="_blank" rel="noopener">Escríbanos por WhatsApp</a>.
         </p>
       </form>
     </div>

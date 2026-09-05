@@ -153,7 +153,8 @@
     var POR_SECCION = {
       servicios:   'Hola Kaffa, quisiera información sobre lo que ofrecen.',
       portafolio:  'Hola Kaffa, vi las fotos del café y quisiera información.',
-      reservar:    'Hola Kaffa, quiero reservar una mesa o un taller.'
+      reservar:    'Hola Kaffa, quiero reservar una mesa.',
+      'menu-impreso': 'Hola Kaffa, vi el menú y quisiera hacer una consulta.'
     };
     var conId = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
     var ultimo = '';
@@ -266,14 +267,13 @@
   if (chat && motivo) {
     var POR_MOTIVO = {
       'Mesa':                      'Hola Kaffa, quiero reservar una mesa.',
-      'Cata guiada':               'Hola Kaffa, quiero reservar una cata guiada.',
-      'Taller de Vandola':         'Hola Kaffa, quiero reservar un taller de Vandola.',
-      'Pedido de café en grano':   'Hola Kaffa, quiero hacer un pedido de café en grano.',
-      'Evento privado':            'Hola Kaffa, quiero consultar por un evento privado.'
+      'Grupo grande':              'Hola Kaffa, quiero reservar para un grupo grande.',
+      'Evento privado':            'Hola Kaffa, quiero consultar por un evento privado.',
+      'Pedido de café en grano':   'Hola Kaffa, quiero hacer un pedido de café en grano.'
     };
 
     function pintarChat() {
-      var base = POR_MOTIVO[motivo.value] || 'Hola Kaffa, quiero reservar una mesa o un taller.';
+      var base = POR_MOTIVO[motivo.value] || 'Hola Kaffa, quiero reservar una mesa.';
       var detalle = resumenReserva();
       var texto = base.replace(/\.$/, '');
       // Si ya llenó fecha, hora o personas, el chat abre con todo eso puesto.

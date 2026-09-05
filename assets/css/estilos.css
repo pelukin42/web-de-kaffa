@@ -527,6 +527,75 @@ p:last-child { margin-bottom: 0; }
   .laminas img, .laminas figure:hover img { transition: none; transform: none; }
 }
 
+/* ---------- El menú impreso ----------
+   Banda oscura con las tres primeras hojas del PDF en abanico. El
+   abanico es decorativo: en pantallas angostas se endereza, y con
+   prefers-reduced-motion no se mueve al pasar el mouse. */
+.menu-pdf {
+  background: var(--noche);
+  color: var(--crema);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+.menu-pdf__caja {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.menu-pdf__texto h2 {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  margin: .3rem 0 .9rem;
+}
+.menu-pdf__texto em { font-style: italic; color: var(--arena-claro); }
+.menu-pdf__texto p { color: rgba(250, 245, 238, .78); max-width: 34rem; }
+.menu-pdf__texto .btn { margin-top: 1.5rem; }
+.menu-pdf__peso {
+  margin-top: .9rem;
+  font-size: .82rem;
+  color: rgba(250, 245, 238, .55);
+}
+
+.menu-pdf__hojas {
+  display: flex;
+  justify-content: center;
+  gap: clamp(.5rem, 1.5vw, 1rem);
+  text-decoration: none;
+}
+.menu-pdf__hojas img {
+  width: 33%;
+  border-radius: var(--radio);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .45);
+  transition: transform .45s var(--ease);
+}
+/* El abanico: la de en medio adelante, las de los lados inclinadas. */
+.menu-pdf__hojas img:nth-child(1) { transform: rotate(-5deg) translateY(14px); }
+.menu-pdf__hojas img:nth-child(2) { transform: translateY(-8px); position: relative; z-index: 1; }
+.menu-pdf__hojas img:nth-child(3) { transform: rotate(5deg) translateY(14px); }
+
+.menu-pdf__hojas:hover img:nth-child(1) { transform: rotate(-8deg) translateY(8px) translateX(-6px); }
+.menu-pdf__hojas:hover img:nth-child(2) { transform: translateY(-16px) scale(1.03); }
+.menu-pdf__hojas:hover img:nth-child(3) { transform: rotate(8deg) translateY(8px) translateX(6px); }
+
+.menu-pdf__hojas:focus-visible {
+  outline: 2px solid var(--arena-claro);
+  outline-offset: 8px;
+  border-radius: var(--radio);
+}
+
+@media (max-width: 860px) {
+  .menu-pdf__caja { grid-template-columns: 1fr; }
+  .menu-pdf__hojas { order: -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-pdf__hojas img,
+  .menu-pdf__hojas:hover img { transition: none; }
+  .menu-pdf__hojas:hover img:nth-child(1) { transform: rotate(-5deg) translateY(14px); }
+  .menu-pdf__hojas:hover img:nth-child(2) { transform: translateY(-8px); }
+  .menu-pdf__hojas:hover img:nth-child(3) { transform: rotate(5deg) translateY(14px); }
+}
+
 /* ---------- 10. Antes y después ---------- */
 .comparadores {
   display: grid; grid-template-columns: repeat(2, 1fr);

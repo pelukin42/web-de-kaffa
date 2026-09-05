@@ -139,10 +139,27 @@ la paleta.
    se cambia cada `<blockquote>` y su `<cite>` por el testimonio y el nombre reales, y se
    borra la clase `testimonios--ejemplo` del `<section>` (eso quita el recuadro amarillo).
    Si no se van a poner testimonios, se borra la sección completa.
-2. **El formulario de reserva ofrece "Cata guiada" y "Taller de Vandola"**, que se
-   escribieron antes de tener el menú y **no están confirmados por Don Minor**. Si Kaffa no
-   los da, hay que borrar esas dos `<option>` del `<select id="motivo">` y ajustar el
-   encabezado de la sección, que hoy dice "su mesa, su cata o su taller".
+2. **Las fotos de las láminas y el menú impreso ya están**, pero el menú es un PDF de
+   5,4&nbsp;MB. Si algún día pesa demasiado, se baja la calidad de los fondos en el script
+   que lo genera.
+
+### El menú en PDF
+
+`assets/menu-kaffa-cafe.pdf` es una copia del menú oficial preparada para la web. Lleva dos
+cambios respecto al original:
+
+1. **El dominio de la contraportada dice `kaffacafecr.com`**, no el viejo `kaffacafe.com`.
+   El texto está dibujado letra por letra con 6&nbsp;pt de separación, así que se borró la
+   línea entera y se volvió a escribir con Georgia Bold, centrada en el mismo eje y con la
+   misma separación. Sigue siendo texto seleccionable, no una imagen.
+2. **Los seis fondos de página pasaron de PNG a JPEG**, que es de donde salían los
+   megabytes: 8,6&nbsp;MB → 5,4&nbsp;MB. El texto del menú es vectorial y no se tocó.
+
+**El archivo de imprenta sigue teniendo el dominio viejo.** Esto corrige la copia del sitio,
+no el máster: eso lo tiene que arreglar quien diseñó el menú, antes de la próxima tirada.
+
+Las tres miniaturas de la sección (`assets/img/menu-hoja-*.jpg`) se renderizaron de ese
+mismo PDF a 150&nbsp;dpi. Si el menú cambia, hay que volver a generarlas.
 
 El formulario de reserva también es de Netlify Forms, con la misma condición que el otro:
 solo envía una vez publicado. La fecha mínima se ajusta sola al día de hoy, así que nadie
