@@ -111,13 +111,38 @@ Schema.org: eso es lo que separa este plan del sitio completo.
 
 ### La carta
 
-El bloque `<div class="carta">` de `index.html` es la carta de verdad: **67 renglones en
-8 secciones**, con nombres, descripciones y precios tomados del menú oficial de Kaffa
-(`FINAL AF_KaffaMenu v3.pdf`). No hay nada inventado ahí.
+El bloque `<div class="carta">` de `index.html` es el menú completo de Kaffa: **171
+renglones repartidos en 8 categorías y 30 subgrupos**, con nombres, descripciones y precios
+tomados del menú oficial (`FINAL AF_KaffaMenu v3.pdf`). No hay nada inventado ahí.
 
-Los precios cambian, así que al pie hay un aviso que lo dice y un enlace de WhatsApp para
-confirmarlos. **Cuando suban los precios hay que editar este bloque**: cada plato es un
-`<li>` con `plato__nombre`, `plato__precio` y, si lleva, `plato__nota`.
+| Categoría | Opciones |
+|---|---|
+| Desayunos | 21 |
+| Entradas, cremas y ensaladas | 13 |
+| Almuerzos y platillos fuertes | 15 |
+| Boulangerie y crepería | 24 |
+| Postres y repostería | 39 |
+| Café de especialidad | 40 |
+| Bebidas | 17 |
+| Para llevar a casa | 2 |
+
+**Cada categoría es un `<details>`, no un componente de JavaScript.** Abren y cierran solas,
+el teclado las maneja sin código y, si el JS falla, siguen funcionando. El JavaScript solo
+agrega dos comodidades: los botones de salto de arriba (`.chip`, con `data-abre` apuntando
+al id de la categoría) y el enlace "Abrir todas".
+
+Arrancan todas cerradas a propósito: son 171 renglones y desplegarlos de una obliga a
+recorrer la carta entera para encontrar el desayuno.
+
+Para editarla: cada plato es un `<li>` con `plato__nombre`, `plato__precio` y, si lleva,
+`plato__nota`; cada subgrupo es un `<div class="sub">` con su `sub__titulo` y su `sub__nota`
+opcional. **Cuando cambien los precios hay que editar este bloque**, y de paso volver a
+generar el PDF y sus miniaturas.
+
+Ojo con una trampa al transcribir del PDF: el texto extraído pierde la agrupación visual, y
+así fue como en una primera pasada un rango de precios de **infusiones** terminó rotulado
+como café chorreado. La forma correcta es extraer con coordenadas y reconstruir las columnas
+y los encabezados por posición, no leer el texto plano de corrido.
 
 ### Las fotos
 
@@ -132,16 +157,34 @@ que redimensiona y renombra; si llegan fotos nuevas, se tiran ahí y se repite.
 `image (1).png` de ese lote es el manual de marca y **no se usa en el sitio**: de ahí salió
 la paleta.
 
+### Los testimonios
+
+Cinco reseñas reales de TripAdvisor, las cinco de cinco estrellas, escritas entre 2017 y
+2019. No hay carrusel: esconder cuatro de cinco detrás de unas flechas era trabajar en
+contra de la propia sección. Van las cinco a la vista, en columnas, para que cada una
+conserve su largo real.
+
+Cada recado toma uno de los cinco colores de la paleta y lleva el filete interior de las
+láminas: es la misma pieza gráfica de la marca, no una tarjeta genérica.
+
+Se transcriben tal cual salvo acentos y erratas evidentes. La de Geannina&nbsp;Z venía
+cortada por el "Leer más" de TripAdvisor y termina en puntos suspensivos: **no se le
+inventó el final**. Tres de las cinco traen el aviso de TripAdvisor "opinión obtenida en
+colaboración con este restaurante", o sea que Kaffa las solicitó en su momento.
+
+Un detalle de la animación que conviene no romper: **el estado invisible cuelga de un
+atributo `data-animar` que pone el JavaScript**, no el CSS. Sin JS, sin `IntersectionObserver`
+o con la pestaña en segundo plano, los cinco recados aparecen puestos. Nunca se puede dar el
+caso de que la sección salga en blanco. Hay además una red de seguridad a los dos segundos
+que quita el atributo, y quitarlo no depende de que la transición corra.
+
 ### Dos cosas pendientes
 
-1. **Los testimonios son de relleno, no son reseñas reales.** La sección está construida y
-   funcionando, pero el texto dice explícitamente que hay que reemplazarlo. Para activarla:
-   se cambia cada `<blockquote>` y su `<cite>` por el testimonio y el nombre reales, y se
-   borra la clase `testimonios--ejemplo` del `<section>` (eso quita el recuadro amarillo).
-   Si no se van a poner testimonios, se borra la sección completa.
-2. **Las fotos de las láminas y el menú impreso ya están**, pero el menú es un PDF de
-   5,4&nbsp;MB. Si algún día pesa demasiado, se baja la calidad de los fondos en el script
-   que lo genera.
+1. **Las cuatro láminas siguen juntas en su propia sección**, justo encima de los
+   testimonios. Como ambas son bandas de color plano, **chocan**. La idea acordada es
+   repartirlas por la página en vez de dejarlas en bloque.
+2. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
+   fondos en el script que lo genera.
 
 ### El menú en PDF
 

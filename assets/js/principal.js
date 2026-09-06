@@ -3,8 +3,10 @@
    1. Menú móvil
    2. Resaltado de la sección activa en el menú
    3. Comparador antes / después
-   4. Carrusel de testimonios
-   5. Fecha mínima del formulario y año del pie
+   4. Aparición escalonada de los recados
+   4b. Carta: atajos de categoría y abrir todas
+   5. WhatsApp según el contexto
+   6. Formulario y pie
    =========================================================== */
 (function () {
   'use strict';
@@ -89,50 +91,73 @@
     pintar();
   });
 
-  /* ---------- 4. Carrusel de testimonios ---------- */
-  var pista = document.getElementById('pista');
+  /* ---------- 4. Los recados se pegan uno tras otro ----------
+     Cinco reseñas apareciendo a la vez es un parpadeo; escalonadas se
+     leen como alguien pegándolas en la pared. Si el visitante pidió
+     menos movimiento, el CSS ya las deja puestas y esto no corre. */
+  var pared = document.querySelector('.recados');
+  var quietud = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  if (pista) {
-    var slides = Array.prototype.slice.call(pista.querySelectorAll('.testimonio'));
-    var puntos = document.getElementById('puntos');
-    var actual = 0;
+  if (pared && !quietud.matches && 'IntersectionObserver' in window) {
+    var recados = Array.prototype.slice.call(pared.querySelectorAll('.recado'));
+    pared.setAttribute('data-animar', '');   // recién aquí se vuelven invisibles
 
-    // Los puntos se generan según cuántos testimonios haya en el HTML.
-    slides.forEach(function (_, i) {
-      var p = document.createElement('button');
-      p.type = 'button';
-      p.setAttribute('role', 'tab');
-      p.setAttribute('aria-label', 'Testimonio ' + (i + 1));
-      p.addEventListener('click', function () { mostrar(i); });
-      puntos.appendChild(p);
+    var pegador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) { return; }
+        e.target.style.transitionDelay = (recados.indexOf(e.target) * 70) + 'ms';
+        e.target.setAttribute('data-visible', '');
+        pegador.unobserve(e.target);
+      });
+    }, { threshold: .15 });
+
+    recados.forEach(function (r) { pegador.observe(r); });
+
+    // Red de seguridad: si a los dos segundos quedan recados sin reportar
+    // (pestaña en segundo plano, observador congelado), se quita el atributo
+    // que los ocultaba. Quitarlo no depende de que la transición corra: la
+    // regla de opacidad simplemente deja de aplicar.
+    setTimeout(function () {
+      pared.removeAttribute('data-animar');
+    }, 2000);
+  }
+
+  /* ---------- 4b. La carta: atajos y "abrir todas" ----------
+     Las categorías abren y cierran solas porque son <details>. Esto solo
+     agrega dos comodidades: los atajos de arriba, que abren la categoría
+     y la traen a pantalla, y el botón que las abre o cierra todas. */
+  var grupos = Array.prototype.slice.call(document.querySelectorAll('.grupo'));
+
+  if (grupos.length) {
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (chip) {
+      chip.addEventListener('click', function () {
+        var g = document.getElementById(chip.getAttribute('data-abre'));
+        if (!g) { return; }
+        g.open = true;
+        g.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      });
     });
 
-    var listaPuntos = Array.prototype.slice.call(puntos.children);
+    var todas = document.getElementById('abrirTodas');
 
-    function mostrar(i) {
-      actual = (i + slides.length) % slides.length;
-      slides.forEach(function (s, n) {
-        if (n === actual) {
-          s.setAttribute('data-activo', '');
-        } else {
-          s.removeAttribute('data-activo');
-        }
+    if (todas) {
+      todas.addEventListener('click', function () {
+        var abrir = todas.getAttribute('aria-expanded') !== 'true';
+        grupos.forEach(function (g) { g.open = abrir; });
+        todas.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+        todas.textContent = abrir ? 'Cerrar todas' : 'Abrir todas';
       });
-      listaPuntos.forEach(function (p, n) {
-        p.setAttribute('aria-selected', n === actual ? 'true' : 'false');
+
+      // Si el visitante abre o cierra una a mano, el botón se pone al día.
+      grupos.forEach(function (g) {
+        g.addEventListener('toggle', function () {
+          var abiertas = grupos.filter(function (x) { return x.open; }).length;
+          var todasAbiertas = abiertas === grupos.length;
+          todas.setAttribute('aria-expanded', todasAbiertas ? 'true' : 'false');
+          todas.textContent = todasAbiertas ? 'Cerrar todas' : 'Abrir todas';
+        });
       });
     }
-
-    document.getElementById('anterior').addEventListener('click', function () { mostrar(actual - 1); });
-    document.getElementById('siguiente').addEventListener('click', function () { mostrar(actual + 1); });
-
-    // Flechas del teclado cuando el carrusel tiene el foco dentro.
-    document.getElementById('carrusel').addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft')  { mostrar(actual - 1); }
-      if (e.key === 'ArrowRight') { mostrar(actual + 1); }
-    });
-
-    mostrar(0);
   }
 
   /* ---------- 5. WhatsApp según el contexto ----------

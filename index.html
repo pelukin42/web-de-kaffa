@@ -311,10 +311,14 @@
     </div>
 
     <!-- ===========================================================
-         LA CARTA
-         Platos, descripciones y precios tomados del menú oficial de
-         Kaffa (FINAL AF_KaffaMenu v3). Los precios están en colones y
-         cambian: por eso el pie remite a WhatsApp para confirmarlos.
+         LA CARTA, POR CATEGORÍAS
+         Las ocho categorías del menú oficial de Kaffa
+         (FINAL AF_KaffaMenu v3.pdf), con sus 171 renglones. Van cerradas:
+         se abre la que interese y no hay que recorrer la carta entera.
+         Son <details>, así que abren y cierran sin JavaScript y el
+         teclado las maneja solo. El JS agrega los atajos de arriba y
+         el "abrir todas".
+         Los precios cambian: por eso el pie remite a WhatsApp.
          =========================================================== -->
     <div class="carta" id="carta">
 
@@ -324,141 +328,491 @@
         <p class="bajada">
           Recetas de familia y producto de primera. Algunos platos llevan más de
           cincuenta años en esta casa; otros los inventaron don Minor y doña Carmen
-          detrás de la barra.
+          detrás de la barra. Abrí la categoría que le interese.
         </p>
       </header>
 
-    <div class="carta__seccion" id="carta-desayunos">
-      <figure class="carta__foto"><img src="assets/img/desayuno-tipico.jpg" alt="Desayuno típico de Kaffa: gallo pinto, huevos fritos, tortillas palmeadas y natilla" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Desayunos<span class="carta__horario">8:00 a 11:45 a.&nbsp;m.</span></h4>
+      <div class="chips" role="group" aria-label="Ir a una categoría de la carta">
+        <button type="button" class="chip" data-abre="carta-desayunos">Desayunos</button>
+        <button type="button" class="chip" data-abre="carta-entradas">Entradas, cremas y ensaladas</button>
+        <button type="button" class="chip" data-abre="carta-fuertes">Almuerzos y platillos fuertes</button>
+        <button type="button" class="chip" data-abre="carta-boulangerie">Boulangerie y crepería</button>
+        <button type="button" class="chip" data-abre="carta-postres">Postres y repostería</button>
+        <button type="button" class="chip" data-abre="carta-cafe">Café de especialidad</button>
+        <button type="button" class="chip" data-abre="carta-bebidas">Bebidas</button>
+        <button type="button" class="chip" data-abre="carta-llevar">Para llevar a casa</button>
+      </div>
+
+      <div class="carta__mando">
+        <button type="button" class="carta__todas" id="abrirTodas" aria-expanded="false">Abrir todas</button>
+      </div>
+
+    <details class="grupo" id="carta-desayunos">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Desayunos</h4>
+        <span class="grupo__pista">Con café y jugo de naranja incluidos</span>
+        <span class="grupo__meta"><span class="grupo__horario">8:00 a 11:45 a.&nbsp;m.</span><span class="grupo__cuenta">21 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/desayuno-tipico.jpg" alt="Desayuno típico de Kaffa: gallo pinto, huevos fritos, tortillas palmeadas y natilla" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <p class="sub__nota">¿Qué sería de nuestra vida sin el desayuno? En Kaffa nos esmeramos para que comencés tu día con el mejor sabor y tengás toda la energía para cumplir tus metas.</p>
         <ul class="platos">
-        <li><span class="plato__nombre">Típico</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Gallo pinto, huevo a su gusto y pan o tortilla palmeada. Incluye café negro o con leche y jugo de naranja.</span></li>
-        <li><span class="plato__nombre">Inter</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Omelette relleno de jamón y queso, con pan francés o tortilla palmeada. Incluye café y jugo.</span></li>
-        <li><span class="plato__nombre">Americano</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Huevos al gusto, tocineta, papas salteadas y pan francés. Incluye café y jugo.</span></li>
-        <li><span class="plato__nombre">Waffles Kaffa</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Waffles o pancakes de la casa, tocineta y huevos al gusto.</span></li>
-        <li><span class="plato__nombre">Tostadas de aguacate</span><span class="plato__precio">¢6.870</span><span class="plato__nota">Dos tostadas de aguacate con huevo al gusto y tocineta, con taza de frutas, café y jugo de naranja.</span></li>
-        <li><span class="plato__nombre">Continental</span><span class="plato__precio">¢6.000</span><span class="plato__nota">Huevos revueltos con jamón, pan francés o tortilla palmeada y frutas tropicales.</span></li>
-        <li><span class="plato__nombre">Saludable</span><span class="plato__precio">¢5.500</span><span class="plato__nota">Frutas tropicales con granola y yogurt. Incluye café.</span></li>
-        <li><span class="plato__nombre">Para acompañar</span><span class="plato__precio">desde ¢800</span><span class="plato__nota">Tostadas francesas, plátanos maduros, queso frito, tocineta, natilla u orden de frutas.</span></li>
+          <li><span class="plato__nombre">Típico</span><span class="plato__precio">¢6.500</span><span class="plato__nota">¡La combinación ganadora! Gallo pinto, huevo a tu gusto, acompañado de pan o tortilla palmeada. Incluye café negro o con leche y jugo de naranja.</span></li>
+          <li><span class="plato__nombre">Inter</span><span class="plato__precio">¢6.500</span><span class="plato__nota">¡Empecemos el día con huevos! Omelette relleno de jamón y queso, acompañado de pan francés o tortilla palmeada. Incluye café negro o con leche y jugo de naranja.</span></li>
+          <li><span class="plato__nombre">Continental</span><span class="plato__precio">¢6.000</span><span class="plato__nota">Huevos revueltos con jamón, pan francés o tortilla palmeada y frutas tropicales. Incluye café negro o con leche y jugo de naranja.</span></li>
+          <li><span class="plato__nombre">Tostadas de aguacate</span><span class="plato__precio">¢6.870</span><span class="plato__nota">Dos deliciosas tostadas de aguacate con huevo al gusto y tocineta, acompañadas de una taza pequeña de frutas, café y jugo de naranja.</span></li>
+          <li><span class="plato__nombre">Waffles Kaffa</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Waffles o pancakes de la casa, tocineta, huevos a tu gusto y café a elegir entre negro y con leche.</span></li>
+          <li><span class="plato__nombre">Americano</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Huevos a tu gusto, tocineta, papas salteadas, pan francés, café a elegir entre negro o con leche y jugo de naranja.</span></li>
+          <li><span class="plato__nombre">Saludable</span><span class="plato__precio">¢5.500</span><span class="plato__nota">Frutas tropicales acompañadas de granola y yogurt. Incluye café.</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-entradas">
-      <figure class="carta__foto"><img src="assets/img/fondue-pain.jpg" alt="Fondue de quesos servido dentro de una hogaza de pan de la casa" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Entradas, cremas y ensaladas</h4>
+      <div class="sub">
+        <h5 class="sub__titulo">¿Se te antoja algo más?</h5>
         <ul class="platos">
-        <li><span class="plato__nombre">Fondue en pain</span><span class="plato__precio">¢5.590</span><span class="plato__nota">Mozzarella, manchego, gouda y parmesano fundidos sobre una hogaza de pan fresco hecha en casa.</span></li>
-        <li><span class="plato__nombre">Papas campesinas con alioli</span><span class="plato__precio">¢4.800</span></li>
-        <li><span class="plato__nombre">Ensalada de camarón</span><span class="plato__precio">¢5.590</span><span class="plato__nota">Mix de lechugas con pepino, tomate, aguacate y camarones al ajillo.</span></li>
-        <li><span class="plato__nombre">Cremas</span><span class="plato__precio">¢4.500 – ¢4.750</span><span class="plato__nota">Pejibaye, ayote, tomate o cebolla gratinada con mozzarella. En bowl de pan, +¢1.000.</span></li>
-        <li><span class="plato__nombre">Ensalada Kaffa</span><span class="plato__precio">¢6.000</span><span class="plato__nota">La veterana de la familia: lechuga, tomate, zanahoria, maíz dulce y aderezo de la casa.</span></li>
-        <li><span class="plato__nombre">Clásica césar</span><span class="plato__precio">¢6.150</span></li>
-        <li><span class="plato__nombre">Oriental</span><span class="plato__precio">¢7.300</span><span class="plato__nota">Lechuga, cranberries, reducción de balsámico y fajitas de pollo empanizadas.</span></li>
-        <li><span class="plato__nombre">Pan pita rellena</span><span class="plato__precio">¢6.150</span><span class="plato__nota">Con fajitas de pollo o de res.</span></li>
-        <li><span class="plato__nombre">Wraps</span><span class="plato__precio">¢5.150</span><span class="plato__nota">Lechuga, tomate, queso crema y fajitas de res o pollo, con papitas fritas.</span></li>
+          <li><span class="plato__nombre">Carne en salsa</span><span class="plato__precio">¢2.800</span></li>
+          <li><span class="plato__nombre">Huevos rancheros</span><span class="plato__precio">¢2.350</span></li>
+          <li><span class="plato__nombre">Huevos revueltos</span><span class="plato__precio">¢1.350</span></li>
+          <li><span class="plato__nombre">Tocineta</span><span class="plato__precio">¢2.600</span></li>
+          <li><span class="plato__nombre">Tostadas francesas</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Waffles o pancakes</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Orden de frutas</span><span class="plato__precio">¢2.350</span></li>
+          <li><span class="plato__nombre">Plátanos maduros</span><span class="plato__precio">¢1.700</span></li>
+          <li><span class="plato__nombre">Queso frito</span><span class="plato__precio">¢1.700</span></li>
+          <li><span class="plato__nombre">Yogurt</span><span class="plato__precio">¢1.300</span></li>
+          <li><span class="plato__nombre">Granola</span><span class="plato__precio">¢1.300</span></li>
+          <li><span class="plato__nombre">Orden de tortilla</span><span class="plato__precio">¢850</span></li>
+          <li><span class="plato__nombre">Orden de pan</span><span class="plato__precio">¢850</span></li>
+          <li><span class="plato__nombre">Natillas</span><span class="plato__precio">¢800</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-fuertes">
-      <figure class="carta__foto"><img src="assets/img/filete-mignon.jpg" alt="Filete mignon a la parrilla con papas cajún y ensalada verde" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Platillos fuertes</h4>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-entradas">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Entradas, cremas y ensaladas</h4>
+        <span class="grupo__pista">Fondue, cremas de la casa, ensaladas, pan pita y wraps</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">13 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/fondue-pain.jpg" alt="Fondue de quesos servido dentro de una hogaza de pan de la casa" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <h5 class="sub__titulo">Entradas</h5>
         <ul class="platos">
-        <li><span class="plato__nombre">Lomito al grill</span><span class="plato__precio">¢9.800</span><span class="plato__nota">A la parrilla, con papitas al romero y vegetales salteados.</span></li>
-        <li><span class="plato__nombre">Salmón a la mantequilla</span><span class="plato__precio">¢9.500</span><span class="plato__nota">Al limón, a la parrilla, con puré de papa y vegetales salteados.</span></li>
-        <li><span class="plato__nombre">Churrasco</span><span class="plato__precio">¢8.800</span><span class="plato__nota">A la parrilla, con papa asada y vegetales grillados.</span></li>
-        <li><span class="plato__nombre">Pechuga al grill</span><span class="plato__precio">¢8.800</span><span class="plato__nota">Con papas al romero y vegetales salteados.</span></li>
-        <li><span class="plato__nombre">Pollo picata</span><span class="plato__precio">¢8.800</span><span class="plato__nota">Un clásico italiano, con pasta aliolí y ensalada de palmito.</span></li>
-        <li><span class="plato__nombre">Filete mignon</span><span class="plato__precio">¢8.100</span><span class="plato__nota">Con papas cajún y ensalada verde.</span></li>
-        <li><span class="plato__nombre">Fajitas mixtas</span><span class="plato__precio">¢7.800</span><span class="plato__nota">Pollo, res y cerdo, con papas fritas y ensalada de la casa.</span></li>
-        <li><span class="plato__nombre">Filete de tilapia</span><span class="plato__precio">¢7.600</span><span class="plato__nota">Tilapia fresca costarricense, con papas fritas y ensalada.</span></li>
-        <li><span class="plato__nombre">Pastas</span><span class="plato__precio">¢6.500 – ¢7.000</span><span class="plato__nota">Pomodoro con tomates rostizados a las hierbas, bolognesa, pesto, alfredo o con pollo.</span></li>
-        <li><span class="plato__nombre">Lasaña</span><span class="plato__precio">¢7.200</span><span class="plato__nota">De pollo, carne o palmito, con pan de la casa y ensalada Kaffa.</span></li>
-        <li><span class="plato__nombre">Casado con postre</span><span class="plato__precio">¢5.500</span><span class="plato__nota">Arroz, frijoles, huevo, plátano, proteína a elegir, refresco natural y postre del día.</span></li>
+          <li><span class="plato__nombre">Fondue en pain</span><span class="plato__precio">¢5.590</span><span class="plato__nota">Deliciosos quesos fundidos a base de mozzarella, manchego, gouda y parmesano, servidos sobre una hogaza de pan fresco preparada en casa.</span></li>
+          <li><span class="plato__nombre">Ensalada de camarón</span><span class="plato__precio">¢5.590</span><span class="plato__nota">Mix de lechugas acompañado de pepino, tomate, aguacate y camarones al ajillo.</span></li>
+          <li><span class="plato__nombre">Papas campesinas con alioli</span><span class="plato__precio">¢4.800</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-boulangerie">
-      <figure class="carta__foto"><img src="assets/img/pan-pita.jpg" alt="Crepa rellena de fajitas de pollo con pimientos" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Boulangerie y crepería</h4>
+      <div class="sub">
+        <h5 class="sub__titulo">Cremas</h5>
+        <p class="sub__nota">Recién hechas con nuestras recetas de familia. Podés pedirlas en bowl de pan, +¢1.000.</p>
         <ul class="platos">
-        <li><span class="plato__nombre">Tostada de pizza</span><span class="plato__precio">¢5.050 / ¢5.300</span><span class="plato__nota">La inventó don Minor hace más de diez años: pan de especies, carne al pomodoro, hongos y queso gratinado.</span></li>
-        <li><span class="plato__nombre">Tostada de hongos</span><span class="plato__precio">¢5.050 / ¢5.300</span><span class="plato__nota">La inventó doña Carmen y lleva años siendo <i>best seller</i>: pan de hierbas, hongos al ajillo y queso gratinado.</span></li>
-        <li><span class="plato__nombre">Pastel de pollo</span><span class="plato__precio">¢7.500</span><span class="plato__nota">Esta receta está en la familia desde hace más de cincuenta años.</span></li>
-        <li><span class="plato__nombre">Pastel de yuca</span><span class="plato__precio">¢7.500</span><span class="plato__nota">Con carne mechada al mejor estilo costarricense.</span></li>
-        <li><span class="plato__nombre">Pastel de palmito</span><span class="plato__precio">¢6.710</span></li>
-        <li><span class="plato__nombre">Sándwiches</span><span class="plato__precio">¢6.500 – ¢7.850</span><span class="plato__nota">En pan trenza de hierbas hecho en la casa: de pollo, roast beef, jamón de pavo, jamón y queso, queso, italiano, u hongos y espinaca.</span></li>
-        <li><span class="plato__nombre">Arreglados tipo lápiz</span><span class="plato__precio">¢6.900</span><span class="plato__nota">En pan eiffel, con frijoles molidos, queso, mano de piedra, lechuga y tomate.</span></li>
-        <li><span class="plato__nombre">Crepas saladas</span><span class="plato__precio">¢5.400 – ¢7.850</span><span class="plato__nota">Pollo y champiñones, jamón y espárragos, palmito o combinada. Bañadas en bechamel y mozzarella.</span></li>
-        <li><span class="plato__nombre">Quiches</span><span class="plato__precio">¢7.000</span><span class="plato__nota">Espinaca, brócoli, hongos o loraine, con ensalada de la casa.</span></li>
+          <li><span class="plato__nombre">Cebolla</span><span class="plato__precio">¢4.750</span><span class="plato__nota">Viene acompañada de crotones y gratinada con queso mozzarella.</span></li>
+          <li><span class="plato__nombre">Tomate</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Pejibaye</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Ayote</span><span class="plato__precio">¢4.500</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-postres">
-      <figure class="carta__foto"><img src="assets/img/torta-chilena.jpg" alt="Rebanada de torta chilena en un plato de Kaffa Café" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Postres y repostería</h4>
+      <div class="sub">
+        <h5 class="sub__titulo">Ensaladas</h5>
         <ul class="platos">
-        <li><span class="plato__nombre">Torta chilena</span><span class="plato__precio">¢3.950</span></li>
-        <li><span class="plato__nombre">Torta Kaffa</span><span class="plato__precio">¢3.950</span></li>
-        <li><span class="plato__nombre">Tres leches</span><span class="plato__precio">¢4.250</span></li>
-        <li><span class="plato__nombre">Cheesecake de fresa</span><span class="plato__precio">¢4.250</span></li>
-        <li><span class="plato__nombre">Tiramizú</span><span class="plato__precio">¢4.500</span></li>
-        <li><span class="plato__nombre">Pies</span><span class="plato__precio">¢3.950 – ¢5.050</span><span class="plato__nota">Limón, manzana, maracuyá o nueces. Algunos se sirven con helado.</span></li>
-        <li><span class="plato__nombre">Queques</span><span class="plato__precio">¢3.400 – ¢4.500</span><span class="plato__nota">Chocolate, zanahoria, higos, manzana, moka, banano con chispas o red velvet.</span></li>
-        <li><span class="plato__nombre">Crepas dulces</span><span class="plato__precio">¢5.600 – ¢5.820</span><span class="plato__nota">Melocotón, caramelo, chocolate y nueces, fresas, <i>light</i> de frutas o mixta.</span></li>
-        <li><span class="plato__nombre">Opción keto y <i>gluten friendly</i></span><span class="plato__precio">¢4.370 – ¢4.500</span><span class="plato__nota">Queque de caramelo y nueces, de frutos rojos o pie de limón y maracuyá.</span></li>
-        <li><span class="plato__nombre">Repostería salada</span><span class="plato__precio">¢1.700 – ¢4.000</span><span class="plato__nota">Empanaditas, pastelitos de carne, arrolladitos de jamón y queso, palitos de queso, alfajores.</span></li>
+          <li><span class="plato__nombre">Oriental</span><span class="plato__precio">¢7.300</span><span class="plato__nota">Sin lugar a dudas uno de nuestros favoritos. Lechuga, cranberries, reducción de balsámico y fajitas de pollo empanizadas. ¡Una auténtica delicia!</span></li>
+          <li><span class="plato__nombre">Clásica césar</span><span class="plato__precio">¢6.150</span><span class="plato__nota">Lechuga romana, queso parmesano, crutones y aderezo césar.</span></li>
+          <li><span class="plato__nombre">Kaffa</span><span class="plato__precio">¢6.000</span><span class="plato__nota">La veterana de la familia: lechuga, tomate, zanahoria, maíz dulce y nuestro aderezo de la casa.</span></li>
+          <li><span class="plato__nombre">Adicional de pollo</span><span class="plato__precio">¢1.700</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-cafe">
-      <figure class="carta__foto"><img src="assets/img/cafe-tazas.jpg" alt="Dos tazas de café de Kaffa con arte en la leche sobre la barra" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Café de especialidad</h4>
+      <div class="sub">
+        <h5 class="sub__titulo">Pan pita y wraps</h5>
         <ul class="platos">
-        <li><span class="plato__nombre">Espresso</span><span class="plato__precio">¢1.900</span></li>
-        <li><span class="plato__nombre">Negro</span><span class="plato__precio">¢2.000</span></li>
-        <li><span class="plato__nombre">Con leche</span><span class="plato__precio">¢2.400</span></li>
-        <li><span class="plato__nombre">Capuccino</span><span class="plato__precio">¢2.800</span><span class="plato__nota">Con sabores, ¢3.150.</span></li>
-        <li><span class="plato__nombre">Infusiones</span><span class="plato__precio">¢1.680 – ¢3.355</span><span class="plato__nota">Según sean una, dos, tres o cuatro tazas. También hay té en agua, té en leche y agua dulce.</span></li>
-        <li><span class="plato__nombre">Kaffa</span><span class="plato__precio">¢3.920</span><span class="plato__nota">La bebida insignia, con más de dieciocho años de historia: café, leche condensada, ron, cocoa y helado.</span></li>
-        <li><span class="plato__nombre">Café de la abuela</span><span class="plato__precio">¢2.460</span><span class="plato__nota">Café con leche y tapa de dulce. Un clásico de nuestra cultura.</span></li>
-        <li><span class="plato__nombre">Los volcanes</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Café, cocoa, ron, vainilla, canela, helado y leche.</span></li>
-        <li><span class="plato__nombre">Las nubes</span><span class="plato__precio">¢3.360</span><span class="plato__nota">Dulce molido, leche condensada, ron y una espuma de leche que hace honor a su nombre.</span></li>
-        <li><span class="plato__nombre">Chocolate caliente</span><span class="plato__precio">¢2.800</span><span class="plato__nota">La receta de la abuela. Tomarlo es sinónimo de sentirse en casa.</span></li>
-        <li><span class="plato__nombre">Fríos</span><span class="plato__precio">¢3.920 – ¢5.050</span><span class="plato__nota">Frappuccino con chantilly, shiver de café, moka, chocomenta, matcha, chai y más.</span></li>
-        <li><span class="plato__nombre">Leche de almendra</span><span class="plato__precio">+¢500</span><span class="plato__nota">También hay entera, descremada y deslactosada.</span></li>
+          <li><span class="plato__nombre">Pan pita rellena</span><span class="plato__precio">¢6.150</span><span class="plato__nota">A elegir entre fajitas de pollo o de res.</span></li>
+          <li><span class="plato__nombre">Wraps</span><span class="plato__precio">¢5.150</span><span class="plato__nota">Rellenos de lechuga, tomate, queso crema y fajitas de res o de pollo, acompañados de papitas fritas.</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-bebidas">
-      <figure class="carta__foto"><img src="assets/img/cafe-frio.jpg" alt="Dos cafés fríos con chantilly y sirope de chocolate" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Bebidas</h4>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-fuertes">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Almuerzos y platillos fuertes</h4>
+        <span class="grupo__pista">Carnes y pescados a la parrilla, pastas y el casado del día</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">15 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/filete-mignon.jpg" alt="Filete mignon a la parrilla con papas cajún y ensalada verde" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <h5 class="sub__titulo">De la tierra y el mar</h5>
         <ul class="platos">
-        <li><span class="plato__nombre">Naturales en agua</span><span class="plato__precio">¢2.000</span><span class="plato__nota">Cien por ciento de fruta fresca, comprada directamente al agricultor.</span></li>
-        <li><span class="plato__nombre">Naturales en leche</span><span class="plato__precio">¢2.800</span><span class="plato__nota">En leche de almendras, ¢2.800. Con hierbabuena, ¢2.500. Mix de frutas, ¢3.150.</span></li>
-        <li><span class="plato__nombre">Batidos</span><span class="plato__precio">¢4.500</span><span class="plato__nota">A base de fruta natural, con helado y leche. Son un postre de copa.</span></li>
-        <li><span class="plato__nombre">Gaseosas</span><span class="plato__precio">¢1.450</span></li>
-        <li><span class="plato__nombre">Vino tinto, blanco o sangría</span><span class="plato__precio">¢3.950</span></li>
-        <li><span class="plato__nombre">Cerveza artesanal</span><span class="plato__precio">¢2.700</span></li>
+          <li><span class="plato__nombre">Lomito al grill</span><span class="plato__precio">¢9.800</span><span class="plato__nota">Preparado a la parrilla, acompañado de papitas al romero y vegetales salteados.</span></li>
+          <li><span class="plato__nombre">Salmón a la mantequilla</span><span class="plato__precio">¢9.500</span><span class="plato__nota">¡Sabemos que este plato te encanta! Salmón al limón preparado a la parrilla, acompañado de puré de papa y vegetales salteados.</span></li>
+          <li><span class="plato__nombre">Churrasco</span><span class="plato__precio">¢8.800</span><span class="plato__nota">Este delicioso corte de carne lo preparamos a la parrilla y lo acompañamos de papa asada y vegetales grillados.</span></li>
+          <li><span class="plato__nombre">Pechuga al grill</span><span class="plato__precio">¢8.800</span><span class="plato__nota">Pechuga de pollo a la parrilla, acompañada de papas al romero y vegetales salteados.</span></li>
+          <li><span class="plato__nombre">Pollo picata</span><span class="plato__precio">¢8.800</span><span class="plato__nota">Un clásico de la comida italiana, acompañado de pasta aliolí y ensalada de palmito con vinagreta.</span></li>
+          <li><span class="plato__nombre">Filete mignon</span><span class="plato__precio">¢8.100</span><span class="plato__nota">Acompañado de papas cajún y ensalada verde.</span></li>
+          <li><span class="plato__nombre">Fajitas mixtas</span><span class="plato__precio">¢7.800</span><span class="plato__nota">Fajitas de pollo, res y cerdo acompañadas de papas fritas y ensalada de la casa.</span></li>
+          <li><span class="plato__nombre">Filete de tilapia</span><span class="plato__precio">¢7.600</span><span class="plato__nota">Filete de tilapia fresca costarricense, acompañado de papas fritas y nuestra ensalada de la casa.</span></li>
+          <li><span class="plato__nombre">Casado con postre</span><span class="plato__precio">¢5.500</span><span class="plato__nota">Arroz, frijoles, huevo, plátano, proteína a elegir y refresco natural, más el postre del día.</span></li>
         </ul>
       </div>
-    </div>
-    <div class="carta__seccion" id="carta-llevar">
-      <figure class="carta__foto"><img src="assets/img/cafe-bolsas.jpg" alt="Bolsas de café Kaffa en la vitrina del local" width="880" height="660" loading="lazy"></figure>
-      <div class="carta__lista">
-        <h4>Para llevar a casa</h4>
+      <div class="sub">
+        <h5 class="sub__titulo">Pastas</h5>
         <ul class="platos">
-        <li><span class="plato__nombre">Café en grano, bolsa de 1&nbsp;lb</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Valle Central SHB-EP, cosechado entre 1200 y 1700&nbsp;msnm. Caturra, catuaí y obatá, con 83 puntos de catación. Dulce a caña de azúcar y caramelo, acidez cítrica a naranja, cuerpo medio y postgusto achocolatado.</span></li>
-        <li><span class="plato__nombre">Vandola</span><span class="plato__precio">¢38.000</span><span class="plato__nota">Filtrado por goteo, hecha a mano por alfareros costarricenses. Pregunte por los estilos disponibles o vea <a href="https://vandolaoficial.com" target="_blank" rel="noopener">vandolaoficial.com</a>.</span></li>
+          <li><span class="plato__nombre">Lasaña</span><span class="plato__precio">¢7.200</span><span class="plato__nota">Todas nuestras lasañas van acompañadas de nuestro pan de la casa y ensalada Kaffa. Podés elegirlas de pollo, carne o palmito.</span></li>
+          <li><span class="plato__nombre">Con pollo</span><span class="plato__precio">¢7.000</span><span class="plato__nota">Pasta en salsa bechamel, con un intenso sabor a vino blanco, acompañada de trozos de pollo.</span></li>
+          <li><span class="plato__nombre">Bolognesa</span><span class="plato__precio">¢7.000</span><span class="plato__nota">Una deliciosa combinación entre nuestra salsa de tomate natural y carne.</span></li>
+          <li><span class="plato__nombre">Pesto</span><span class="plato__precio">¢7.000</span><span class="plato__nota">La mejor forma de probar nuestro pesto. Podés pedirla con adicional de pollo, +¢1.000, o camarón, +¢1.200.</span></li>
+          <li><span class="plato__nombre">Alfredo</span><span class="plato__precio">¢7.000</span><span class="plato__nota">Tradicional salsa alfredo, acompañada de jamón y queso mozzarella. También la podés pedir con camarones, +¢1.200.</span></li>
+          <li><span class="plato__nombre">Al pomodoro</span><span class="plato__precio">¢6.500</span><span class="plato__nota">La salsa que acompaña esta pasta es elaborada 100&nbsp;% en nuestra cocina, con tomates rostizados a las hierbas.</span></li>
         </ul>
       </div>
-    </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-boulangerie">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Boulangerie y crepería</h4>
+        <span class="grupo__pista">Sándwiches en pan de la casa, pasteles, tostadas, crepas y quiches</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">24 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/pan-pita.jpg" alt="Crepa rellena de fajitas de pollo con pimientos" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <h5 class="sub__titulo">Sándwiches</h5>
+        <p class="sub__nota">Hechos con nuestro pan estilo trenza de hierbas y nuestro pan eiffel.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">De pollo</span><span class="plato__precio">¢7.850</span><span class="plato__nota">Hecho con nuestro pan estilo trenza de hierbas, con fajitas de pollo. ¡Delicia absoluta!</span></li>
+          <li><span class="plato__nombre">Roast beef</span><span class="plato__precio">¢7.500</span><span class="plato__nota">Roast beef de primera calidad, aderezo de mostaza, acompañado de papitas fritas.</span></li>
+          <li><span class="plato__nombre">Jamón de pavo</span><span class="plato__precio">¢7.500</span><span class="plato__nota">Con aderezo de mostaza, ensalada de tomate y pepino y las infaltables papitas fritas.</span></li>
+          <li><span class="plato__nombre">Jamón y queso</span><span class="plato__precio">¢6.900</span><span class="plato__nota">Con mantequilla de ajo, queso manchego y cheddar. Acompañado de ensalada de la casa y papas fritas.</span></li>
+          <li><span class="plato__nombre">Tipo lápiz</span><span class="plato__precio">¢6.900</span><span class="plato__nota">Un clásico costarricense, hecho en pan eiffel, con frijoles molidos, queso, mano de piedra, lechuga, tomate y aderezo de mayonesa con mostaza.</span></li>
+          <li><span class="plato__nombre">Queso</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Con mantequilla de ajo y queso manchego. Acompañado de ensalada de la casa y papas fritas.</span></li>
+          <li><span class="plato__nombre">Hongos y espinaca</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Hecho con pan vegano de tomate y albahaca, relleno de hongos y espinaca, acompañado de crema de pejibaye y papitas.</span></li>
+          <li><span class="plato__nombre">Italiano</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Hecho con pan eiffel, pesto, tomate y queso mozzarella.</span></li>
+          <li><span class="plato__nombre">Arreglados</span><span class="plato__precio">¢5.590</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Pasteles</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Pollo</span><span class="plato__precio">¢7.500</span><span class="plato__nota">Esta receta está en nuestra familia desde hace más de cincuenta años. Tenés que probarlo. Viene acompañado de nuestra ensalada de la casa.</span></li>
+          <li><span class="plato__nombre">Yuca</span><span class="plato__precio">¢7.500</span><span class="plato__nota">Pastel de yuca con carne mechada arreglada al mejor estilo costarricense, acompañado de ensalada.</span></li>
+          <li><span class="plato__nombre">Palmito</span><span class="plato__precio">¢6.710</span><span class="plato__nota">Si sos como nosotros, que nos encanta el palmito, tenés que pedir este best seller.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Tostadas</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Tostada de pizza</span><span class="plato__precio">¢5.050 / ¢5.300</span><span class="plato__nota">Este platillo lo inventó don Minor hace más de diez años: tostada de nuestro pan de especies, con carne al pomodoro, hongos y queso gratinado. Pequeña o grande.</span></li>
+          <li><span class="plato__nombre">Tostada de hongos</span><span class="plato__precio">¢5.050 / ¢5.300</span><span class="plato__nota">La inventó doña Carmen y ha sido best seller por años: tostada de nuestro pan de hierbas, con hongos al ajillo y queso gratinado. Pequeña o grande.</span></li>
+          <li><span class="plato__nombre">Montadito de jamón y queso</span><span class="plato__precio">¢5.500</span><span class="plato__nota">Tortilla de harina rellena de frijoles molidos, queso mozzarella y jamón. Acompañado de lechuga y pico de gallo.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Crepería coronadeña</h5>
+        <p class="sub__nota">Nuestras crepas han sido muy famosas en el cantón. Van bañadas en nuestra tradicional salsa bechamel y queso mozzarella; si las querés con salsa pomodoro, también te las podemos hacer. Todas vienen acompañadas de vegetales salteados.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Crepa combinada</span><span class="plato__precio">¢7.850</span><span class="plato__nota">Pequeña.</span></li>
+          <li><span class="plato__nombre">Pollo y champiñones</span><span class="plato__precio">¢6.150 / ¢6.500</span><span class="plato__nota">Pequeña o grande.</span></li>
+          <li><span class="plato__nombre">Jamón y espárragos</span><span class="plato__precio">¢6.150 / ¢6.500</span><span class="plato__nota">Pequeña o grande.</span></li>
+          <li><span class="plato__nombre">Espárragos</span><span class="plato__precio">¢5.400 / ¢7.400</span><span class="plato__nota">Pequeña o grande.</span></li>
+          <li><span class="plato__nombre">Palmito</span><span class="plato__precio">¢5.400 / ¢5.700</span><span class="plato__nota">Pequeña o grande.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Quiches</h5>
+        <p class="sub__nota">Acompañados de ensalada de la casa.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Espinaca</span><span class="plato__precio">¢7.000</span></li>
+          <li><span class="plato__nombre">Brócoli</span><span class="plato__precio">¢7.000</span></li>
+          <li><span class="plato__nombre">Hongos</span><span class="plato__precio">¢7.000</span></li>
+          <li><span class="plato__nombre">Loraine</span><span class="plato__precio">¢7.000</span></li>
+        </ul>
+      </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-postres">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Postres y repostería</h4>
+        <span class="grupo__pista">Tortas, pies, queques, crepas dulces y opciones keto y gluten friendly</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">39 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/torta-chilena.jpg" alt="Rebanada de torta chilena en un plato de Kaffa Café" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <h5 class="sub__titulo">Postres</h5>
+        <p class="sub__nota">Toda nuestra repostería está preparada con el mayor cuidado y frescura.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Torta Kaffa</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Torta chilena</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Torta de naranja</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Torta de chocofresa</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Tiramizú</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Cheesecake de fresa</span><span class="plato__precio">¢4.250</span></li>
+          <li><span class="plato__nombre">Tres leches</span><span class="plato__precio">¢4.250</span></li>
+          <li><span class="plato__nombre">Flan de caramelo</span><span class="plato__precio">¢3.950</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Pie</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Pie de nueces</span><span class="plato__precio">¢4.500</span><span class="plato__nota">Con helado, ¢5.050.</span></li>
+          <li><span class="plato__nombre">Pie de manzana</span><span class="plato__precio">¢3.950</span><span class="plato__nota">Con helado, ¢4.500.</span></li>
+          <li><span class="plato__nombre">Pie de limón</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Pie de maracuyá</span><span class="plato__precio">¢3.950</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Queque</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Queque de chocolate</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Queque moka</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Red velvet</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Queque de higos</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Queque de manzana</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Queque de zanahoria</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Queque seco</span><span class="plato__precio">¢3.400</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Crepas dulces</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Crepa mixta</span><span class="plato__precio">¢5.820</span></li>
+          <li><span class="plato__nombre">Crepa de melocotón</span><span class="plato__precio">¢5.600</span></li>
+          <li><span class="plato__nombre">Crepa de caramelo</span><span class="plato__precio">¢5.600</span></li>
+          <li><span class="plato__nombre">Crepa de chocolate y nueces</span><span class="plato__precio">¢5.600</span></li>
+          <li><span class="plato__nombre">Crepa de fresas</span><span class="plato__precio">¢5.600</span></li>
+          <li><span class="plato__nombre">Crepa light de frutas</span><span class="plato__precio">¢5.600</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Gluten friendly</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Queque de manzana</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Queque de banano con chispas de chocolate</span><span class="plato__precio">¢4.500</span></li>
+          <li><span class="plato__nombre">Brounie</span><span class="plato__precio">¢1.600</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Opción keto</h5>
+        <p class="sub__nota">De acuerdo a disponibilidad.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Queque de caramelo y nueces</span><span class="plato__precio">¢4.370</span></li>
+          <li><span class="plato__nombre">Queque de frutos rojos</span><span class="plato__precio">¢4.370</span></li>
+          <li><span class="plato__nombre">Pie de limón y maracuyá</span><span class="plato__precio">¢4.370</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Repostería salada</h5>
+        <p class="sub__nota">Acompañá tu hora del café con estas tentaciones.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Bolsa de palitos de queso</span><span class="plato__precio">¢2.570</span></li>
+          <li><span class="plato__nombre">Arrolladito de jamón y queso</span><span class="plato__precio">¢2.250</span></li>
+          <li><span class="plato__nombre">Pastelitos de carne</span><span class="plato__precio">¢2.250</span></li>
+          <li><span class="plato__nombre">Empanaditas</span><span class="plato__precio">¢2.250</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Repostería dulce</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Bolsitas de empanaditas</span><span class="plato__precio">¢4.000</span></li>
+          <li><span class="plato__nombre">Alfajor</span><span class="plato__precio">¢1.700</span></li>
+          <li><span class="plato__nombre">Barquitos</span><span class="plato__precio">¢1.700</span></li>
+          <li><span class="plato__nombre">Empanaditas</span><span class="plato__precio">¢1.700</span></li>
+        </ul>
+      </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-cafe">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Café de especialidad</h4>
+        <span class="grupo__pista">Calientes, fríos, tradicionales y los de la casa</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">40 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/cafe-tazas.jpg" alt="Dos tazas de café de Kaffa con arte en la leche sobre la barra" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <h5 class="sub__titulo">Calientes · clásicos</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Espresso</span><span class="plato__precio">¢1.900</span></li>
+          <li><span class="plato__nombre">Negro</span><span class="plato__precio">¢2.000</span></li>
+          <li><span class="plato__nombre">Con leche</span><span class="plato__precio">¢2.400</span></li>
+          <li><span class="plato__nombre">Cortado</span><span class="plato__precio">¢2.220</span></li>
+          <li><span class="plato__nombre">Capuccino</span><span class="plato__precio">¢2.800</span><span class="plato__nota">Con sabores, ¢3.150.</span></li>
+          <li><span class="plato__nombre">Té en leche</span><span class="plato__precio">¢2.550</span></li>
+          <li><span class="plato__nombre">Té en agua</span><span class="plato__precio">¢1.990</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Calientes · de la casa</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Kaffa</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Nuestra bebida insignia, con más de dieciocho años de historia. Suave mezcla de café, leche condensada, ron, cocoa y helado.</span></li>
+          <li><span class="plato__nombre">Café de la abuela</span><span class="plato__precio">¢2.460</span><span class="plato__nota">Transportate a las tardes de café donde la abuela, con este café con leche y tapa de dulce. Un clásico de nuestra cultura y de tu historia.</span></li>
+          <li><span class="plato__nombre">Los volcanes</span><span class="plato__precio">¢3.920</span><span class="plato__nota">¿No sabés si elegir chocolate caliente o un cafecito? Este es el elegido: café, cocoa, ron, vainilla, canela, helado y leche.</span></li>
+          <li><span class="plato__nombre">Caprichos</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Endulzate la vida con esta combinación de café, leche, leche condensada, ron, vainilla, helado y malvaviscos.</span></li>
+          <li><span class="plato__nombre">Capuccino irlandés</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Una deliciosa mezcla que no falla: café, leche, crema irlandesa y whisky.</span></li>
+          <li><span class="plato__nombre">Kaffa moka menta</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Si sos amante del chocolate con menta, este es tu café.</span></li>
+          <li><span class="plato__nombre">Primavera</span><span class="plato__precio">¢3.920</span><span class="plato__nota">Delicada mezcla de menta con leche condensada y whisky.</span></li>
+          <li><span class="plato__nombre">Pecado de ángel</span><span class="plato__precio">¢3.920</span><span class="plato__nota">¿Te gusta el anís? Tenés que probar esta deliciosa mezcla con nuestro café de especialidad.</span></li>
+          <li><span class="plato__nombre">Moccacino</span><span class="plato__precio">¢3.920</span></li>
+          <li><span class="plato__nombre">Las nubes</span><span class="plato__precio">¢3.360</span><span class="plato__nota">Combinación de dulce molido, leche condensada, ron y una espuma de leche que hace honor a su nombre.</span></li>
+          <li><span class="plato__nombre">Chocolate caliente</span><span class="plato__precio">¢2.800</span><span class="plato__nota">Esta receta evoca todas nuestras emociones, porque es la receta de nuestra abuelita. Tomarlo es sinónimo de sentirse en casa.</span></li>
+          <li><span class="plato__nombre">Infusiones</span><span class="plato__precio">¢1.680 – ¢3.355</span><span class="plato__nota">Según sean una, dos, tres o cuatro tazas.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Tradicionales</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Agua dulce</span><span class="plato__precio">¢2.250</span><span class="plato__nota">Con leche, ¢2.500.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Fríos</h5>
+        <p class="sub__nota">Elegí tu bebida con leche entera, descremada, deslactosada o de almendra, +¢500. Todas contienen leche, helado y azúcar.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Shiver de café</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Galleta oreo, helado y café. ¡Espectacular!</span></li>
+          <li><span class="plato__nombre">Frapuccino con chantilly</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Liviana combinación de espresso, leche y hielo. Si no querés azúcar, podés pedirlo con splenda.</span></li>
+          <li><span class="plato__nombre">Capuccino</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Un clásico frío con cocoa, canela y vainilla.</span></li>
+          <li><span class="plato__nombre">Capuccino irlandés</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Deliciosa mezcla de galleta maría, crema irlandesa y whisky.</span></li>
+          <li><span class="plato__nombre">Moka</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Suave mezcla de ron con sirope de moka.</span></li>
+          <li><span class="plato__nombre">Mariana</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Todos conocemos a una Mariana, ¿cierto? Este café es en honor a nuestra Mariana y está lleno de deliciosas cerezas rojas.</span></li>
+          <li><span class="plato__nombre">Las tres Marías</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Para recordar a nuestras tres Marías de la casa, con ingredientes que representan a cada una: vodka, cerezas rojas y melocotones.</span></li>
+          <li><span class="plato__nombre">Susurro de café</span><span class="plato__precio">¢5.050</span><span class="plato__nota">¡Como este no hay dos! Un deleite en tu boca: higos, galletas maría, leche condensada y sirope de caramelo.</span></li>
+          <li><span class="plato__nombre">Labrador</span><span class="plato__precio">¢5.050</span><span class="plato__nota">En honor a nuestro santo patrono: sirope de tiramizú, espresso y galletas maría.</span></li>
+          <li><span class="plato__nombre">Los alpes nevados</span><span class="plato__precio">¢5.050</span><span class="plato__nota">Una exquisita combinación de cocoa con canela, vainilla y pinolillo. Tan blanco y frío como los Alpes.</span></li>
+          <li><span class="plato__nombre">Coco jambo</span><span class="plato__precio">¢5.050</span><span class="plato__nota">El coco nunca falla, y menos con ron.</span></li>
+          <li><span class="plato__nombre">Tentación tropical</span><span class="plato__precio">¢5.050</span><span class="plato__nota">¿Te gusta la piña colada? Esta es nuestra versión con café.</span></li>
+          <li><span class="plato__nombre">Nevado</span><span class="plato__precio">¢5.050</span></li>
+          <li><span class="plato__nombre">Pasión</span><span class="plato__precio">¢5.050</span></li>
+          <li><span class="plato__nombre">Chocolate</span><span class="plato__precio">¢5.050</span></li>
+          <li><span class="plato__nombre">Provócame</span><span class="plato__precio">¢4.500</span><span class="plato__nota">Para los amantes del chocolate y las avellanas.</span></li>
+          <li><span class="plato__nombre">Frappé de caramelo</span><span class="plato__precio">¢3.920</span></li>
+          <li><span class="plato__nombre">Chocomenta</span><span class="plato__precio">¢3.920</span></li>
+          <li><span class="plato__nombre">Té de matcha frío</span><span class="plato__precio">¢3.920</span></li>
+          <li><span class="plato__nombre">Chai frío</span><span class="plato__precio">¢3.920</span></li>
+        </ul>
+      </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-bebidas">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Bebidas</h4>
+        <span class="grupo__pista">Naturales de fruta fresca, batidos, gaseosas y alcohol</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">17 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/cafe-frio.jpg" alt="Dos cafés fríos con chantilly y sirope de chocolate" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <h5 class="sub__titulo">Naturales</h5>
+        <p class="sub__nota">Todas nuestras bebidas naturales son 100&nbsp;% de fruta fresca, comprada directamente al agricultor, sin intermediarios.</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Mix de frutas</span><span class="plato__precio">¢3.150</span></li>
+          <li><span class="plato__nombre">En leche</span><span class="plato__precio">¢2.800</span></li>
+          <li><span class="plato__nombre">En leche de almendras</span><span class="plato__precio">¢2.800</span></li>
+          <li><span class="plato__nombre">Con hierbabuena</span><span class="plato__precio">¢2.500</span></li>
+          <li><span class="plato__nombre">En agua</span><span class="plato__precio">¢2.000</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Batidos</h5>
+        <p class="sub__nota">A base de fruta natural, con helado y leche. ¡Son un postre de copa!</p>
+        <ul class="platos">
+          <li><span class="plato__nombre">Naturales</span><span class="plato__precio">¢4.500</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Gaseosas</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Coca Cola</span><span class="plato__precio">¢1.450</span></li>
+          <li><span class="plato__nombre">Coca Cola Zero</span><span class="plato__precio">¢1.450</span></li>
+          <li><span class="plato__nombre">Fresca</span><span class="plato__precio">¢1.450</span></li>
+          <li><span class="plato__nombre">Ginger Ale</span><span class="plato__precio">¢1.450</span></li>
+          <li><span class="plato__nombre">Fanta naranja</span><span class="plato__precio">¢1.450</span></li>
+          <li><span class="plato__nombre">Fanta kolita</span><span class="plato__precio">¢1.450</span></li>
+          <li><span class="plato__nombre">Fanta uva</span><span class="plato__precio">¢1.450</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h5 class="sub__titulo">Alcohol</h5>
+        <ul class="platos">
+          <li><span class="plato__nombre">Vino tinto</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Vino blanco</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Sangría</span><span class="plato__precio">¢3.950</span></li>
+          <li><span class="plato__nombre">Cerveza artesanal</span><span class="plato__precio">¢2.700</span></li>
+        </ul>
+      </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="grupo" id="carta-llevar">
+      <summary class="grupo__boton">
+        <h4 class="grupo__nombre">Para llevar a casa</h4>
+        <span class="grupo__pista">El café de la casa en grano y la Vandola</span>
+        <span class="grupo__meta"><span class="grupo__cuenta">2 opciones</span></span>
+        <svg class="grupo__flecha" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.4 5.6 9l1.4-1.4 5 5 5-5L18.4 9z"/></svg>
+      </summary>
+
+      <div class="grupo__cuerpo">
+        <figure class="grupo__foto">
+          <img src="assets/img/cafe-bolsas.jpg" alt="Bolsas de café Kaffa en la vitrina del local" width="880" height="660" loading="lazy">
+        </figure>
+        <div class="grupo__lista">
+      <div class="sub">
+        <ul class="platos">
+          <li><span class="plato__nombre">Café en grano, bolsa de 1&nbsp;lb</span><span class="plato__precio">¢6.500</span><span class="plato__nota">Región Valle Central SHB-EP, cosechado entre 1200 y 1700&nbsp;msnm. Variedades caturra, catuaí y obatá, con 83 puntos de catación. Sabores dulces de caña de azúcar y caramelo, balanceados con una acidez cítrica a naranja; cuerpo medio y postgusto pronunciado y achocolatado.</span></li>
+          <li><span class="plato__nombre">Vandola</span><span class="plato__precio">¢38.000</span><span class="plato__nota">Filtrado por goteo, hecha a mano por alfareros costarricenses. El material y el diseño permiten que la temperatura del café se disfrute por más tiempo que con los métodos tradicionales. Preguntá a tu salonera por los estilos disponibles, o vea <a href="https://vandolaoficial.com" target="_blank" rel="noopener">vandolaoficial.com</a>.</span></li>
+        </ul>
+      </div>
+        </div>
+      </div>
+    </details>
+
 
       <p class="carta__aviso">
         Precios en colones, sujetos a cambio.
@@ -602,56 +956,61 @@
 </section>
 
 <!-- ===========================================================
-     TESTIMONIOS — sección lista para activar.
-     El texto de abajo es de relleno: NO son reseñas reales.
-     Para activarla: sustituir cada <blockquote> y su <cite> por el
-     testimonio y el nombre reales, y borrar la clase "testimonios--ejemplo"
-     del <section> (eso quita el rótulo amarillo).
-     Si no se van a poner testimonios, se borra la sección completa.
+     TESTIMONIOS · LA PARED DE RECADOS
+     Cinco reseñas reales de TripAdvisor, las cinco de cinco estrellas.
+     Van todas a la vista, no en carrusel: esconder cuatro de cinco era
+     trabajar en contra de la propia sección.
+     Cada recado toma uno de los cinco colores del manual de marca y
+     lleva el filete interior de las láminas, así que la pared se lee
+     como parte de la identidad de Kaffa y no como tarjetas genéricas.
+     Se transcriben tal cual salvo acentos y erratas evidentes; la de
+     Geannina venía cortada por el "Leer más" de TripAdvisor y por eso
+     termina en puntos suspensivos.
      =========================================================== -->
-<section class="bloque testimonios testimonios--ejemplo" id="testimonios" aria-labelledby="h-testimonios">
+<section class="bloque testimonios" id="testimonios" aria-labelledby="h-testimonios">
   <div class="envoltura">
 
     <header class="bloque__intro">
-      <p class="eyebrow">Testimonios</p>
-      <h2 id="h-testimonios">Lo que dice la gente.</h2>
+      <p class="eyebrow">Reseñas en TripAdvisor</p>
+      <h2 id="h-testimonios">Cinco visitas, cinco de <em>cinco</em>.</h2>
     </header>
 
-    <p class="rotulo-ejemplo">
-      Sección lista para activar: los tres textos de abajo son de relleno, no son reseñas
-      reales. Se reemplazan cuando Don Minor pase los testimonios que quiera publicar.
-    </p>
+    <div class="recados">
+      <figure class="recado recado--vino">
+        <span class="recado__puntos" role="img" aria-label="Cinco de cinco"><i></i><i></i><i></i><i></i><i></i></span>
+        <blockquote>Kaffa es de esos lugares que da gusto visitar. Con una oferta gastronómica variada, excelente atención, muy buena comida y por supuesto excelente café. Parqueo cómodo. Precio adecuado al servicio y ambiente.</blockquote>
+        <figcaption><cite>Álvaro G</cite><span>Coronado · mayo de 2019</span></figcaption>
+      </figure>
 
-    <div class="carrusel" id="carrusel">
-      <div class="carrusel__pista" id="pista">
+      <figure class="recado recado--azul">
+        <span class="recado__puntos" role="img" aria-label="Cinco de cinco"><i></i><i></i><i></i><i></i><i></i></span>
+        <blockquote>Este lugar es realmente acogedor, tranquilo, céntrico y espacioso. El personal muy profesional y atento y la comida vs calidad, de primera. Con un horario excelente y muchas opciones, hacen que tengamos que regresar para seguir degustando la exquisitez de su comida, sin olvidar el café que es&nbsp;#1…</blockquote>
+        <figcaption><cite>Geannina Z</cite><span>San José · marzo de 2018</span></figcaption>
+      </figure>
 
-        <article class="testimonio" role="group" aria-roledescription="testimonio" aria-label="1 de 3">
-          <blockquote>Aquí va el testimonio de un cliente real, en sus propias palabras. Dos o tres líneas funcionan mejor que un párrafo largo.</blockquote>
-          <cite>Nombre del cliente<span>Coronado</span></cite>
-        </article>
+      <figure class="recado recado--terracota">
+        <span class="recado__puntos" role="img" aria-label="Cinco de cinco"><i></i><i></i><i></i><i></i><i></i></span>
+        <blockquote>Excelente para tomar diferentes tipos de cafés de especialidad. El servicio es bueno y de nota que tienen conocimiento amplio en cuanto a los tipos de café y su preparación. La comida es muy buena también.</blockquote>
+        <figcaption><cite>Mario R</cite><span>Costa Rica · agosto de 2018</span></figcaption>
+      </figure>
 
-        <article class="testimonio" role="group" aria-roledescription="testimonio" aria-label="2 de 3">
-          <blockquote>Un segundo testimonio, ojalá de alguien que venga seguido a desayunar o a almorzar, para que hable de la cocina y del ambiente de la casa.</blockquote>
-          <cite>Nombre del cliente<span>San José</span></cite>
-        </article>
+      <figure class="recado recado--agua">
+        <span class="recado__puntos" role="img" aria-label="Cinco de cinco"><i></i><i></i><i></i><i></i><i></i></span>
+        <blockquote>Excelente cafetería. Mejoró mucho el sistema de parqueo. La comida y las especialidades de café siguen tan buenas como siempre. Excelente servicio.</blockquote>
+        <figcaption><cite>Daniel</cite><span>San José · octubre de 2017</span></figcaption>
+      </figure>
 
-        <article class="testimonio" role="group" aria-roledescription="testimonio" aria-label="3 de 3">
-          <blockquote>Un tercero sobre la comida: el desayuno, el casado del día o la repostería. Es lo que más le sirve a alguien que está decidiendo dónde almorzar.</blockquote>
-          <cite>Nombre del cliente<span>San Isidro de Coronado</span></cite>
-        </article>
+      <figure class="recado recado--coral">
+        <span class="recado__puntos" role="img" aria-label="Cinco de cinco"><i></i><i></i><i></i><i></i><i></i></span>
+        <blockquote>Este lugar tiene una oferta amplia en café, delicioso, buena atención y ambiente agradable, el café frío es delicioso.</blockquote>
+        <figcaption><cite>Geovanny Miguel C</cite><span>San José · agosto de 2018</span></figcaption>
+      </figure>
 
-      </div>
-
-      <div class="carrusel__mando">
-        <button class="carrusel__flecha" id="anterior" aria-label="Testimonio anterior" aria-controls="pista">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 4.6 8 12l7.4 7.4 1.4-1.4L10.8 12l6-6z"/></svg>
-        </button>
-        <div class="carrusel__puntos" id="puntos" role="tablist" aria-label="Elegir testimonio"></div>
-        <button class="carrusel__flecha" id="siguiente" aria-label="Testimonio siguiente" aria-controls="pista">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 4.6 16 12l-7.4 7.4-1.4-1.4 6-6-6-6z"/></svg>
-        </button>
-      </div>
     </div>
+
+    <p class="testimonios__fuente">
+      Reseñas publicadas por sus autores en TripAdvisor, entre 2017 y 2019.
+    </p>
 
   </div>
 </section>
