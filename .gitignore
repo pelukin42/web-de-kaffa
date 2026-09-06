@@ -20,3 +20,8 @@ $RECYCLE.BIN/
 # Fotos originales sin procesar (pesan 9 MB y no se publican).
 # Las versiones optimizadas viven en assets/img/*.jpg
 assets/img/fotos/
+
+# Lote nuevo de Kaffa, todavía sin procesar. Netlify publica la raíz del
+# repositorio, así que si esto entrara al commit se subiría tal cual, con
+# nombre de WhatsApp incluido.
+assets/img/Fotos nuevas/

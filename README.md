@@ -234,12 +234,21 @@ o con la pestaña en segundo plano, los cinco recados aparecen puestos. Nunca se
 caso de que la sección salga en blanco. Hay además una red de seguridad a los dos segundos
 que quita el atributo, y quitarlo no depende de que la transición corra.
 
-### Dos cosas pendientes
+### Pendientes
 
-1. **Las cuatro láminas siguen juntas en su propia sección**, justo encima de los
-   testimonios. Como ambas son bandas de color plano, **chocan**. La idea acordada es
-   repartirlas por la página en vez de dejarlas en bloque.
-2. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
+1. **Hay un lote de seis fotos nuevas sin procesar**, del 6 de setiembre de 2026, en
+   `assets/img/Fotos nuevas/`. **Todavía no se han visto ni se han colocado**: quedaron ahí a
+   la espera. Están en `.gitignore` a propósito, porque Netlify publica la raíz del
+   repositorio y si entraran al commit se subirían tal cual, con nombre de WhatsApp y todo.
+   Cuando toque, van por el mismo camino que el lote anterior: mirarlas, redimensionarlas a
+   880&nbsp;px de lado mayor con calidad 76, renombrarlas con nombre semántico y ubicarlas.
+2. **`metodo-vidrio.jpg` no tiene nombre de método.** Es un método de infusión en vidrio
+   sobre un soporte de madera, pero no se pudo identificar cuál, así que su pie en la galería
+   no lo afirma. Falta preguntarle a Don Minor. Esta foto es la que antes se llamaba
+   `vandola-soporte.jpg` y estaba mal puesta en la tarjeta de la Vandola.
+3. **Los testimonios no enlazan a TripAdvisor.** Falta la URL del perfil de Kaffa; no se
+   adivinó para no mandar gente a otro restaurante.
+4. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
    fondos en el script que lo genera.
 
 ### El menú en PDF
