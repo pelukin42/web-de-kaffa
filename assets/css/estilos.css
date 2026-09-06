@@ -595,32 +595,73 @@ p:last-child { margin-bottom: 0; }
   .chip, .grupo__nombre, .grupo__flecha { transition: none; }
 }
 
-/* ---------- Las láminas de marca ----------
-   Las cuatro ilustraciones ya traen su propio fondo de la paleta, así
-   que van sin marco: solo se recortan a cuadrado y se separan. */
-.laminas {
-  background: var(--crema-2);
-  padding: clamp(3rem, 6vw, 5rem) 0;
+/* ---------- Las láminas ----------
+   Las cuatro ilustraciones del manual de marca, repartidas por la página
+   como bandas a todo lo ancho. El fondo de la banda es EL MISMO color que
+   el fondo del cartel, así que el cartel no se ve metido en una caja: se
+   funde con la página y el dibujo sangra hacia los lados.
+   El texto va en carbón sobre los cuatro colores. El de terracota es el
+   más justo (3,95:1), y por eso la frase nunca baja de 1,6 rem: a ese
+   tamaño la exigencia es 3:1, no 4,5:1. */
+.lamina {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  color: var(--carbon);
 }
-.laminas .bloque__intro { margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem); }
-.laminas__rejilla {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(.6rem, 1.5vw, 1.1rem);
-}
-.laminas figure { margin: 0; overflow: hidden; border-radius: var(--radio); }
-.laminas img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  transition: transform .5s var(--ease);
-}
-.laminas figure:hover img { transform: scale(1.04); }
+.lamina--agua      { background: #5BA7A8; }
+.lamina--terracota { background: #CC5B23; }
+.lamina--azul      { background: #5F9BAE; }
+.lamina--coral     { background: #DD6770; }
 
-@media (max-width: 700px) { .laminas__rejilla { grid-template-columns: repeat(2, 1fr); } }
-@media (prefers-reduced-motion: reduce) {
-  .laminas img, .laminas figure:hover img { transition: none; transform: none; }
+.lamina__caja {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
 }
+/* Con el arte a la derecha se invierten también las pistas, para que el
+   cartel conserve el mismo ancho en las cuatro bandas. */
+.lamina--dcha .lamina__caja { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.lamina--dcha .lamina__arte { order: 2; }
+
+.lamina__arte { margin: 0; }
+.lamina__arte img { width: 100%; display: block; }
+
+.lamina__frase {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.2vw, 2.45rem);
+  line-height: 1.22;
+  margin: 0;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+.lamina__frase em { font-style: italic; }
+
+.lamina__btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: .7rem 1.4rem;
+  background: var(--crema);
+  color: var(--carbon);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radio);
+  transition: background .2s var(--ease);
+}
+.lamina__btn:hover, .lamina__btn:focus-visible { background: #fff; }
+
+@media (max-width: 780px) {
+  /* Se repite el selector con la clase --dcha porque si no, la regla de
+     arriba le gana por especificidad y las bandas invertidas se quedan
+     en dos columnas. */
+  .lamina__caja,
+  .lamina--dcha .lamina__caja { grid-template-columns: 1fr; }
+  .lamina--dcha .lamina__arte { order: 0; }
+  .lamina__frase { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .lamina__btn { transition: none; } }
 
 /* ---------- El menú impreso ----------
    Banda oscura con las tres primeras hojas del PDF en abanico. El

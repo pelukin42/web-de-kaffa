@@ -144,6 +144,29 @@ así fue como en una primera pasada un rango de precios de **infusiones** termin
 como café chorreado. La forma correcta es extraer con coordenadas y reconstruir las columnas
 y los encabezados por posición, no leer el texto plano de corrido.
 
+### Correcciones de Don Minor sobre el café
+
+Hay datos del menú impreso que él corrigió después, y **el sitio sigue lo que dijo él, no
+el impreso**:
+
+| Dato | Menú impreso | Lo correcto |
+|---|---|---|
+| Altura del cafetal | 1200 a 1700 msnm | **1200 a 1500 msnm** |
+| Bolsa de café de 1 lb | ¢6.500 | **¢7.500** |
+
+Además: **no son pet friendly.** Había una tarjeta de servicio diciendo que sí y se quitó,
+junto con la foto del perro (`pet-friendly.jpg`, borrada) y la mención en la descripción
+para buscadores. No volver a ponerla.
+
+Y el café es más amplio de lo que dice el impreso: además del de la casa hay **Geisha y café
+de proceso anaeróbico**, y varios métodos de infusión — espresso para las bebidas de barra,
+y otros cafés de especialidad para **V60, vandola** y los demás.
+
+**Ojo con las fotos de vandola.** La que se llamaba `vandola-soporte.jpg` no era una vandola
+sino un método de infusión en vidrio; está renombrada a `metodo-vidrio.jpg` y vive en la
+galería. Las vandolas de verdad son `vandola-ceramica.jpg` (dos piezas de barro en la barra,
+la que va en la tarjeta) y `vandola-servida.jpg` (una esmaltada, junto a su folleto).
+
 ### Las fotos
 
 Las 34 fotos que pasó Kaffa están procesadas a 880&nbsp;px de lado mayor y calidad 76
