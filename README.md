@@ -144,6 +144,39 @@ así fue como en una primera pasada un rango de precios de **infusiones** termin
 como café chorreado. La forma correcta es extraer con coordenadas y reconstruir las columnas
 y los encabezados por posición, no leer el texto plano de corrido.
 
+### El chorreador de la portada
+
+Es la única pieza con movimiento del sitio, y va en SVG dentro del HTML para que siga la
+paleta y se anime con CSS, sin librerías ni imágenes que descargar.
+
+Está construido con una dirección de luz: **entra por arriba a la izquierda**, y de ahí sale
+todo lo demás. Si algún día se mueve un degradado, hay que mover también las sombras, los
+contraluces y la cáustica, o la pieza se cae.
+
+Tres cosas que no son adorno y conviene no borrar:
+
+- **La cáustica** (`.caustica`): el vaso deja pasar la luz y la deposita en la tabla, corrida
+  hacia la derecha. Es el detalle que más vende que la pieza está iluminada y no dibujada.
+- **El contraluz** (`.rim`, `.rim-vidrio`): los cantos derechos recogen el derrame de luz.
+  Es lo que despega la pieza del fondo oscuro.
+- **El menisco** (`.menisco`): donde el café trepa por el vidrio.
+
+El vaso es de **vidrio**, no de loza. Tiene que serlo: se ve subir el nivel del café por
+dentro, y eso en loza no pasa. Además es como Kaffa sirve, según sus propias fotos. Por eso
+el cuerpo va casi transparente y los brillos y el canto se dibujan **encima** del café.
+
+**La pieza no va enmarcada, va iluminada.** Tenía un borde dorado con esquina redondeada, que
+es lo más genérico que puede llevar una portada, y encima envolvía el elemento que debería
+ser la firma del sitio. En su lugar hay un charco de luz en `.heroe__foto::before`. No volver
+a meterla en una caja.
+
+Dos trampas ya pisadas:
+
+1. **Nada de grano con `feTurbulence`.** Pinta ruido opaco y el `mix-blend-mode` no lo
+   atenúa: el panel entero queda gris.
+2. **La gota tiene que apagarse justo al tocar la superficie.** Si termina de desvanecerse
+   después, se queda un manchón dentro del café.
+
 ### Correcciones de Don Minor sobre el café
 
 Hay datos del menú impreso que él corrigió después, y **el sitio sigue lo que dijo él, no

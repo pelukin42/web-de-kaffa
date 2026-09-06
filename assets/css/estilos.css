@@ -226,10 +226,18 @@ p:last-child { margin-bottom: 0; }
 .sellos span { font-size: .82rem; color: rgba(243, 234, 219, .62); }
 
 .heroe__foto { margin: 0; position: relative; }
-.heroe__foto img {
-  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
-  background: var(--noche-2);
-  border-radius: var(--radio); border: 1px solid rgba(201, 162, 74, .38);
+
+/* La pieza no va enmarcada: va iluminada. Este es el charco de luz que
+   la sostiene, y es lo que retiene el ojo en lugar de un rectángulo.
+   La segunda mancha, más abajo y más cálida, hace de tabla. */
+.heroe__foto::before {
+  content: "";
+  position: absolute;
+  inset: -10% -8% -16%;
+  background:
+    radial-gradient(54% 44% at 44% 26%, rgba(233, 196, 142, .20), transparent 72%),
+    radial-gradient(46% 24% at 52% 86%, rgba(206, 148, 86, .16), transparent 74%);
+  pointer-events: none;
 }
 
 /* ---------- El chorreador ----------
@@ -237,33 +245,93 @@ p:last-child { margin-bottom: 0; }
    para que esto sea lo que se recuerda. */
 .chorreador {
   display: block;
+  position: relative;   /* por encima del charco de luz */
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: var(--radio);
-  border: 1px solid rgba(201, 162, 74, .38);
-  background:
-    radial-gradient(70% 60% at 62% 34%, rgba(201, 162, 74, .16), transparent 70%),
-    var(--noche-2);
+  overflow: visible;
 }
 /* Los transform de dentro se miden contra el viewBox, no contra cada figura. */
 .chorreador * { transform-box: view-box; transform-origin: center; }
 
-.madera        { fill: var(--madera); }
-.chorreador rect.madera:nth-of-type(2) { fill: var(--madera-luz); }
-.aro           { fill: none; stroke: var(--arena); stroke-width: 3; }
-.tela          { fill: var(--crema); }
-.tela-sombra   { fill: var(--crema-2); opacity: .75; }
-.taza          { fill: var(--crema); }
-.taza-dentro   { fill: #C9BBA1; }   /* el interior en sombra, cuando la taza va vacía */
-.taza-borde    { fill: none; stroke: var(--crema); stroke-width: 3.5; }
-.asa           { fill: none; stroke: var(--crema); stroke-width: 7; stroke-linecap: round; }
-.platillo      { fill: rgba(243, 234, 219, .28); }
-.liquido       { fill: var(--cafe); }
-.crema-cafe    { fill: var(--cafe-luz); }
-.gota          { fill: var(--cafe-luz); }
+/* Los topes de los degradados viven aquí y no en el HTML, para que la
+   pieza siga la paleta de marca si algún día cambia. La luz entra por
+   arriba a la izquierda; todo lo demás se deduce de eso. */
+.p-borde  { stop-color: #8A6242; }              /* el canto del cilindro */
+.p-luz    { stop-color: var(--madera-luz); }
+.p-medio  { stop-color: var(--madera); }
+.p-sombra { stop-color: #6B452A; }
+
+.t-luz    { stop-color: #FFFCF7; }              /* la tela mojada, al sol */
+.t-medio  { stop-color: var(--crema-2); }
+.t-sombra { stop-color: #B9A98F; }
+
+/* El vaso es de vidrio: casi todo transparente, con los cantos encendidos.
+   Por eso se ve subir el nivel del café por dentro. */
+.v-canto  { stop-color: #FFFDFA; stop-opacity: .55; }
+.v-medio  { stop-color: #FFFDFA; stop-opacity: .16; }
+.v-hueco  { stop-color: #FFFDFA; stop-opacity: .05; }
+
+.c-luz    { stop-color: #8A4E28; }
+.c-medio  { stop-color: var(--cafe-luz); }
+.c-sombra { stop-color: #2A170F; }
+
+/* --- Madera --- */
+.base   { fill: url(#gBrazo); }
+.poste  { fill: url(#gPoste); }
+.brazo  { fill: url(#gBrazo); }
+.filo   { fill: #D8B183; opacity: .5; }         /* el canto que da a la luz */
+.veta   { fill: #6B452A; opacity: .32; }
+.veta--2 { opacity: .2; }
+.union  { fill: #4A2E1B; opacity: .55; }        /* el brazo se apoya en el poste */
+
+/* --- Tela --- */
+.tela        { fill: url(#gTela); }
+.tela-sombra { fill: #9C8B72; opacity: .38; }
+.pliegue {
+  fill: none;
+  stroke: #A89478;
+  stroke-width: 1;
+  opacity: .45;
+}
+.pliegue--2 { opacity: .28; }
+.pliegue--3 { opacity: .5; }
+
+/* --- Aro --- */
+.aro     { fill: none; stroke: url(#gPoste); stroke-width: 4; }
+.aro-luz { fill: none; stroke: #E0BC8F; stroke-width: 1.6; stroke-linecap: round; opacity: .8; }
+
+/* --- Taza --- */
+.taza        { fill: url(#gVidrio); }
+.taza-canto  { fill: none; stroke: #FFFDFA; stroke-width: 1.4; opacity: .55; }
+.taza-dentro { fill: #1C1512; opacity: .55; }   /* el hueco en sombra, con el vaso vacío */
+.taza-borde  { fill: none; stroke: #FFFDFA; stroke-width: 2.2; opacity: .45; }
+.borde-luz   { fill: none; stroke: #FFFDFA; stroke-width: 2.2; stroke-linecap: round; opacity: .95; }
+.taza-brillo { fill: none; stroke: #FFFDFA; stroke-width: 3.4; stroke-linecap: round; opacity: .42; }
+.taza-brillo--fino { stroke-width: 1.4; opacity: .26; }
+.asa         { fill: none; stroke: #FFFDFA; stroke-width: 6; stroke-linecap: round; opacity: .32; }
+.asa-luz     { fill: none; stroke: #FFFDFA; stroke-width: 1.8; stroke-linecap: round; opacity: .7; }
+.sombra-vaso { fill: #1A0F09; opacity: .5; }   /* asienta el vaso en la tabla */
+
+/* --- La luz --- */
+/* La cáustica es el detalle que más vende que esto está iluminado y no
+   dibujado: el vaso deja pasar la luz y la deposita en la madera. */
+.caustica    { fill: #E8B77A; opacity: .55; mix-blend-mode: screen; }
+.rim         { fill: #E9C48E; opacity: .42; }
+.rim-vidrio  { fill: none; stroke: #E9C48E; stroke-width: 1.2; opacity: .5; stroke-linecap: round; }
+.menisco     { fill: none; stroke: #C98B52; stroke-width: 1.3; opacity: .5; }
+.costura     { fill: none; stroke: #A89478; stroke-width: .8; stroke-dasharray: 2.4 2.2; opacity: .45; }
+
+/* --- Sombras --- */
+.sombra-piso { fill: #000; opacity: .45; }
+.sombra-taza { fill: #4A2E1B; opacity: .35; }
+
+/* --- Café --- */
+.liquido    { fill: url(#gCafe); }
+.crema-cafe { fill: #9A5C30; opacity: .75; }
+.gota       { fill: url(#gGota); }
 .onda {
   fill: none;
-  stroke: var(--cafe-luz);
+  stroke: #A8642F;
   stroke-width: 1.6;
   transform-origin: 236px 218px;   /* la superficie del café, no el centro del viewBox */
   opacity: 0;
@@ -271,7 +339,7 @@ p:last-child { margin-bottom: 0; }
 .vaho {
   fill: none;
   stroke: var(--crema);
-  stroke-width: 2.5;
+  stroke-width: 2.2;
   stroke-linecap: round;
   opacity: 0;
 }
@@ -302,10 +370,11 @@ p:last-child { margin-bottom: 0; }
   to   { transform: translateY(0); }
 }
 @keyframes caer {
-  0%        { opacity: 0; transform: translateY(-2px) scaleY(.9); }
-  15%       { opacity: 1; }
-  75%       { opacity: 1; transform: translateY(19px) scaleY(1.25); }
-  92%, 100% { opacity: 0; transform: translateY(25px) scaleY(.45); }
+  0%   { opacity: 0; transform: translateY(-3px) scaleY(.85); }
+  14%  { opacity: 1; }
+  70%  { opacity: 1; transform: translateY(15px) scaleY(1.3); }
+  84%  { opacity: 0; transform: translateY(19px) scaleY(1.35); }
+  100% { opacity: 0; transform: translateY(19px) scaleY(1.35); }
 }
 /* Un ciclo por cada gota: tres en el mismo tiempo que dura la caída. */
 @keyframes ondear {
@@ -313,9 +382,9 @@ p:last-child { margin-bottom: 0; }
   100% { opacity: 0;  transform: scale(1); }
 }
 @keyframes subir {
-  0%       { opacity: 0; transform: translateY(6px) scaleX(.9); }
-  35%      { opacity: .5; }
-  100%     { opacity: 0; transform: translateY(-18px) scaleX(1.15); }
+  0%   { opacity: 0; transform: translateY(6px) scaleX(.85); }
+  30%  { opacity: .62; }
+  100% { opacity: 0; transform: translateY(-22px) scaleX(1.2); }
 }
 
 /* Qué se sirve a esta hora, sobre la pieza. */
@@ -325,8 +394,8 @@ p:last-child { margin-bottom: 0; }
   display: inline-flex; align-items: center; gap: .5rem;
   padding: .45rem .9rem;
   border-radius: 999px;
-  background: rgba(18, 32, 58, .82);
-  border: 1px solid rgba(201, 162, 74, .38);
+  background: rgba(24, 19, 20, .62);
+  border: 1px solid transparent;
   backdrop-filter: blur(6px);
   font-size: .82rem; font-weight: 500;
   color: var(--crema);
