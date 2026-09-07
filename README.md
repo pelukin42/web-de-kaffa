@@ -193,11 +193,10 @@ para buscadores. No volver a ponerla.
 
 Y el café es más amplio de lo que dice el impreso: además del de la casa hay **Geisha y café
 de proceso anaeróbico**, y varios métodos de infusión — espresso para las bebidas de barra,
-y otros cafés de especialidad para **V60, vandola** y los demás.
+y otros cafés de especialidad para **V60, vandola y cold brew**.
 
 **Ojo con las fotos de vandola.** La que se llamaba `vandola-soporte.jpg` no era una vandola
-sino un método de infusión en vidrio; está renombrada a `metodo-vidrio.jpg` y vive en la
-galería. Las vandolas de verdad son `vandola-ceramica.jpg` (dos piezas de barro en la barra,
+sino la torre de cold brew; está renombrada a `metodo-cold-brew.jpg` y vive en la galería. Las vandolas de verdad son `vandola-ceramica.jpg` (dos piezas de barro en la barra,
 la que va en la tarjeta) y `vandola-servida.jpg` (una esmaltada, junto a su folleto).
 
 ### Las fotos
@@ -242,13 +241,9 @@ que quita el atributo, y quitarlo no depende de que la transición corra.
    repositorio y si entraran al commit se subirían tal cual, con nombre de WhatsApp y todo.
    Cuando toque, van por el mismo camino que el lote anterior: mirarlas, redimensionarlas a
    880&nbsp;px de lado mayor con calidad 76, renombrarlas con nombre semántico y ubicarlas.
-2. **`metodo-vidrio.jpg` no tiene nombre de método.** Es un método de infusión en vidrio
-   sobre un soporte de madera, pero no se pudo identificar cuál, así que su pie en la galería
-   no lo afirma. Falta preguntarle a Don Minor. Esta foto es la que antes se llamaba
-   `vandola-soporte.jpg` y estaba mal puesta en la tarjeta de la Vandola.
-3. **Los testimonios no enlazan a TripAdvisor.** Falta la URL del perfil de Kaffa; no se
+2. **Los testimonios no enlazan a TripAdvisor.** Falta la URL del perfil de Kaffa; no se
    adivinó para no mandar gente a otro restaurante.
-4. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
+3. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
    fondos en el script que lo genera.
 
 ### El menú en PDF
