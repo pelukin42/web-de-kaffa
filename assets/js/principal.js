@@ -338,7 +338,7 @@
     } else if (minuto < 15 * 60) {
       texto = 'Ahora se está sirviendo el almuerzo';
     } else {
-      texto = 'Ahora: café recién colado y repostería';
+      texto = 'Ahora: café recién hecho y repostería fresca';
     }
 
     document.getElementById('ahoraTexto').textContent = texto;
