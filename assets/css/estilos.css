@@ -26,12 +26,6 @@
   --crema:       #FAF5EE;
   --crema-2:     #EFE5D8;
 
-  /* Para el chorreador de la portada */
-  --madera:      #AA7D50;
-  --madera-luz:  #C29A6E;
-  --cafe:        #3A2118;
-  --cafe-luz:    #6B3A22;
-
   --fondo:       var(--crema);
   --tinta:       var(--noche);
   --tinta-suave: #6E6462;
@@ -240,189 +234,32 @@ p:last-child { margin-bottom: 0; }
   pointer-events: none;
 }
 
-/* ---------- El chorreador ----------
-   La única pieza con movimiento del sitio. Todo el resto se queda quieto
-   para que esto sea lo que se recuerda. */
-.chorreador {
+/* ---------- La vandola en video ----------
+   Ocupa el lugar del chorreador dibujado. El video viene vertical
+   (1080x1920), así que la columna se resuelve como un retrato en pie y
+   no como un rectángulo apaisado recortado a la fuerza.
+   Sin marco duro: el charco de luz de .heroe__foto::before sigue
+   sosteniéndolo, y el video solo redondea sus propias esquinas. */
+.vandola {
   display: block;
-  position: relative;   /* por encima del charco de luz */
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: visible;
-}
-/* Los transform de dentro se miden contra el viewBox, no contra cada figura. */
-.chorreador * { transform-box: view-box; transform-origin: center; }
-
-/* Los topes de los degradados viven aquí y no en el HTML, para que la
-   pieza siga la paleta de marca si algún día cambia. La luz entra por
-   arriba a la izquierda; todo lo demás se deduce de eso. */
-.p-borde  { stop-color: #8A6242; }              /* el canto del cilindro */
-.p-luz    { stop-color: var(--madera-luz); }
-.p-medio  { stop-color: var(--madera); }
-.p-sombra { stop-color: #6B452A; }
-
-.t-luz    { stop-color: #FFFCF7; }              /* la tela mojada, al sol */
-.t-medio  { stop-color: var(--crema-2); }
-.t-sombra { stop-color: #B9A98F; }
-
-/* El vaso es de vidrio: casi todo transparente, con los cantos encendidos.
-   Por eso se ve subir el nivel del café por dentro. */
-.v-canto  { stop-color: #FFFDFA; stop-opacity: .55; }
-.v-medio  { stop-color: #FFFDFA; stop-opacity: .16; }
-.v-hueco  { stop-color: #FFFDFA; stop-opacity: .05; }
-
-.c-luz    { stop-color: #8A4E28; }
-.c-medio  { stop-color: var(--cafe-luz); }
-.c-sombra { stop-color: #2A170F; }
-
-/* --- Madera --- */
-.base   { fill: url(#gBrazo); }
-.poste  { fill: url(#gPoste); }
-.brazo  { fill: url(#gBrazo); }
-.filo   { fill: #D8B183; opacity: .5; }         /* el canto que da a la luz */
-.veta   { fill: #6B452A; opacity: .32; }
-.veta--2 { opacity: .2; }
-.union  { fill: #4A2E1B; opacity: .55; }        /* el brazo se apoya en el poste */
-
-/* --- Tela --- */
-.tela        { fill: url(#gTela); }
-.tela-sombra { fill: #9C8B72; opacity: .38; }
-.pliegue {
-  fill: none;
-  stroke: #A89478;
-  stroke-width: 1;
-  opacity: .45;
-}
-.pliegue--2 { opacity: .28; }
-.pliegue--3 { opacity: .5; }
-
-/* --- Aro --- */
-.aro     { fill: none; stroke: url(#gPoste); stroke-width: 4; }
-.aro-luz { fill: none; stroke: #E0BC8F; stroke-width: 1.6; stroke-linecap: round; opacity: .8; }
-
-/* --- Taza --- */
-.taza        { fill: url(#gVidrio); }
-.taza-canto  { fill: none; stroke: #FFFDFA; stroke-width: 1.4; opacity: .55; }
-.taza-dentro { fill: #1C1512; opacity: .55; }   /* el hueco en sombra, con el vaso vacío */
-.taza-borde  { fill: none; stroke: #FFFDFA; stroke-width: 2.2; opacity: .45; }
-.borde-luz   { fill: none; stroke: #FFFDFA; stroke-width: 2.2; stroke-linecap: round; opacity: .95; }
-.taza-brillo { fill: none; stroke: #FFFDFA; stroke-width: 3.4; stroke-linecap: round; opacity: .42; }
-.taza-brillo--fino { stroke-width: 1.4; opacity: .26; }
-.asa         { fill: none; stroke: #FFFDFA; stroke-width: 6; stroke-linecap: round; opacity: .32; }
-.asa-luz     { fill: none; stroke: #FFFDFA; stroke-width: 1.8; stroke-linecap: round; opacity: .7; }
-.sombra-vaso { fill: #1A0F09; opacity: .5; }   /* asienta el vaso en la tabla */
-
-/* --- La luz --- */
-/* La cáustica es el detalle que más vende que esto está iluminado y no
-   dibujado: el vaso deja pasar la luz y la deposita en la madera. */
-.caustica    { fill: #E8B77A; opacity: .55; mix-blend-mode: screen; }
-.rim         { fill: #E9C48E; opacity: .42; }
-.rim-vidrio  { fill: none; stroke: #E9C48E; stroke-width: 1.2; opacity: .5; stroke-linecap: round; }
-.menisco     { fill: none; stroke: #C98B52; stroke-width: 1.3; opacity: .5; }
-.costura     { fill: none; stroke: #A89478; stroke-width: .8; stroke-dasharray: 2.4 2.2; opacity: .45; }
-
-/* --- Sombras --- */
-.sombra-piso { fill: #000; opacity: .45; }
-.sombra-taza { fill: #4A2E1B; opacity: .35; }
-
-/* --- Café --- */
-.liquido    { fill: url(#gCafe); }
-.crema-cafe { fill: #9A5C30; opacity: .75; }
-.gota       { fill: url(#gGota); }
-.onda {
-  fill: none;
-  stroke: #A8642F;
-  stroke-width: 1.6;
-  transform-origin: 236px 218px;   /* la superficie del café, no el centro del viewBox */
-  opacity: 0;
-}
-.vaho {
-  fill: none;
-  stroke: var(--crema);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  opacity: 0;
+  position: relative;         /* por encima del charco de luz */
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(68vh, 620px);
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 14px;
+  background: var(--noche-2);  /* mientras carga, no un hueco blanco */
+  box-shadow:
+    0 34px 60px -30px rgba(0, 0, 0, .78),
+    0 0 0 1px rgba(243, 234, 219, .10);
 }
 
-/* Entrada: la pieza se asienta una vez. */
-.pieza { animation: asentarse .9s var(--ease) both; }
-
-/* La taza se llena sola en los primeros segundos y se queda servida. */
-.liquido, .crema-cafe { animation: llenarse 5s var(--ease) .6s both; }
-
-/* El goteo no termina: es lo que dice que esto está pasando ahora. */
-.gota   { animation: caer 1.9s linear infinite; opacity: 0; }
-.gota--2 { animation-delay: .63s; }
-.gota--3 { animation-delay: 1.26s; }
-.onda { animation: ondear .633s ease-out 1.5s infinite; }
-
-/* El vapor entra cuando ya hay algo en la taza. */
-.vaho   { animation: subir 3.6s ease-in-out 4s infinite; }
-.vaho--2 { animation-delay: 4.9s; }
-.vaho--3 { animation-delay: 5.8s; }
-
-@keyframes asentarse {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes llenarse {
-  from { transform: translateY(52px); }
-  to   { transform: translateY(0); }
-}
-@keyframes caer {
-  0%   { opacity: 0; transform: translateY(-3px) scaleY(.85); }
-  14%  { opacity: 1; }
-  70%  { opacity: 1; transform: translateY(15px) scaleY(1.3); }
-  84%  { opacity: 0; transform: translateY(19px) scaleY(1.35); }
-  100% { opacity: 0; transform: translateY(19px) scaleY(1.35); }
-}
-/* Un ciclo por cada gota: tres en el mismo tiempo que dura la caída. */
-@keyframes ondear {
-  0%   { opacity: .5; transform: scale(.15); }
-  100% { opacity: 0;  transform: scale(1); }
-}
-@keyframes subir {
-  0%   { opacity: 0; transform: translateY(6px) scaleX(.85); }
-  30%  { opacity: .62; }
-  100% { opacity: 0; transform: translateY(-22px) scaleX(1.2); }
-}
-
-/* Qué se sirve a esta hora, sobre la pieza. */
-.ahora {
-  position: absolute;
-  left: 1rem; bottom: 1rem;
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .45rem .9rem;
-  border-radius: 999px;
-  background: rgba(24, 19, 20, .62);
-  border: 1px solid transparent;
-  backdrop-filter: blur(6px);
-  font-size: .82rem; font-weight: 500;
-  color: var(--crema);
-}
-.ahora .punto { margin-top: 0; }
-
-/* En pantallas angostas la pastilla tapaba la taza: baja a ser pie de foto. */
-@media (max-width: 900px) {
-  .ahora {
-    position: static;
-    margin-top: .8rem;
-    background: transparent;
-    border-color: transparent;
-    padding: 0;
-    backdrop-filter: none;
-    color: rgba(243, 234, 219, .8);
-  }
-}
-
-/* Con movimiento reducido: la taza ya está servida y nada se mueve. */
-@media (prefers-reduced-motion: reduce) {
-  .pieza, .liquido, .crema-cafe, .gota, .vaho, .onda { animation: none; }
-  .liquido, .crema-cafe { transform: none; }
-  .gota, .onda { display: none; }
-  .vaho { opacity: .35; }
-}
-
+/* Con movimiento reducido el video se queda en el póster y aparecen los
+   controles: el JS lo pausa y le pone el atributo. Ver principal.js. */
+.vandola[controls] { cursor: pointer; }
 
 /* ---------- 7. Bloques ---------- */
 .bloque { padding: var(--bloque) 0; }
@@ -884,6 +721,69 @@ p:last-child { margin-bottom: 0; }
 .galeria figure:hover img { transform: scale(1.05); }
 .galeria__nota { margin-top: 1.25rem; font-size: .85rem; color: var(--tinta-suave); }
 
+/* ---------- Kaffa en video ----------
+   Tres tarjetas con la miniatura de YouTube. Mientras no se toquen no hay
+   iframe: solo una imagen. El botón de play y el rótulo van encima con
+   un degradado, para que el texto se lea sobre cualquier miniatura. */
+.videos__rejilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+.video { margin: 0; }
+
+.video__disparo {
+  position: relative; display: block;
+  border-radius: var(--radio); overflow: hidden;
+  background: var(--noche);
+  text-decoration: none;
+}
+.video__disparo img {
+  display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+  transition: transform .4s var(--ease), filter .4s var(--ease);
+}
+.video__disparo:hover img,
+.video__disparo:focus-visible img { transform: scale(1.05); filter: brightness(.82); }
+
+/* El disco rojo con el triángulo, dibujado en CSS: no hace falta un icono. */
+.video__play {
+  position: absolute; top: 50%; left: 50%;
+  width: 62px; height: 62px; margin: -31px 0 0 -31px;
+  border-radius: 50%;
+  background: var(--rojo);
+  box-shadow: 0 10px 26px -10px rgba(0, 0, 0, .75);
+  transition: transform .25s var(--ease);
+}
+.video__play::after {
+  content: ""; position: absolute; top: 50%; left: 52%;
+  transform: translate(-50%, -50%);
+  border: 11px solid transparent;
+  border-left: 18px solid var(--crema);
+  border-right: 0;
+}
+.video__disparo:hover .video__play,
+.video__disparo:focus-visible .video__play { transform: scale(1.1); }
+
+.video__rotulo {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 2.5rem .9rem .7rem;
+  font-size: .78rem; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--crema);
+  background: linear-gradient(to top, rgba(0, 0, 0, .72), transparent);
+}
+
+/* Cuando el JS mete el iframe, ocupa el mismo hueco que la miniatura. */
+.video__marco { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radio); overflow: hidden; background: var(--noche); }
+.video__marco iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* El cold brew se filmó con teléfono y viene vertical. En lugar de
+   recortarlo a 16:9 —que le cortaría la copa— la tarjeta toma forma de
+   teléfono y se limita el ancho para que no domine la fila. */
+.video--vertical .video__disparo,
+.video--vertical .video__marco { aspect-ratio: 9 / 16; max-width: 300px; }
+.video--vertical .video__disparo img { aspect-ratio: 9 / 16; height: 100%; }
+.video__marco video { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.video figcaption { margin-top: .85rem; }
+.video figcaption b { display: block; font-family: var(--display); font-size: 1.12rem; line-height: 1.25; }
+.video figcaption span { display: block; margin-top: .25rem; font-size: .87rem; color: var(--tinta-suave); }
+
 /* ---------- 12. Testimonios ---------- */
 /* ---------- La pared de recados ----------
    Cinco reseñas, todas a la vista, repartidas en columnas para que cada
@@ -1061,6 +961,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 1100px) {
   .servicios { grid-template-columns: repeat(3, 1fr); }
   .galeria { grid-template-columns: repeat(3, 1fr); }
+  .videos__rejilla { gap: 1.1rem; }
 }
 
 @media (max-width: 900px) {
@@ -1082,6 +983,10 @@ p:last-child { margin-bottom: 0; }
 
   .heroe__rejilla { grid-template-columns: 1fr; }
   .heroe__foto { order: -1; max-width: 460px; }
+  /* El video es vertical: sin tope se comería la pantalla entera del
+     teléfono y el titular quedaría bajo el pliegue. Se le corta la
+     altura para que abajo siempre asome el "Se desayuna, se almuerza". */
+  .vandola { max-height: 40vh; }
   .historia { grid-template-columns: 1fr; }
   .comparadores { grid-template-columns: 1fr; }
   .reservar { grid-template-columns: 1fr; }
@@ -1090,6 +995,8 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 700px) {
   .servicios { grid-template-columns: repeat(2, 1fr); }
   .galeria { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+  .videos__rejilla { grid-template-columns: 1fr; gap: 1.75rem; }
+  .video__play { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
 }
 
 @media (max-width: 480px) {

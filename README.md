@@ -74,29 +74,29 @@ Si en algún momento se quiere volver a subir el peso de la Vandola, los lugares
 `<h1>`, la tarjeta de servicio, el `alt` de una foto de la galería y la opción "Taller de
 Vandola" del formulario.
 
-### El chorreador de la portada
+### La vandola de la portada
 
-La portada tenía una ilustración plana. Ahora tiene **la única pieza con movimiento del
-sitio**: un chorreador que cuela de verdad. Gotea sin parar, la taza se llena sola en los
-primeros segundos y después sale el vapor. Todo el resto del sitio se queda quieto para que
-esto sea lo que se recuerda.
+La portada llevó dos cosas antes que esta. Primero una ilustración plana; después **un
+chorreador dibujado en SVG** que colaba de verdad, goteaba y echaba vapor, animado con CSS y
+sin una sola imagen que descargar. Hoy lleva **un video de la vandola dando vueltas**, pedido
+por el dueño el 7 de setiembre de 2026.
 
-Es SVG escrito dentro de `index.html`, no una imagen: así hereda los colores de la marca y
-se anima con CSS. **Sin librerías, sin GIF, sin video** — pesa lo que pesa el HTML.
+El archivo es `assets/video/vandola.mp4`: 720×1280, 30 segundos, 2,5&nbsp;MB, **sin audio**,
+en bucle y sin controles. Es decoración, no contenido: nadie tiene que apretar nada y nunca
+suena solo. Con `prefers-reduced-motion` el JS lo pausa en el póster y le pone controles.
 
-Se eligió el chorreador y no la Vandola a propósito. El chorreador es lo que usa cualquier
-café de Coronado: dice «esto es una soda de pueblo que cuela su café», que es justo el
-mensaje que pidió Don Minor. La Vandola habría vuelto a poner el foco donde no va.
-
-Con `prefers-reduced-motion` no se mueve nada: la taza aparece ya servida.
+**Ojo con esto, que contradice una decisión anterior de Don Minor.** Más arriba está
+escrito que el chorreador se eligió *en lugar de* la vandola a propósito: la vandola tiene
+su propio sitio y este es el sitio de Kaffa como restaurante. Ahora la vandola volvió al
+lugar más visible de la página, y además **el video trae el logotipo de "Vandola Coffee
+Roaster" rotulado en la parte de arriba**, que es marca de la vandola, no de Kaffa. Si lo que
+se quería era bajarle el peso a la vandola, esto va en la dirección contraria. Queda
+anotado para que se confirme con él antes de publicar.
 
 Encima de la pieza hay una **pastilla que dice qué se está sirviendo a esta hora**, calculada
 con la hora de Costa Rica: desayuno hasta las 11, almuerzo hasta las 3, café y repostería
 después, y «cerrado» fuera del horario. En pantallas angostas baja a ser pie de foto para no
-tapar la taza.
-
-Los colores del chorreador salen de cuatro tokens nuevos (`--madera`, `--madera-luz`,
-`--cafe`, `--cafe-luz`), así que cuando llegue la paleta se cambian ahí y la pieza sigue.
+tapar la pieza.
 
 ### Qué lleva
 
@@ -144,38 +144,41 @@ así fue como en una primera pasada un rango de precios de **infusiones** termin
 como café chorreado. La forma correcta es extraer con coordenadas y reconstruir las columnas
 y los encabezados por posición, no leer el texto plano de corrido.
 
-### El chorreador de la portada
+### El video de la portada, por dentro
 
-Es la única pieza con movimiento del sitio, y va en SVG dentro del HTML para que siga la
-paleta y se anime con CSS, sin librerías ni imágenes que descargar.
+El video viene **vertical** (el original es 1080×1920, filmado con teléfono), así que la
+columna derecha se resuelve como un retrato en pie y no como un rectángulo apaisado
+recortado a la fuerza. En `.vandola` manda `aspect-ratio: 9 / 16` con un tope de altura.
 
-Está construido con una dirección de luz: **entra por arriba a la izquierda**, y de ahí sale
-todo lo demás. Si algún día se mueve un degradado, hay que mover también las sombras, los
-contraluces y la cáustica, o la pieza se cae.
+**Ese tope no es un capricho.** En teléfono la portada apila el video encima del texto
+(`order: -1`), y sin tope el video se comía la pantalla entera: el titular «Se desayuna, se
+almuerza…» quedaba bajo el pliegue y nadie lo veía. Por eso bajo 900&nbsp;px hay un
+`max-height: 40vh`. Si alguna vez se cambia el video, revisar esto en un teléfono de verdad.
 
-Tres cosas que no son adorno y conviene no borrar:
+**La pieza no va enmarcada, va iluminada.** Es lo mismo que se hizo con el chorreador: el
+charco de luz de `.heroe__foto::before` sigue ahí y el video solo redondea sus propias
+esquinas. No volver a meterla en una caja con borde dorado.
 
-- **La cáustica** (`.caustica`): el vaso deja pasar la luz y la deposita en la tabla, corrida
-  hacia la derecha. Es el detalle que más vende que la pieza está iluminada y no dibujada.
-- **El contraluz** (`.rim`, `.rim-vidrio`): los cantos derechos recogen el derrame de luz.
-  Es lo que despega la pieza del fondo oscuro.
-- **El menisco** (`.menisco`): donde el café trepa por el vidrio.
+El `poster` es `assets/img/vandola-cartel.jpg`, que es **el primer cuadro del propio video**,
+sacado con ffmpeg. Por eso no hay salto ni rectángulo negro mientras carga.
 
-El vaso es de **vidrio**, no de loza. Tiene que serlo: se ve subir el nivel del café por
-dentro, y eso en loza no pasa. Además es como Kaffa sirve, según sus propias fotos. Por eso
-el cuerpo va casi transparente y los brillos y el canto se dibujan **encima** del café.
+#### Cómo se comprimió, para repetirlo
 
-**La pieza no va enmarcada, va iluminada.** Tenía un borde dorado con esquina redondeada, que
-es lo más genérico que puede llevar una portada, y encima envolvía el elemento que debería
-ser la firma del sitio. En su lugar hay un charco de luz en `.heroe__foto::before`. No volver
-a meterla en una caja.
+El original que mandó el dueño pesaba **72,9&nbsp;MB** (20&nbsp;Mbps). Así no se podía
+publicar: un video que arranca solo en la portada se come los datos de quien entra desde el
+teléfono. Quedó en 2,5&nbsp;MB con esto:
 
-Dos trampas ya pisadas:
+```
+ffmpeg -i Vandola-original.mp4 -vf "scale=720:1280:flags=lanczos"        -c:v libx264 -profile:v main -crf 28 -preset slow        -pix_fmt yuv420p -movflags +faststart -an vandola.mp4
+```
 
-1. **Nada de grano con `feTurbulence`.** Pinta ruido opaco y el `mix-blend-mode` no lo
-   atenúa: el panel entero queda gris.
-2. **La gota tiene que apagarse justo al tocar la superficie.** Si termina de desvanecerse
-   después, se queda un manchón dentro del café.
+`-an` quita el audio (no hace falta y pesa), y `+faststart` mueve el índice al principio para
+que empiece a verse antes de terminar de bajar. El original sin tocar sigue en la carpeta
+como `Vandola-original.mp4`, fuera del commit.
+
+**El nombre del archivo importa.** Windows no distingue mayúsculas, pero Netlify corre sobre
+Linux y sí: si el HTML dice `vandola.mp4` y el archivo se llama `Vandola.mp4`, en local se ve
+y en producción da 404. Todo en minúscula.
 
 ### Correcciones de Don Minor sobre el café
 
@@ -233,6 +236,48 @@ o con la pestaña en segundo plano, los cinco recados aparecen puestos. Nunca se
 caso de que la sección salga en blanco. Hay además una red de seguridad a los dos segundos
 que quita el atributo, y quitarlo no depende de que la transición corra.
 
+### Kaffa en video
+
+Sección nueva del 7 de setiembre de 2026, entre Galería y Testimonios, con entrada propia en
+el menú (`#videos`). Lleva **cuatro videos, y no todos funcionan igual**:
+
+| | Qué es | De quién | Dónde vive |
+|---|---|---|---|
+| 1 | La visita de RUTA TIPICA al local | tercero | YouTube |
+| 2 | "Vandola, café de Costa Rica", de Marco Arce | tercero | YouTube |
+| 3 | El tutorial de la vandola, de Artemotiv | tercero | YouTube |
+| 4 | El cold brew de la barra | **de Kaffa** | el sitio |
+
+**Los tres primeros son de terceros y por eso se embeben desde YouTube**, con el canal
+acreditado en el pie de cada tarjeta. Subir los `.mp4` descargados sería republicar el
+trabajo de otro sin permiso, y además son 177&nbsp;MB.
+
+**El cuarto es de la casa**, así que se sirve desde el sitio: `assets/video/cold-brew.mp4`,
+720×1280, 8,8&nbsp;segundos, 1,2&nbsp;MB, **con sonido y con controles** —a diferencia del de
+la portada, este lo abre quien quiere abrirlo—. El original de WhatsApp pesaba 10,1&nbsp;MB;
+se comprimió con el mismo comando de la portada, pero conservando el audio (`-c:a aac -b:a
+96k` en vez de `-an`).
+
+**Ese cuarto video viene vertical**, porque se filmó con teléfono. En vez de recortarlo a
+16:9 —que le cortaría la copa— su tarjeta toma forma de teléfono: `.video--vertical` le pone
+`aspect-ratio: 9 / 16` y un ancho máximo de 300&nbsp;px, y la rejilla lleva `align-items:
+start` para que no estire la fila. En escritorio quedan los tres apaisados arriba y el
+vertical abajo a la izquierda.
+
+**No se carga nada hasta que alguien lo pide.** De entrada solo se ven las miniaturas; el
+primer clic las cambia por el reproductor, en el mismo hueco. Así la página no arrastra el
+reproductor de YouTube —cerca de 1&nbsp;MB y sus cookies— ni baja el `.mp4` del cold brew por
+videos que la mayoría no va a abrir. Los de YouTube se embeben contra `youtube-nocookie.com`.
+
+**Sin JavaScript las tarjetas siguen sirviendo:** son enlaces normales. Los tres de YouTube
+abren allá en una pestaña nueva y el cuarto abre el `.mp4` directo. El JS solo intercepta el
+clic. Mismo criterio que el resto del sitio.
+
+Para cambiar un video de YouTube hay que tocar tres cosas en el mismo `<figure>`: el
+`data-video`, el `href` y el `src` de la miniatura, los tres con el id que va después de
+`watch?v=`. Para el propio, el `data-local` y el `href` apuntan al `.mp4` y el `src` al
+póster; el `.mp4` además hay que agregarlo a mano como excepción en `.gitignore`.
+
 ### Pendientes
 
 1. **Hay un lote de seis fotos nuevas sin procesar**, del 6 de setiembre de 2026, en
@@ -241,9 +286,14 @@ que quita el atributo, y quitarlo no depende de que la transición corra.
    repositorio y si entraran al commit se subirían tal cual, con nombre de WhatsApp y todo.
    Cuando toque, van por el mismo camino que el lote anterior: mirarlas, redimensionarlas a
    880&nbsp;px de lado mayor con calidad 76, renombrarlas con nombre semántico y ubicarlas.
-2. **Los testimonios no enlazan a TripAdvisor.** Falta la URL del perfil de Kaffa; no se
+2. **Los `.mp4` crudos siguen en `assets/video/`**, unos 250&nbsp;MB, ignorados por git
+   salvo los dos ya comprimidos (`vandola.mp4` y `cold-brew.mp4`), que son los únicos que
+   viajan al sitio. Quedan ahí los dos masters —`Vandola-original.mp4` y `ColdBrew.mp4`,
+   por si hay que volver a comprimir— y las tres descargas de YouTube, que ya no hacen
+   falta porque esos videos se embeben; se pueden borrar cuando se quiera.
+3. **Los testimonios no enlazan a TripAdvisor.** Falta la URL del perfil de Kaffa; no se
    adivinó para no mandar gente a otro restaurante.
-3. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
+4. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
    fondos en el script que lo genera.
 
 ### El menú en PDF
@@ -328,9 +378,11 @@ buzón lo más probable es que ya no llegue a Kaffa. Si Don Minor tiene un corre
 1. **Fotos reales.** Reemplazar los archivos de `assets/img/` conservando el nombre
    (`barra`, `fachada`, `taza`, `reposteria`, `cafetal`, `vandola-servicio`) o cambiar la ruta
    en el `<img>` y en el `data-visor` de cada tarjeta de la galería. Sirven `.jpg` y `.webp`.
-2. **Videos.** Hoy las tres tarjetas de video abren el Instagram de Kaffa. Si quiere que
-   se reproduzcan dentro de la página, se dejan los `.mp4` en `assets/video/` y se cambia
-   el `<a class="video">` por un reproductor.
+2. **Confirmar la vandola en la portada.** El video que pidió ya está puesto, pero
+   contradice lo que él mismo había pedido antes —bajarle el peso a la vandola, que tiene
+   su propio sitio— y encima trae rotulado el logotipo de "Vandola Coffee Roaster". Hay que
+   confirmar que lo quiere así antes de publicar. Si dice que no, se vuelve al chorreador:
+   está en el commit `bbadf64` y se recupera entero de ahí.
 3. **Precios de la carta y de la tienda.** Los de la tienda son de referencia y están marcados
    como tales en la página; hay que sustituirlos por la lista oficial. Se editan en el atributo
    `data-precio` de cada botón de opción, en la sección `<!-- TIENDA -->`.
@@ -434,7 +486,7 @@ están declarados en `:root`, dentro de `assets/css/estilos.css`:
 | `--carbon` | `#231F20` | El negro del logotipo. Cabecera, bloques oscuros y el texto. |
 | `--vino` | `#891E46` | El acento: botones, precios, enlaces, cursivas destacadas. |
 | `--terracota` | `#CC5B23` | Acento secundario. |
-| `--tostado` | `#AA7D50` | La madera del chorreador de la portada y los detalles. |
+| `--tostado` | `#AA7D50` | Las cursivas de la portada y los detalles de madera. |
 | `--azul` | `#5F9BAE` | De la lámina del boyero. |
 | `--agua` | `#5BA7A8` | De la lámina de la finca. |
 | `--coral` | `#DD6770` | De la lámina de la recolectora. |

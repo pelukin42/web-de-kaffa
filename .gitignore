@@ -25,3 +25,12 @@ assets/img/fotos/
 # repositorio, así que si esto entrara al commit se subiría tal cual, con
 # nombre de WhatsApp incluido.
 assets/img/Fotos nuevas/
+
+# Videos crudos (los .mp4 de WhatsApp y las descargas de YouTube). Mismo motivo
+# que las fotos: Netlify publica la raíz, así que ni al commit ni al sitio.
+# Las excepciones son los dos ya comprimidos para la web, que sí tienen que
+# viajar al sitio: vandola.mp4 (2,5 MB) es el video de la portada y
+# cold-brew.mp4 (1,2 MB) es la cuarta tarjeta de la sección de videos.
+assets/video/*
+!assets/video/vandola.mp4
+!assets/video/cold-brew.mp4

@@ -7,6 +7,8 @@
    4b. Carta: atajos de categoría y abrir todas
    5. WhatsApp según el contexto
    6. Formulario y pie
+   7. La vandola de la portada
+   8. Los videos: se cargan al tocarlos, no antes
    =========================================================== */
 (function () {
   'use strict';
@@ -355,5 +357,66 @@
 
   var anio = document.getElementById('anio');
   if (anio) anio.textContent = new Date().getFullYear();
+
+  /* ---------- 7. La vandola de la portada ---------- */
+  // El video va suelto y en bucle porque es decoración. A quien pide que
+  // nada se mueva se le deja el póster quieto y los controles a mano, por
+  // si igual lo quiere ver.
+  var vandola = document.getElementById('vandola');
+  if (vandola && window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    vandola.removeAttribute('autoplay');
+    vandola.setAttribute('controls', '');
+    vandola.pause();
+  }
+
+  /* ---------- 8. Los videos, que se cargan al tocarlos ---------- */
+  // Cada tarjeta es un enlace normal: sin JS abre el video en YouTube, o
+  // el .mp4 suelto en el caso del propio. Con JS, el primer clic cambia la
+  // miniatura por el reproductor en el mismo hueco. Nada de esto existe
+  // hasta ese momento: la página no carga el reproductor de YouTube ni sus
+  // cookies, ni baja un .mp4, mientras nadie lo pida.
+  var disparos = document.querySelectorAll('.video__disparo');
+
+  Array.prototype.forEach.call(disparos, function (enlace) {
+    enlace.addEventListener('click', function (e) {
+      var id    = enlace.getAttribute('data-video');
+      var local = enlace.getAttribute('data-local');
+      if (!id && !local) return;             // sin nada que abrir, que siga el enlace
+      e.preventDefault();
+
+      var figura = enlace.closest('.video');
+      var titulo = figura && figura.querySelector('figcaption b');
+      var cartel = enlace.querySelector('img');
+
+      var marco = document.createElement('div');
+      marco.className = 'video__marco';
+      var reproductor;
+
+      if (local) {
+        // Video propio, servido desde el sitio: reproductor del navegador.
+        // Este sí lleva sonido y controles, porque lo pidió quien lo tocó.
+        reproductor = document.createElement('video');
+        reproductor.src = local;
+        reproductor.controls = true;
+        reproductor.autoplay = true;
+        reproductor.setAttribute('playsinline', '');
+        if (cartel) reproductor.poster = cartel.getAttribute('src');
+      } else {
+        reproductor = document.createElement('iframe');
+        reproductor.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                          '?autoplay=1&rel=0';
+        reproductor.title = titulo ? titulo.textContent : 'Video de Kaffa Café';
+        reproductor.allow = 'accelerometer; autoplay; clipboard-write; ' +
+                            'encrypted-media; gyroscope; picture-in-picture';
+        reproductor.setAttribute('allowfullscreen', '');
+        reproductor.setAttribute('loading', 'lazy');
+      }
+
+      marco.appendChild(reproductor);
+      enlace.parentNode.replaceChild(marco, enlace);
+      reproductor.focus();
+    });
+  });
 
 })();

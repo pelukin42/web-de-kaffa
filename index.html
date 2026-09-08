@@ -54,6 +54,7 @@
       <a href="#carta">Carta</a>
       <a href="#menu-impreso">Menú</a>
       <a href="#portafolio" data-nav="portafolio">Galería</a>
+      <a href="#videos" data-nav="videos">Videos</a>
       <a class="btn btn--verde btn--peque" href="#reservar">Reservar</a>
     </nav>
 
@@ -99,153 +100,25 @@
       </div>
 
       <!-- ===========================================================
-           EL CHORREADOR
-           La pieza que cuela sola: gotea, la taza se llena y sale el
-           vapor. Es la promesa del lugar hecha visible — aquí se
-           prepara, ahora mismo. Va en SVG dentro del HTML para que
-           herede los colores de la marca y se anime con CSS, sin
-           librerías ni imágenes que descargar.
-           Con prefers-reduced-motion la taza aparece ya servida.
+           LA VANDOLA
+           Sustituye al chorreador dibujado en SVG. Es la pieza de la casa
+           dando vueltas: la promesa del lugar, pero filmada, no ilustrada.
+           Va muda y en bucle porque es decoración, no contenido: nadie
+           tiene que apretar nada y nunca suena solo.
+           - `playsinline` para que en iPhone no se abra a pantalla completa.
+           - `poster` es el primer cuadro del propio video, así que no hay
+             salto ni rectángulo negro mientras carga.
+           - Con movimiento reducido el JS lo pausa en el póster y le pone
+             controles, para quien pida que nada se mueva.
            =========================================================== -->
       <figure class="heroe__foto">
-        <svg class="chorreador" viewBox="70 78 260 195" role="img"
-             aria-label="Un chorreador de café goteando sobre una taza servida">
-
-          <defs>
-            <clipPath id="dentroTaza">
-              <path d="M201 216 h70 l-7 38 a9 9 0 0 1-9 7 h-38 a9 9 0 0 1-9-7 z"/>
-            </clipPath>
-
-            <!-- La madera es cilíndrica: claro a la izquierda, sombra a la derecha. -->
-            <linearGradient id="gPoste" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"    class="p-borde"/>
-              <stop offset=".26"  class="p-luz"/>
-              <stop offset=".62"  class="p-medio"/>
-              <stop offset="1"    class="p-sombra"/>
-            </linearGradient>
-            <!-- El brazo y la base reciben la luz por arriba. -->
-            <linearGradient id="gBrazo" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   class="p-luz"/>
-              <stop offset=".45" class="p-medio"/>
-              <stop offset="1"   class="p-sombra"/>
-            </linearGradient>
-
-            <!-- La tela: iluminada arriba a la izquierda, en sombra abajo a la derecha. -->
-            <radialGradient id="gTela" cx=".34" cy=".12" r=".95">
-              <stop offset="0"   class="t-luz"/>
-              <stop offset=".55" class="t-medio"/>
-              <stop offset="1"   class="t-sombra"/>
-            </radialGradient>
-
-            <!-- El café: más claro donde se refleja la luz, oscuro contra la pared. -->
-            <radialGradient id="gCafe" cx=".38" cy=".3" r=".8">
-              <stop offset="0"   class="c-luz"/>
-              <stop offset=".6"  class="c-medio"/>
-              <stop offset="1"   class="c-sombra"/>
-            </radialGradient>
-            <linearGradient id="gVidrio" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"    class="v-canto"/>
-              <stop offset=".14"  class="v-medio"/>
-              <stop offset=".55"  class="v-hueco"/>
-              <stop offset=".88"  class="v-medio"/>
-              <stop offset="1"    class="v-canto"/>
-            </linearGradient>
-            <linearGradient id="gGota" x1=".3" y1="0" x2=".7" y2="1">
-              <stop offset="0"   class="c-luz"/>
-              <stop offset="1"   class="c-sombra"/>
-            </linearGradient>
-
-            <filter id="difuso" x="-40%" y="-80%" width="180%" height="260%">
-              <feGaussianBlur stdDeviation="3.2"/>
-            </filter>
-            <filter id="difusoCorto" x="-40%" y="-120%" width="180%" height="340%">
-              <feGaussianBlur stdDeviation="1.8"/>
-            </filter>
-          </defs>
-
-          <g class="pieza">
-
-            <!-- Sombra del conjunto sobre la mesa -->
-            <ellipse class="sombra-piso" cx="200" cy="271" rx="98" ry="6" filter="url(#difuso)"/>
-
-            <!-- Soporte de madera -->
-            <rect class="base" x="112" y="256" width="176" height="13" rx="6"/>
-            <rect class="filo" x="117" y="257.2" width="166" height="1.6" rx="1"/>
-
-            <rect class="poste" x="132" y="92" width="14" height="166" rx="7"/>
-            <rect class="veta" x="136.5" y="104" width="1.3" height="146" rx=".7"/>
-            <rect class="veta veta--2" x="141" y="118" width="1" height="120" rx=".5"/>
-
-            <!-- El brazo cruza todo el ancho del aro: de ahí cuelga la bolsa. -->
-            <rect class="brazo" x="130" y="88" width="156" height="13" rx="6"/>
-            <rect class="filo" x="135" y="89.4" width="146" height="1.6" rx="1"/>
-            <!-- Sombra del brazo sobre el poste -->
-            <rect class="union" x="132" y="101" width="14" height="6" rx="3" filter="url(#difusoCorto)"/>
-
-            <!-- Contraluz: en un cuarto oscuro los cantos derechos recogen
-                 el derrame de la luz. Es lo que despega la pieza del fondo. -->
-            <rect class="rim" x="144.4" y="98" width="1.5" height="156" rx=".75"/>
-            <rect class="rim" x="284.2" y="90" width="1.6" height="9" rx=".8"/>
-
-            <!-- Bolsita de tela -->
-            <path class="tela" d="M194 108 C197 154 213 182 236 191 C257 180 274 150 278 108 Z"/>
-            <path class="pliegue" d="M212 112 C216 148 224 172 236 188"/>
-            <path class="pliegue pliegue--2" d="M236 112 C236 148 236 170 236 189"/>
-            <path class="pliegue pliegue--3" d="M260 112 C256 148 248 172 236 188"/>
-            <path class="tela-sombra" d="M236 191 C257 180 274 150 278 108 L263 108 C259 147 248 174 236 191 Z"/>
-            <path class="costura" d="M196 112 C202 120 217 124 236 124 C255 124 270 120 276 112"/>
-
-            <!-- El aro de madera del que cuelga la tela -->
-            <ellipse class="aro" cx="236" cy="107" rx="42" ry="12"/>
-            <path class="aro-luz" d="M200 101 a42 12 0 0 1 44-5"/>
-
-            <!-- La luz atraviesa el vaso y cae en la tabla, corrida hacia
-                 la derecha porque entra desde arriba a la izquierda. -->
-            <ellipse class="caustica" cx="250" cy="262" rx="30" ry="5" filter="url(#difuso)"/>
-
-            <!-- Sombra que la bolsa proyecta dentro de la taza -->
-            <ellipse class="sombra-taza" cx="238" cy="213" rx="26" ry="4" filter="url(#difusoCorto)"/>
-
-            <!-- Taza -->
-            <ellipse class="sombra-vaso" cx="237" cy="265" rx="44" ry="5" filter="url(#difusoCorto)"/>
-            <path class="asa" d="M274 220 a17 17 0 0 1 0 26"/>
-            <path class="asa-luz" d="M275 222 a14 14 0 0 1 2 9"/>
-            <path class="taza" d="M199 208 h74 l-8 48 a10 10 0 0 1-10 8 h-38 a10 10 0 0 1-10-8 z"/>
-            <ellipse class="taza-dentro" cx="236" cy="211" rx="34" ry="6"/>
-
-            <!-- El café que se va juntando -->
-            <g clip-path="url(#dentroTaza)">
-              <rect class="liquido" x="199" y="212" width="74" height="62"/>
-              <ellipse class="crema-cafe" cx="236" cy="218" rx="33" ry="3.8"/>
-              <path class="menisco" d="M201 218 q35 5 70 0"/>
-              <!-- La onda del impacto, recortada dentro de la taza. -->
-              <ellipse class="onda" cx="236" cy="218" rx="13" ry="2.8"/>
-            </g>
-
-            <!-- El canto y los brillos van encima del café: es vidrio, no loza. -->
-            <path class="taza-canto" d="M199 208 h74 l-8 48 a10 10 0 0 1-10 8 h-38 a10 10 0 0 1-10-8 z"/>
-            <path class="rim-vidrio" d="M272 211 l-7 43"/>
-            <path class="taza-brillo" d="M208 215 c-1 14 1 27 5 38"/>
-            <path class="taza-brillo taza-brillo--fino" d="M215 216 c-1 12 0 24 3 34"/>
-            <ellipse class="taza-borde" cx="236" cy="209" rx="37" ry="6"/>
-            <path class="borde-luz" d="M201 207 a37 6 0 0 1 30-4"/>
-
-            <!-- Vapor: sale cuando la taza ya tiene algo -->
-            <g class="vapor" aria-hidden="true">
-              <path class="vaho vaho--1" d="M223 206 c-7-14 7-21 0-35"/>
-              <path class="vaho vaho--2" d="M236 204 c-9-16 9-25 0-41"/>
-              <path class="vaho vaho--3" d="M249 206 c-7-14 7-21 0-35"/>
-            </g>
-
-            <!-- Las gotas -->
-            <g aria-hidden="true">
-              <ellipse class="gota gota--1" cx="236" cy="193" rx="3.2" ry="4.6"/>
-              <ellipse class="gota gota--2" cx="236" cy="193" rx="3.2" ry="4.6"/>
-              <ellipse class="gota gota--3" cx="236" cy="193" rx="3.2" ry="4.6"/>
-            </g>
-          </g>
-
-        </svg>
+        <video class="vandola" id="vandola"
+               poster="assets/img/vandola-cartel.jpg"
+               width="1080" height="1920"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="Una vandola girando sobre su base mientras cuela el café">
+          <source src="assets/video/vandola.mp4" type="video/mp4">
+        </video>
 
         <!-- Qué se está sirviendo a esta hora. Lo calcula el JS con la hora
              de Costa Rica; si el JS no corre, no estorba. -->
@@ -1053,6 +926,117 @@
     </div>
 
     <p class="galeria__nota">Fotos del local, de la barra y de los platos de la carta.</p>
+
+  </div>
+</section>
+
+<span class="greca" aria-hidden="true"></span>
+
+<!-- ===========================================================
+     KAFFA EN VIDEO
+     Los tres videos son de YouTube y son de terceros, no de Kaffa:
+     RUTA TIPICA visitó el local, y Artemotiv y Marco Arce grabaron la
+     vandola. Por eso se embeben desde YouTube y cada tarjeta acredita
+     al canal, en vez de subir los .mp4 al sitio.
+
+     No se carga el iframe hasta que alguien lo pide (patrón "facade"):
+     lo que se ve de entrada es la miniatura, que pesa unos 20 kB. Así
+     la página no arrastra el reproductor de YouTube (~1 MB y sus
+     cookies) por tres videos que la mayoría no va a abrir.
+
+     Sin JavaScript la tarjeta sigue siendo un enlace y abre el video en
+     YouTube, en una pestaña nueva. No se rompe nada.
+     =========================================================== -->
+<section class="seccion bloque videos" id="videos" aria-labelledby="h-videos">
+  <div class="envoltura">
+
+    <header class="bloque__intro bloque__intro--ancho">
+      <p class="eyebrow">En video</p>
+      <h2 id="h-videos">Kaffa, <em>contada por quienes la visitan</em>.</h2>
+      <p class="bajada">
+        Una visita al local y dos videos sobre la vandola, la cafetera de barro
+        costarricense con la que se cuela acá: los grabaron terceros y están
+        alojados en YouTube. Cierra el cold brew de la casa, grabado en la barra.
+        Todos se abren aquí mismo.
+      </p>
+    </header>
+
+    <div class="videos__rejilla">
+
+      <figure class="video">
+        <a class="video__disparo" data-video="cVIJD6KfjXc"
+           href="https://www.youtube.com/watch?v=cVIJD6KfjXc"
+           target="_blank" rel="noopener">
+          <img src="https://i.ytimg.com/vi/cVIJD6KfjXc/hqdefault.jpg"
+               alt="Portada del video: la fachada de Kaffa Café en Coronado"
+               width="480" height="360" loading="lazy">
+          <span class="video__play" aria-hidden="true"></span>
+          <span class="video__rotulo">Ver en YouTube</span>
+        </a>
+        <figcaption>
+          <b>Kaffa Café, Coronado, San José</b>
+          <span>Una visita al local, por el canal RUTA TIPICA.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="video">
+        <a class="video__disparo" data-video="b0XIkwUQjgk"
+           href="https://www.youtube.com/watch?v=b0XIkwUQjgk"
+           target="_blank" rel="noopener">
+          <img src="https://i.ytimg.com/vi/b0XIkwUQjgk/hqdefault.jpg"
+               alt="Portada del video: una vandola de barro colando café"
+               width="480" height="360" loading="lazy">
+          <span class="video__play" aria-hidden="true"></span>
+          <span class="video__rotulo">Ver en YouTube</span>
+        </a>
+        <figcaption>
+          <b>Vandola, café de Costa Rica</b>
+          <span>De dónde sale la pieza y por qué cambia el café, por Marco Arce.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="video">
+        <a class="video__disparo" data-video="WBIMUrIlavU"
+           href="https://www.youtube.com/watch?v=WBIMUrIlavU"
+           target="_blank" rel="noopener">
+          <img src="https://i.ytimg.com/vi/WBIMUrIlavU/hqdefault.jpg"
+               alt="Portada del video: tutorial para preparar café en vandola"
+               width="480" height="360" loading="lazy">
+          <span class="video__play" aria-hidden="true"></span>
+          <span class="video__rotulo">Ver en YouTube</span>
+        </a>
+        <figcaption>
+          <b>Cómo se hace el café en vandola</b>
+          <span>El paso a paso del método, por Artemotiv.</span>
+        </figcaption>
+      </figure>
+
+
+      <!-- El único video propio de la tanda: lo grabó Kaffa, no un tercero, y
+           por eso se sirve desde el sitio y no desde YouTube. Viene vertical
+           (1080x1920, de teléfono), así que la tarjeta va en formato retrato
+           en vez de recortarlo a 16:9. Se carga al tocarlo, igual que los otros. -->
+      <figure class="video video--vertical">
+        <a class="video__disparo" data-local="assets/video/cold-brew.mp4"
+           href="assets/video/cold-brew.mp4">
+          <img src="assets/img/cold-brew-cartel.jpg"
+               alt="Portada del video: el cold brew de Kaffa servido en copa, con naranja y grano"
+               width="720" height="1280" loading="lazy">
+          <span class="video__play" aria-hidden="true"></span>
+          <span class="video__rotulo">Ver el video</span>
+        </a>
+        <figcaption>
+          <b>El cold brew de la casa</b>
+          <span>De la canilla a la copa, en la barra de Kaffa.</span>
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <p class="galeria__nota">
+      Los tres primeros están alojados en YouTube y el crédito es de cada canal.
+      El cold brew es de Kaffa.
+    </p>
 
   </div>
 </section>
