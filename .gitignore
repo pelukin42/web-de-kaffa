@@ -34,3 +34,5 @@ assets/img/Fotos nuevas/
 assets/video/*
 !assets/video/vandola.mp4
 !assets/video/cold-brew.mp4
+# recorrido.mp4 (3,7 MB) es el recorrido por el local, quinta tarjeta.
+!assets/video/recorrido.mp4
