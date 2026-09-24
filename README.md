@@ -287,10 +287,10 @@ póster; el `.mp4` además hay que agregarlo a mano como excepción en `.gitigno
    Cuando toque, van por el mismo camino que el lote anterior: mirarlas, redimensionarlas a
    880&nbsp;px de lado mayor con calidad 76, renombrarlas con nombre semántico y ubicarlas.
 2. **Los `.mp4` crudos siguen en `assets/video/`**, unos 250&nbsp;MB, ignorados por git
-   salvo los dos ya comprimidos (`vandola.mp4` y `cold-brew.mp4`), que son los únicos que
-   viajan al sitio. Quedan ahí los dos masters —`Vandola-original.mp4` y `ColdBrew.mp4`,
-   por si hay que volver a comprimir— y las tres descargas de YouTube, que ya no hacen
-   falta porque esos videos se embeben; se pueden borrar cuando se quiera.
+   salvo los tres ya comprimidos (`vandola.mp4`, `cold-brew.mp4` y `recorrido.mp4`), que
+   son los únicos que viajan al sitio. Quedan ahí los dos masters —`Vandola-original.mp4`
+   y `ColdBrew.mp4`, por si hay que volver a comprimir— y las tres descargas de YouTube,
+   que ya no hacen falta porque esos videos se embeben; se pueden borrar cuando se quiera.
 3. **Los testimonios no enlazan a TripAdvisor.** Falta la URL del perfil de Kaffa; no se
    adivinó para no mandar gente a otro restaurante.
 4. **El menú en PDF pesa 5,4&nbsp;MB.** Si algún día estorba, se baja la calidad de los
@@ -325,6 +325,28 @@ python -m http.server 5177 --directory "C:\Users\JMMendez\OneDrive - DOLE FOOD C
 ```
 
 Luego abrir `http://localhost:5177`.
+
+---
+
+## Dónde vive el material crudo
+
+El repositorio no lo tiene todo, y eso es a propósito. Netlify publica la raíz, así que
+todo lo que entre al commit se publica: por eso los originales sin procesar están en
+`.gitignore`. La consecuencia es que **ese material no se recupera clonando el
+repositorio**. Son unos 271&nbsp;MB en tres carpetas:
+
+| Carpeta | Peso | Qué es |
+| --- | --- | --- |
+| `assets/video/` (crudos) | 260&nbsp;MB | Masters de la vandola y el cold brew, más las descargas de YouTube |
+| `assets/img/fotos/` | 8,8&nbsp;MB | Los 34 originales del primer lote |
+| `assets/img/Fotos nuevas/` | 2,7&nbsp;MB | El lote del 6 de setiembre de 2026, sin procesar |
+
+Respaldo: **Google Drive** — <!-- PENDIENTE: pegar aquí el enlace de la carpeta -->
+
+Lo que sí viaja en el repositorio son las versiones ya optimizadas: las fotos de
+`assets/img/*.jpg` y los tres videos comprimidos (`vandola.mp4`, `cold-brew.mp4` y
+`recorrido.mp4`). Con eso el sitio se levanta entero desde GitHub. Los originales hacen
+falta solo para volver a comprimir o para procesar fotos nuevas.
 
 ---
 
