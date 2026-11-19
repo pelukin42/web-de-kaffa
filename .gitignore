@@ -36,3 +36,12 @@ assets/video/*
 !assets/video/cold-brew.mp4
 # recorrido.mp4 (3,7 MB) es el recorrido por el local, quinta tarjeta.
 !assets/video/recorrido.mp4
+.env
+.env.*
+node_modules/
+.netlify/
+.venv/
+venv/
+__pycache__/
+*.log
+assets/video/YTDown.com_YouTube_Vandola-Cafe-de-Costa-Rica_Media_b0XIkwUQjgk_002_720p.mp4
